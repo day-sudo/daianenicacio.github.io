@@ -1,0 +1,3029 @@
+<!doctype html>
+<html lang="pt-BR">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daiane Nicácio - Gestão da Mudança &amp; Transformação Digital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #333;
+      line-height: 1.6;
+      overflow-x: hidden;
+      box-sizing: border-box;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    :root {
+      --primary-blue: #0066cc;
+      --primary-green: #00b894;
+      --secondary-cyan: #00ffff;
+      --text-dark: #333;
+      --text-medium: #555;
+      --text-light: #666;
+      --background-light: #f8f9fa;
+      --background-white: #ffffff;
+      --border-color: #e9ecef;
+    }
+
+    /* Navegação */
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      z-index: 1000;
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #0066cc 0%, #00b894 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 500;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary-blue);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #ffffff 0%, #f0f4f8 100%);
+      padding: 8rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        linear-gradient(30deg, rgba(0, 102, 204, 0.05) 12%, transparent 12.5%, transparent 87%, rgba(0, 102, 204, 0.05) 87.5%, rgba(0, 102, 204, 0.05)),
+        linear-gradient(150deg, rgba(0, 102, 204, 0.05) 12%, transparent 12.5%, transparent 87%, rgba(0, 102, 204, 0.05) 87.5%, rgba(0, 102, 204, 0.05)),
+        linear-gradient(30deg, rgba(0, 102, 204, 0.05) 12%, transparent 12.5%, transparent 87%, rgba(0, 102, 204, 0.05) 87.5%, rgba(0, 102, 204, 0.05)),
+        linear-gradient(150deg, rgba(0, 102, 204, 0.05) 12%, transparent 12.5%, transparent 87%, rgba(0, 102, 204, 0.05) 87.5%, rgba(0, 102, 204, 0.05));
+      background-size: 80px 140px;
+      background-position: 0 0, 0 0, 40px 70px, 40px 70px;
+      opacity: 0.5;
+      animation: drift 20s ease-in-out infinite;
+    }
+    
+    @keyframes drift {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(20px, 20px); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, #0066cc 0%, #00b894 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+      animation: fadeInUp 0.8s ease-out;
+    }
+    
+    .hero p {
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      color: #4a5568;
+      margin-bottom: 2.5rem;
+      animation: fadeInUp 0.8s ease-out 0.2s backwards;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .cta-button {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background: linear-gradient(135deg, #0066cc 0%, #00b894 100%);
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0, 102, 204, 0.3);
+      animation: fadeInUp 0.8s ease-out 0.4s backwards;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(0, 102, 204, 0.4);
+    }
+
+    /* Container Global */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    section {
+      padding: 5rem 2rem;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #0066cc 0%, #00b894 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-medium);
+      font-size: 1.1rem;
+      margin-bottom: 3rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Venn Diagram Section */
+    .venn-section {
+      background: linear-gradient(135deg, #0a0e27, #1a1f3a);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .venn-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+      background-size: 30px 30px;
+      animation: grid-move 20s linear infinite;
+    }
+
+    @keyframes grid-move {
+      0% {
+        transform: translate(0, 0);
+      }
+      100% {
+        transform: translate(30px, 30px);
+      }
+    }
+
+    .venn-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .venn-header {
+      text-align: center;
+      margin-bottom: 4rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .venn-header h2 {
+      color: white;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .venn-header p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1.1rem;
+    }
+
+    .venn-diagram {
+      position: relative;
+      width: 100%;
+      height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+    }
+
+    .venn-circle {
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      font-weight: 600;
+      font-size: 1.2rem;
+      mix-blend-mode: screen;
+      will-change: transform, box-shadow;
+      animation: pulse-glow 2.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% {
+        box-shadow: 0 0 60px currentColor;
+        filter: brightness(1.3);
+      }
+      50% {
+        box-shadow: 0 0 140px currentColor;
+        filter: brightness(1.6);
+      }
+    }
+
+    .venn-pessoas {
+      background: radial-gradient(circle, rgba(0, 255, 255, 0.4), rgba(0, 255, 255, 0.1));
+      color: #00ffff;
+      top: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .venn-processos {
+      background: radial-gradient(circle, rgba(0, 255, 136, 0.4), rgba(0, 255, 136, 0.1));
+      color: #00ff88;
+      bottom: 50px;
+      left: calc(50% - 180px);
+    }
+
+    .venn-tecnologia {
+      background: radial-gradient(circle, rgba(136, 192, 255, 0.4), rgba(136, 192, 255, 0.1));
+      color: #88c0ff;
+      bottom: 50px;
+      right: calc(50% - 180px);
+    }
+
+    .venn-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-align: center;
+      z-index: 10;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 1.5rem 2rem;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* Tools Grid Section */
+    .tools-section {
+      background: var(--background-light);
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .tool-card {
+      background: white;
+      border-radius: 15px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      border: 2px solid transparent;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-8px) scale(1.05);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .tool-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      display: block;
+      filter: grayscale(0);
+    }
+
+    .tool-card.blue { border-color: #3498db; background: linear-gradient(135deg, #ffffff 0%, #e3f2fd 100%); }
+    .tool-card.emerald { border-color: #2ecc71; background: linear-gradient(135deg, #ffffff 0%, #e8f5e9 100%); }
+    .tool-card.purple { border-color: #9b59b6; background: linear-gradient(135deg, #ffffff 0%, #f3e5f5 100%); }
+    .tool-card.orange { border-color: #f39c12; background: linear-gradient(135deg, #ffffff 0%, #fff3e0 100%); }
+    .tool-card.cyan { border-color: #1abc9c; background: linear-gradient(135deg, #ffffff 0%, #e0f2f1 100%); }
+    .tool-card.slate { border-color: #7f8c8d; background: linear-gradient(135deg, #ffffff 0%, #eceff1 100%); }
+
+    .tool-name {
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--text-dark);
+    }
+
+    .tool-description {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-top: 0.5rem;
+    }
+
+    /* Indicators Section */
+    .indicators-section {
+      background: white;
+    }
+
+    .indicators-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .indicator-card {
+      background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      border-left: 5px solid var(--primary-blue);
+    }
+
+    .indicator-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .indicator-icon {
+      font-size: 2.5rem;
+      filter: grayscale(0);
+    }
+
+    .indicator-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .indicator-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-medium);
+    }
+
+    .chart-container {
+      margin: 1.5rem 0;
+    }
+
+    .indicator-result {
+      background: linear-gradient(135deg, #0066cc 0%, #00b894 100%);
+      color: white;
+      padding: 1rem;
+      border-radius: 10px;
+      text-align: center;
+      font-weight: 600;
+      margin-top: 1rem;
+    }
+
+    /* 5 Whys Section */
+    .five-whys-section {
+      background: var(--background-light);
+    }
+
+    .five-whys-intro {
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto 3rem;
+      padding: 2rem;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .case-title {
+      font-size: 1.5rem;
+      color: var(--primary-blue);
+      margin-bottom: 0.5rem;
+    }
+
+    .whys-container {
+      position: relative;
+      overflow-x: auto;
+      padding: 2rem 0;
+    }
+
+    .whys-scroll {
+      display: flex;
+      gap: 2rem;
+      min-width: max-content;
+      padding: 0 2rem;
+    }
+
+    .why-card {
+      background: white;
+      border-radius: 20px;
+      padding: 2rem;
+      min-width: 320px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      position: relative;
+      border-top: 5px solid;
+    }
+
+    .why-card:nth-child(1) { border-color: #3498db; }
+    .why-card:nth-child(3) { border-color: #2ecc71; }
+    .why-card:nth-child(5) { border-color: #f39c12; }
+    .why-card:nth-child(7) { border-color: #9b59b6; }
+    .why-card:nth-child(9) { border-color: #e74c3c; }
+
+    .why-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 40px;
+      color: var(--primary-green);
+    }
+
+    .why-arrow svg {
+      width: 40px;
+      height: 20px;
+    }
+
+    .why-number {
+      font-size: 3rem;
+      font-weight: 700;
+      opacity: 0.1;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+    }
+
+    .why-content h4 {
+      font-size: 1rem;
+      color: var(--primary-blue);
+      margin-bottom: 0.8rem;
+      font-weight: 600;
+    }
+
+    .why-question {
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      color: var(--text-dark);
+    }
+
+    .why-answer {
+      color: var(--text-medium);
+      line-height: 1.8;
+      padding-top: 0.8rem;
+      border-top: 2px solid #f0f4f8;
+    }
+
+    .action-results-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .action-result-card {
+      background: white;
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .card-header-with-icon {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid #f0f4f8;
+    }
+
+    .icon-box {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .green-gradient {
+      background: linear-gradient(135deg, #00b894 0%, #2ecc71 100%);
+    }
+
+    .blue-gradient {
+      background: linear-gradient(135deg, #0066cc 0%, #3498db 100%);
+    }
+
+    .icon-svg {
+      width: 28px;
+      height: 28px;
+      stroke: white;
+    }
+
+    .card-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin: 0;
+    }
+
+    .action-list-styled {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .action-item-styled {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1rem 0;
+      color: var(--text-medium);
+      line-height: 1.6;
+    }
+
+    .bullet-green {
+      color: #00b894;
+      font-size: 1.8rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .results-metrics {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .metric-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .metric-label-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .metric-label {
+      font-weight: 600;
+      color: var(--text-dark);
+      font-size: 0.95rem;
+    }
+
+    .metric-percentage {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--primary-blue);
+    }
+
+    .progress-bar-container {
+      width: 100%;
+      height: 12px;
+      background: #f0f4f8;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      border-radius: 10px;
+      transition: width 1s ease-out;
+    }
+
+    .green-bar {
+      background: linear-gradient(90deg, #00b894 0%, #2ecc71 100%);
+    }
+
+    .blue-bar {
+      background: linear-gradient(90deg, #0066cc 0%, #3498db 100%);
+    }
+
+    /* Decision Matrix Section */
+    .matrix-section {
+      background: white;
+    }
+
+    .methodology-comparison-box {
+      background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+      border-radius: 25px;
+      padding: 3rem;
+      margin-top: 3rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .comparison-title {
+      text-align: center;
+      font-size: 1.8rem;
+      color: var(--text-dark);
+      margin-bottom: 2.5rem;
+    }
+
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .comparison-card {
+      background: white;
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+    }
+
+    .comparison-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .comparison-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid #f0f4f8;
+    }
+
+    .comparison-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .blue-icon {
+      background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    }
+
+    .purple-icon {
+      background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+    }
+
+    .icon-number {
+      color: white;
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .icon-svg-small {
+      width: 32px;
+      height: 32px;
+      stroke: white;
+    }
+
+    .comparison-method-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin: 0;
+    }
+
+    .comparison-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .comparison-section {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .comparison-label {
+      font-weight: 600;
+      font-size: 1rem;
+      margin: 0;
+    }
+
+    .success-label {
+      color: #2ecc71;
+    }
+
+    .limitation-label {
+      color: #e74c3c;
+    }
+
+    .comparison-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .comparison-list li {
+      color: var(--text-medium);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      padding-left: 0.5rem;
+    }
+
+    .hybrid-approach-box {
+      background: linear-gradient(135deg, #0066cc 0%, #00b894 100%);
+      border-radius: 20px;
+      padding: 2.5rem;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0, 102, 204, 0.25);
+    }
+
+    .hybrid-title {
+      color: white;
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin: 0 0 1rem 0;
+    }
+
+    .hybrid-description {
+      color: white;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      opacity: 0.95;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* Ishikawa Section */
+    .ishikawa-section {
+      background: var(--background-light);
+    }
+
+    .ishikawa-container {
+      background: white;
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      overflow-x: auto;
+    }
+
+    .fishbone-svg {
+      width: 100%;
+      min-width: 900px;
+      height: auto;
+    }
+
+    .ishikawa-results {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .ishikawa-result-card {
+      background: white;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .ishikawa-result-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary-blue);
+      margin-bottom: 0.5rem;
+    }
+
+    .result-label {
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--text-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    /* Projects Section */
+    .projects-section {
+      background: white;
+    }
+
+    .project-card {
+      background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+      border-radius: 20px;
+      padding: 3rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .project-header {
+      margin-bottom: 2rem;
+    }
+
+    .project-label {
+      display: inline-block;
+      background: linear-gradient(135deg, #0066cc 0%, #00b894 100%);
+      color: white;
+      padding: 0.5rem 1.5rem;
+      border-radius: 25px;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .project-title {
+      font-size: 2rem;
+      color: var(--text-dark);
+      margin-bottom: 1rem;
+    }
+
+    .project-description {
+      color: var(--text-medium);
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    .flow-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 2rem 0;
+      padding: 2rem;
+      background: rgba(0, 102, 204, 0.05);
+      border-radius: 15px;
+    }
+
+    .flow-step {
+      background: white;
+      padding: 1rem 1.5rem;
+      border-radius: 10px;
+      font-weight: 600;
+      color: var(--primary-blue);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .flow-arrow {
+      font-size: 1.5rem;
+      color: var(--primary-green);
+    }
+
+    /* Novo Estilo Infográfico */
+    .infographic-flow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      margin: 2.5rem 0;
+      padding: 3rem 2rem;
+      background: linear-gradient(135deg, rgba(0, 102, 204, 0.05) 0%, rgba(0, 184, 148, 0.05) 100%);
+      border-radius: 20px;
+      overflow-x: auto;
+      flex-wrap: nowrap;
+    }
+
+    .flow-step-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      min-width: 140px;
+      padding: 0 0.5rem;
+    }
+
+    .step-number {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #0066cc 0%, #00b894 100%);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
+    }
+
+    .step-title {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--text-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .step-desc {
+      font-size: 0.85rem;
+      color: var(--text-medium);
+      font-style: italic;
+    }
+
+    .flow-arrow-info {
+      margin: 0 0.5rem;
+      color: var(--primary-green);
+      display: flex;
+      align-items: center;
+    }
+
+    .arrow-svg {
+      width: 50px;
+      height: 40px;
+    }
+
+    .tool-content-grid {
+      display: grid;
+      grid-template-columns: 1.8fr 1fr;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .content-block {
+      background: white;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .content-block h4 {
+      color: var(--primary-blue);
+      margin-bottom: 1rem;
+    }
+
+    .swot-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .swot-item {
+      padding: 1rem;
+      border-radius: 10px;
+      border-left: 4px solid;
+    }
+
+    .swot-item.strengths { background: #e8f5e9; border-color: #2ecc71; }
+    .swot-item.weaknesses { background: #ffebee; border-color: #e74c3c; }
+    .swot-item.opportunities { background: #e3f2fd; border-color: #3498db; }
+    .swot-item.threats { background: #fff3e0; border-color: #f39c12; }
+
+    .swot-title {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .swot-content {
+      font-size: 0.85rem;
+      color: var(--text-medium);
+    }
+
+    .impact-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .impact-card {
+      background: linear-gradient(135deg, #0066cc 0%, #00b894 100%);
+      color: white;
+      border-radius: 15px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 102, 204, 0.3);
+    }
+
+    .impact-value {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .impact-label {
+      font-size: 0.9rem;
+      opacity: 0.95;
+    }
+
+    /* AI Lab Section */
+    .ai-lab-section {
+      background: linear-gradient(135deg, #0a0e27, #1a1f3a);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ai-lab-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        linear-gradient(rgba(168, 85, 247, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(168, 85, 247, 0.1) 1px, transparent 1px);
+      background-size: 30px 30px;
+    }
+
+    .ai-lab-title {
+      color: white;
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .ai-lab-subtitle {
+      color: rgba(255, 255, 255, 0.8);
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .ai-hero-card {
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(59, 130, 246, 0.2));
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      border-radius: 25px;
+      padding: 3rem;
+      margin-bottom: 3rem;
+      position: relative;
+      backdrop-filter: blur(10px);
+      z-index: 1;
+    }
+
+    .data-orb {
+      width: 60px;
+      height: 60px;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.8), rgba(59, 130, 246, 0.8));
+      border-radius: 50%;
+      position: absolute;
+      top: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 0 30px rgba(16, 185, 129, 0.8), 0 0 60px rgba(59, 130, 246, 0.6);
+      animation: glow 2s ease-in-out infinite;
+    }
+
+    @keyframes glow {
+      0%, 100% {
+        transform: translateX(-50%) scale(1);
+        box-shadow: 0 0 30px rgba(16, 185, 129, 0.8), 0 0 60px rgba(59, 130, 246, 0.6);
+      }
+      50% {
+        transform: translateX(-50%) scale(1.2);
+        box-shadow: 0 0 80px rgba(16, 185, 129, 1), 0 0 120px rgba(59, 130, 246, 0.8);
+      }
+    }
+
+    .ai-hero-content {
+      text-align: center;
+      color: white;
+      margin-top: 4rem;
+    }
+
+    .ai-hero-content h3 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .ai-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .ai-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 2rem;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .ai-card:hover {
+      transform: translateY(-10px);
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(168, 85, 247, 0.5);
+      box-shadow: 0 20px 40px rgba(168, 85, 247, 0.3);
+    }
+
+    .ai-card-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      filter: grayscale(0);
+    }
+
+    .ai-card-title {
+      color: white;
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .ai-card-subtitle {
+      color: rgba(168, 85, 247, 0.9);
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .ai-card-description {
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.8;
+      font-size: 0.95rem;
+    }
+
+    .collab-card {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.3), rgba(59, 130, 246, 0.3));
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .collab-flow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    .collab-step {
+      text-align: center;
+      color: white;
+    }
+
+    .collab-step-icon {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      filter: grayscale(0);
+    }
+
+    .collab-arrow {
+      font-size: 2rem;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .ai-cta {
+      text-align: center;
+      margin-top: 3rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .ai-button {
+      display: inline-block;
+      background: linear-gradient(135deg, #a855f7 0%, #3b82f6 100%);
+      color: white;
+      padding: 1rem 3rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(168, 85, 247, 0.4);
+    }
+
+    .ai-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(168, 85, 247, 0.6);
+    }
+
+    /* Education Section */
+    .education-section {
+      background: var(--background-light);
+    }
+
+    .academic-card {
+      background: white;
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-bottom: 2rem;
+    }
+
+    .academic-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .academic-title {
+      font-size: 1.8rem;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .toggle-icon {
+      font-size: 1.5rem;
+      color: var(--primary-blue);
+      transition: transform 0.3s ease;
+    }
+
+    .toggle-icon.open {
+      transform: rotate(180deg);
+    }
+
+    .academic-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+    }
+
+    .academic-content.open {
+      max-height: 2000px;
+    }
+
+    .education-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .education-item {
+      background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+      border-radius: 15px;
+      padding: 1.5rem;
+      border-left: 4px solid var(--primary-blue);
+    }
+
+    .education-item h4 {
+      color: var(--text-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .education-item p {
+      color: var(--text-medium);
+      font-size: 0.95rem;
+    }
+
+    .certifications-list {
+      list-style: none;
+      margin-top: 2rem;
+    }
+
+    .cert-item {
+      background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+      border-radius: 10px;
+      padding: 1rem 1.5rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid var(--primary-green);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .cert-icon {
+      font-size: 1.5rem;
+      filter: grayscale(0);
+    }
+
+    .education-quote {
+      background: linear-gradient(135deg, #0066cc 0%, #00b894 100%);
+      color: white;
+      border-radius: 15px;
+      padding: 2rem;
+      text-align: center;
+      margin-top: 2rem;
+      font-style: italic;
+      font-size: 1.1rem;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      background: white;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .contact-card {
+      background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+      border-radius: 20px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    .contact-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      filter: grayscale(0);
+    }
+
+    .contact-label {
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-value {
+      color: var(--text-medium);
+      font-size: 0.95rem;
+      word-break: break-word;
+    }
+
+    .contact-link {
+      color: var(--primary-blue);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .contact-link:hover {
+      color: var(--primary-green);
+    }
+
+    .whatsapp-button {
+      display: inline-block;
+      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+      color: white;
+      padding: 1rem 3rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-top: 3rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    }
+
+    .whatsapp-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+    }
+
+    .cta-container {
+      text-align: center;
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-tagline {
+      color: #00b894;
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-top: 1rem;
+    }
+
+    /* Responsividade */
+    @media (max-width: 1200px) {
+      .tools-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      
+      .indicators-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 992px) {
+      .tools-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      
+      .tool-content-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .comparison-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .ai-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .contact-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        padding: 6rem 2rem;
+      }
+      
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .nav-links {
+        gap: 1rem;
+        font-size: 0.9rem;
+      }
+      
+      .tools-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .indicators-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .venn-circle {
+        width: 260px;
+        height: 260px;
+      }
+      
+      .action-results-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .ishikawa-results {
+        grid-template-columns: 1fr;
+      }
+      
+      .impact-cards {
+        grid-template-columns: 1fr;
+      }
+      
+      .ai-cards-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .education-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .tools-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .venn-circle {
+        width: 220px;
+        height: 220px;
+        font-size: 1.1rem;
+      }
+      
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .collab-flow {
+        flex-direction: column;
+      }
+
+      .infographic-flow {
+        padding: 2rem 1rem;
+        justify-content: flex-start;
+      }
+
+      .flow-step-info {
+        min-width: 100px;
+      }
+
+      .step-number {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+      }
+
+      .step-title {
+        font-size: 0.85rem;
+      }
+
+      .step-desc {
+        font-size: 0.75rem;
+      }
+
+      .arrow-svg {
+        width: 35px;
+        height: 30px;
+      }
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body><!-- Navegação -->
+  <nav>
+   <div class="nav-container">
+    <div class="logo">
+     Daiane Nicácio
+    </div>
+    <ul class="nav-links">
+     <li><a href="#home" class="active">Início</a></li>
+     <li><a href="#value">Abordagem</a></li>
+     <li><a href="#tools">Ferramentas</a></li>
+     <li><a href="#indicators">Indicadores</a></li>
+     <li><a href="#analysis">Análises</a></li>
+     <li><a href="#projects">Projetos</a></li>
+     <li><a href="#ai-lab">IA Lab</a></li>
+     <li><a href="#education">Formação</a></li>
+     <li><a href="#contact">Contato</a></li>
+    </ul>
+   </div>
+  </nav><!-- Hero Section -->
+  <section id="home" class="hero">
+   <div class="hero-content">
+    <h1>Daiane Nicácio</h1>
+    <p>Especialista em Gestão da Mudança Organizacional, Projetos Ágeis e Transformação Digital</p><a href="#contact" class="cta-button">Vamos Conversar</a>
+   </div>
+  </section><!-- Venn Diagram Section -->
+  <section id="value" class="venn-section">
+   <div class="venn-container">
+    <div class="venn-header">
+     <h2>Minha Proposta de Valor</h2>
+     <p>Integrando os pilares da transformação organizacional</p>
+    </div>
+    <div class="venn-diagram">
+     <div class="venn-circle venn-pessoas"><span>PESSOAS</span>
+     </div>
+     <div class="venn-circle venn-processos"><span>PROCESSOS</span>
+     </div>
+     <div class="venn-circle venn-tecnologia"><span>TECNOLOGIA</span>
+     </div>
+     <div class="venn-center"><span>Transformação Sustentável</span>
+     </div>
+    </div>
+   </div>
+  </section><!-- Tools Section -->
+  <section id="tools" class="tools-section">
+   <div class="container">
+    <h2 class="section-title">Ferramentas e Tecnologias</h2>
+    <p class="section-subtitle">Domínio técnico em ferramentas essenciais para transformação digital</p>
+    <div class="tools-grid"><!-- Gestão/Projetos (Blue) -->
+     <div class="tool-card blue"><span class="tool-icon">📋</span>
+      <div class="tool-name">
+       Jira
+      </div>
+      <div class="tool-description">
+       Gestão ágil com Scrum e Kanban
+      </div>
+     </div>
+     <div class="tool-card blue"><span class="tool-icon">✅</span>
+      <div class="tool-name">
+       ClickUp
+      </div>
+      <div class="tool-description">
+       Gestão completa de projetos e tarefas
+      </div>
+     </div>
+     <div class="tool-card blue"><span class="tool-icon">📌</span>
+      <div class="tool-name">
+       Trello
+      </div>
+      <div class="tool-description">
+       Gestão visual de tarefas Kanban
+      </div>
+     </div>
+     <div class="tool-card blue"><span class="tool-icon">🎯</span>
+      <div class="tool-name">
+       Miro
+      </div>
+      <div class="tool-description">
+       Quadros colaborativos e brainstorming
+      </div>
+     </div><!-- Colaboração (Emerald) -->
+     <div class="tool-card emerald"><span class="tool-icon">📚</span>
+      <div class="tool-name">
+       Confluence
+      </div>
+      <div class="tool-description">
+       Documentação colaborativa
+      </div>
+     </div>
+     <div class="tool-card emerald"><span class="tool-icon">📂</span>
+      <div class="tool-name">
+       SharePoint
+      </div>
+      <div class="tool-description">
+       Colaboração e gestão documental
+      </div>
+     </div><!-- IA/Automação (Purple) -->
+     <div class="tool-card purple"><span class="tool-icon">🤖</span>
+      <div class="tool-name">
+       ChatGPT/Gemini
+      </div>
+      <div class="tool-description">
+       IA conversacional para produtividade
+      </div>
+     </div>
+     <div class="tool-card purple"><span class="tool-icon">📝</span>
+      <div class="tool-name">
+       Notion AI
+      </div>
+      <div class="tool-description">
+       Notas inteligentes e gestão de conhecimento
+      </div>
+     </div>
+     <div class="tool-card purple"><span class="tool-icon">💻</span>
+      <div class="tool-name">
+       GitHub Copilot
+      </div>
+      <div class="tool-description">
+       Desenvolvimento assistido por IA
+      </div>
+     </div>
+     <div class="tool-card purple"><span class="tool-icon">🔄</span>
+      <div class="tool-name">
+       Power Automate
+      </div>
+      <div class="tool-description">
+       Automação de fluxos de trabalho
+      </div>
+     </div>
+     <div class="tool-card purple"><span class="tool-icon">⚙️</span>
+      <div class="tool-name">
+       Zapier IA
+      </div>
+      <div class="tool-description">
+       Integração inteligente entre apps
+      </div>
+     </div>
+     <div class="tool-card purple"><span class="tool-icon">🌐</span>
+      <div class="tool-name">
+       Dev Web + IA
+      </div>
+      <div class="tool-description">
+       Desenvolvimento web com IA
+      </div>
+     </div><!-- Análise/Dados (Orange) -->
+     <div class="tool-card orange"><span class="tool-icon">📈</span>
+      <div class="tool-name">
+       Power BI
+      </div>
+      <div class="tool-description">
+       Gráficos e análise de dados avançada
+      </div>
+     </div>
+     <div class="tool-card orange"><span class="tool-icon">📊</span>
+      <div class="tool-name">
+       Julius.ai
+      </div>
+      <div class="tool-description">
+       IA especializada em análise de dados
+      </div>
+     </div>
+     <div class="tool-card orange"><span class="tool-icon">📑</span>
+      <div class="tool-name">
+       Excel
+      </div>
+      <div class="tool-description">
+       Planilhas e análise de dados
+      </div>
+     </div>
+     <div class="tool-card orange"><span class="tool-icon">🔥</span>
+      <div class="tool-name">
+       Databricks
+      </div>
+      <div class="tool-description">
+       Plataforma unificada de dados e IA
+      </div>
+     </div><!-- Cloud/Integração (Cyan) -->
+     <div class="tool-card cyan"><span class="tool-icon">🔌</span>
+      <div class="tool-name">
+       Coupler.io
+      </div>
+      <div class="tool-description">
+       Conexão de dados em tempo real
+      </div>
+     </div>
+     <div class="tool-card cyan"><span class="tool-icon">🎨</span>
+      <div class="tool-name">
+       Canva
+      </div>
+      <div class="tool-description">
+       Design e apresentações profissionais
+      </div>
+     </div><!-- Infraestrutura (Slate) -->
+     <div class="tool-card slate"><span class="tool-icon">🔧</span>
+      <div class="tool-name">
+       ServiceNow
+      </div>
+      <div class="tool-description">
+       Automação de serviços e ITSM
+      </div>
+     </div>
+     <div class="tool-card slate"><span class="tool-icon">🗺️</span>
+      <div class="tool-name">
+       Bizagi Modeler
+      </div>
+      <div class="tool-description">
+       Modelagem BPMN para processos
+      </div>
+     </div>
+     <div class="tool-card slate"><span class="tool-icon">⚡</span>
+      <div class="tool-name">
+       Octane
+      </div>
+      <div class="tool-description">
+       Testes de qualidade e gestão ágil
+      </div>
+     </div>
+     <div class="tool-card slate"><span class="tool-icon">🚀</span>
+      <div class="tool-name">
+       DevOps
+      </div>
+      <div class="tool-description">
+       Integração e entrega contínua
+      </div>
+     </div>
+     <div class="tool-card slate"><span class="tool-icon">📦</span>
+      <div class="tool-name">
+       ERP Corporativo
+      </div>
+      <div class="tool-description">
+       Gestão empresarial integrada
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Indicators Section -->
+  <section id="indicators" class="indicators-section">
+   <div class="container">
+    <h2 class="section-title">Indicadores 360º</h2>
+    <p class="section-subtitle">Transformações mensuráveis com impacto real nos resultados organizacionais</p>
+    <div class="indicators-grid"><!-- Velocity -->
+     <div class="indicator-card">
+      <div class="indicator-header"><span class="indicator-icon">⚡</span>
+       <div>
+        <div class="indicator-title">
+         Métricas Ágeis
+        </div>
+        <div class="indicator-subtitle">
+         Velocity por Sprint
+        </div>
+       </div>
+      </div>
+      <div class="chart-container">
+       <svg viewbox="0 0 400 200" style="width: 100%; height: auto;"><line x1="50" y1="180" x2="350" y2="180" stroke="#e9ecef" stroke-width="2" /> <line x1="50" y1="180" x2="50" y2="20" stroke="#e9ecef" stroke-width="2" /> <rect x="80" y="120" width="50" height="60" fill="#3498db" rx="5" /> <text x="105" y="110" text-anchor="middle" font-size="14" font-weight="600" fill="#333">
+         32
+        </text> <text x="105" y="200" text-anchor="middle" font-size="12" fill="#666">
+         S1
+        </text> <rect x="150" y="100" width="50" height="80" fill="#2ecc71" rx="5" /> <text x="175" y="90" text-anchor="middle" font-size="14" font-weight="600" fill="#333">
+         40
+        </text> <text x="175" y="200" text-anchor="middle" font-size="12" fill="#666">
+         S2
+        </text> <rect x="220" y="60" width="50" height="120" fill="#f39c12" rx="5" /> <text x="245" y="50" text-anchor="middle" font-size="14" font-weight="600" fill="#333">
+         48
+        </text> <text x="245" y="200" text-anchor="middle" font-size="12" fill="#666">
+         S3
+        </text> <rect x="290" y="70" width="50" height="110" fill="#9b59b6" rx="5" /> <text x="315" y="60" text-anchor="middle" font-size="14" font-weight="600" fill="#333">
+         45
+        </text> <text x="315" y="200" text-anchor="middle" font-size="12" fill="#666">
+         S4
+        </text>
+       </svg>
+      </div>
+      <div class="indicator-result">
+       ✓ Estabilização em 45 pontos/sprint
+      </div>
+     </div><!-- Bugs -->
+     <div class="indicator-card">
+      <div class="indicator-header"><span class="indicator-icon">🐛</span>
+       <div>
+        <div class="indicator-title">
+         Qualidade
+        </div>
+        <div class="indicator-subtitle">
+         Bugs Críticos Pós-Produção
+        </div>
+       </div>
+      </div>
+      <div class="chart-container">
+       <svg viewbox="0 0 400 200" style="width: 100%; height: auto;"><rect x="50" y="50" width="140" height="100" fill="#e74c3c" rx="10" /> <text x="120" y="110" text-anchor="middle" font-size="24" font-weight="700" fill="white">
+         100%
+        </text> <text x="120" y="170" text-anchor="middle" font-size="14" fill="#666">
+         Antes
+        </text> <rect x="220" y="50" width="140" height="75" fill="#2ecc71" rx="10" /> <text x="290" y="98" text-anchor="middle" font-size="24" font-weight="700" fill="white">
+         75%
+        </text> <text x="290" y="170" text-anchor="middle" font-size="14" fill="#666">
+         Depois
+        </text> <path d="M 190 100 L 210 80 L 210 120 Z" fill="#00b894" />
+       </svg>
+      </div>
+      <div class="indicator-result">
+       ✓ Redução de 25% em bugs críticos
+      </div>
+     </div><!-- Adoção -->
+     <div class="indicator-card">
+      <div class="indicator-header"><span class="indicator-icon">👥</span>
+       <div>
+        <div class="indicator-title">
+         Adoção
+        </div>
+        <div class="indicator-subtitle">
+         Usuários Ativos em 30 Dias
+        </div>
+       </div>
+      </div>
+      <div class="chart-container">
+       <svg viewbox="0 0 400 200" style="width: 100%; height: auto;"><circle cx="200" cy="100" r="80" fill="none" stroke="#e9ecef" stroke-width="15" /> <circle cx="200" cy="100" r="80" fill="none" stroke="#2ecc71" stroke-width="15" stroke-dasharray="425" stroke-dashoffset="64" transform="rotate(-90 200 100)" /> <text x="200" y="105" text-anchor="middle" font-size="36" font-weight="700" fill="#2ecc71">
+         85%
+        </text> <text x="200" y="130" text-anchor="middle" font-size="14" fill="#666">
+         Meta: 75%
+        </text>
+       </svg>
+      </div>
+      <div class="indicator-result">
+       ✓ Validação da estratégia ADKAR
+      </div>
+     </div><!-- Engajamento -->
+     <div class="indicator-card">
+      <div class="indicator-header"><span class="indicator-icon">💬</span>
+       <div>
+        <div class="indicator-title">
+         Comunicação
+        </div>
+        <div class="indicator-subtitle">
+         Participação em Ações
+        </div>
+       </div>
+      </div>
+      <div class="chart-container">
+       <svg viewbox="0 0 400 200" style="width: 100%; height: auto;"><circle cx="200" cy="100" r="80" fill="none" stroke="#e9ecef" stroke-width="15" /> <circle cx="200" cy="100" r="80" fill="none" stroke="#3498db" stroke-width="15" stroke-dasharray="425" stroke-dashoffset="34" transform="rotate(-90 200 100)" /> <text x="200" y="105" text-anchor="middle" font-size="36" font-weight="700" fill="#3498db">
+         92%
+        </text> <text x="200" y="130" text-anchor="middle" font-size="14" fill="#666">
+         Engajados
+        </text>
+       </svg>
+      </div>
+      <div class="indicator-result">
+       ✓ Awareness/Desire consolidados
+      </div>
+     </div><!-- IA Eficiência -->
+     <div class="indicator-card">
+      <div class="indicator-header"><span class="indicator-icon">🤖</span>
+       <div>
+        <div class="indicator-title">
+         Eficiência IA
+        </div>
+        <div class="indicator-subtitle">
+         Tempo de Documentação
+        </div>
+       </div>
+      </div>
+      <div class="chart-container">
+       <svg viewbox="0 0 400 200" style="width: 100%; height: auto;"><rect x="50" y="60" width="120" height="90" fill="#e74c3c" rx="10" /> <text x="110" y="110" text-anchor="middle" font-size="24" font-weight="700" fill="white">
+         8h
+        </text> <text x="110" y="170" text-anchor="middle" font-size="14" fill="#666">
+         Manual
+        </text> <rect x="220" y="90" width="120" height="60" fill="#2ecc71" rx="10" /> <text x="280" y="127" text-anchor="middle" font-size="24" font-weight="700" fill="white">
+         4.8h
+        </text> <text x="280" y="170" text-anchor="middle" font-size="14" fill="#666">
+         Com IA
+        </text> <path d="M 175 105 L 210 85 L 210 125 Z" fill="#00b894" />
+       </svg>
+      </div>
+      <div class="indicator-result">
+       ✓ Ganho de 40% em produtividade
+      </div>
+     </div><!-- Performance -->
+     <div class="indicator-card">
+      <div class="indicator-header"><span class="indicator-icon">⚙️</span>
+       <div>
+        <div class="indicator-title">
+         Performance
+        </div>
+        <div class="indicator-subtitle">
+         Tempo de Ciclo (Bizagi)
+        </div>
+       </div>
+      </div>
+      <div class="chart-container">
+       <svg viewbox="0 0 400 200" style="width: 100%; height: auto;"><polyline points="50,150 100,130 150,110 200,100 250,85 300,80 350,75" fill="none" stroke="#3498db" stroke-width="3" /> <circle cx="50" cy="150" r="5" fill="#3498db" /> <circle cx="100" cy="130" r="5" fill="#3498db" /> <circle cx="150" cy="110" r="5" fill="#3498db" /> <circle cx="200" cy="100" r="5" fill="#3498db" /> <circle cx="250" cy="85" r="5" fill="#3498db" /> <circle cx="300" cy="80" r="5" fill="#3498db" /> <circle cx="350" cy="75" r="6" fill="#2ecc71" /> <line x1="50" y1="180" x2="350" y2="180" stroke="#e9ecef" stroke-width="2" /> <text x="50" y="195" text-anchor="middle" font-size="12" fill="#666">
+         M1
+        </text> <text x="150" y="195" text-anchor="middle" font-size="12" fill="#666">
+         M2
+        </text> <text x="200" y="195" text-anchor="middle" font-size="12" fill="#666">
+         M3
+        </text> <text x="250" y="195" text-anchor="middle" font-size="12" fill="#666">
+         M4
+        </text> <text x="350" y="195" text-anchor="middle" font-size="12" fill="#666">
+         M5
+        </text>
+       </svg>
+      </div>
+      <div class="indicator-result">
+       ✓ Redução de 18% no tempo de ciclo
+      </div>
+     </div>
+    </div>
+    <div style="margin-top: 3rem; text-align: center; padding: 2rem; background: linear-gradient(135deg, rgba(0, 102, 204, 0.1), rgba(0, 184, 148, 0.1)); border-radius: 15px;">
+     <p style="font-style: italic; font-size: 1.1rem; color: var(--text-dark);">"Cada métrica representa uma transformação real, medida e sustentável. Minha abordagem data-driven garante resultados concretos."</p>
+    </div>
+   </div>
+  </section><!-- 5 Whys Section -->
+  <section id="analysis" class="five-whys-section">
+   <div class="container">
+    <h2 class="section-title">Análise Causal Rápida: A Técnica dos 5 Porquês</h2>
+    <p class="section-subtitle">Metodologia ágil para identificação de causa raiz com foco em ações práticas e resultados mensuráveis</p>
+    <div class="five-whys-intro">
+     <h3 class="case-title">Caso Prático: Sistema de Relatórios Subutilizado</h3>
+     <p style="color: var(--text-medium);">Aplicação real da técnica dos 5 Porquês para identificar a causa raiz de baixa adoção de um novo sistema de BI</p>
+    </div>
+    <div class="whys-container">
+     <div class="whys-scroll"><!-- 1º Por quê -->
+      <div class="why-card">
+       <div class="why-number">
+        1
+       </div>
+       <div class="why-content">
+        <h4>1º Por quê?</h4>
+        <p class="why-question">O novo sistema de relatórios não está sendo usado?</p>
+        <div class="why-answer">
+         Os usuários não confiam nos dados que ele apresenta.
+        </div>
+       </div>
+      </div><!-- Seta 1 -->
+      <div class="why-arrow">
+       <svg viewbox="0 0 40 20"><path d="M0 10 L30 10 M25 5 L30 10 L25 15" stroke="currentColor" stroke-width="2" fill="none" />
+       </svg>
+      </div><!-- 2º Por quê -->
+      <div class="why-card">
+       <div class="why-number">
+        2
+       </div>
+       <div class="why-content">
+        <h4>2º Por quê?</h4>
+        <p class="why-question">Por que os usuários não confiam nos dados?</p>
+        <div class="why-answer">
+         A importação manual de dados gera erros frequentes.
+        </div>
+       </div>
+      </div><!-- Seta 2 -->
+      <div class="why-arrow">
+       <svg viewbox="0 0 40 20"><path d="M0 10 L30 10 M25 5 L30 10 L25 15" stroke="currentColor" stroke-width="2" fill="none" />
+       </svg>
+      </div><!-- 3º Por quê -->
+      <div class="why-card">
+       <div class="why-number">
+        3
+       </div>
+       <div class="why-content">
+        <h4>3º Por quê?</h4>
+        <p class="why-question">Por que a importação é manual?</p>
+        <div class="why-answer">
+         Não há automação entre o ERP e o sistema de BI.
+        </div>
+       </div>
+      </div><!-- Seta 3 -->
+      <div class="why-arrow">
+       <svg viewbox="0 0 40 20"><path d="M0 10 L30 10 M25 5 L30 10 L25 15" stroke="currentColor" stroke-width="2" fill="none" />
+       </svg>
+      </div><!-- 4º Por quê -->
+      <div class="why-card">
+       <div class="why-number">
+        4
+       </div>
+       <div class="why-content">
+        <h4>4º Por quê?</h4>
+        <p class="why-question">Por que não há automação?</p>
+        <div class="why-answer">
+         A equipe de TI priorizou outras demandas do backlog.
+        </div>
+       </div>
+      </div><!-- Seta 4 -->
+      <div class="why-arrow">
+       <svg viewbox="0 0 40 20"><path d="M0 10 L30 10 M25 5 L30 10 L25 15" stroke="currentColor" stroke-width="2" fill="none" />
+       </svg>
+      </div><!-- 5º Por quê - CAUSA RAIZ -->
+      <div class="why-card why-5">
+       <div class="why-number">
+        5
+       </div>
+       <div class="why-content">
+        <h4>5º Por quê?</h4>
+        <p class="why-question">Por que não foi priorizado?</p>
+        <div class="why-answer">
+         <strong>CAUSA RAIZ:</strong> Falha na definição de requisitos e mapeamento BPMN na fase inicial do projeto.
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="action-results-grid">
+     <div class="action-result-card">
+      <div class="card-header-with-icon">
+       <div class="icon-box green-gradient">
+        <svg class="icon-svg" fill="none" stroke="currentColor" viewbox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+       </div>
+       <h3 class="card-title">Ações Implementadas</h3>
+      </div>
+      <ul class="action-list-styled">
+       <li class="action-item-styled"><span class="bullet-green">•</span> <span><strong>Mapeamento BPMN:</strong> Redesenho completo do processo de integração de dados</span></li>
+       <li class="action-item-styled"><span class="bullet-green">•</span> <span><strong>Automação:</strong> Implementação de conectores entre ERP e BI via Power Automate</span></li>
+       <li class="action-item-styled"><span class="bullet-green">•</span> <span><strong>Validação:</strong> Criação de rotinas de verificação automática de dados</span></li>
+       <li class="action-item-styled"><span class="bullet-green">•</span> <span><strong>Treinamento:</strong> Capacitação dos usuários no novo fluxo automatizado</span></li>
+      </ul>
+     </div>
+     <div class="action-result-card">
+      <div class="card-header-with-icon">
+       <div class="icon-box blue-gradient">
+        <svg class="icon-svg" fill="none" stroke="currentColor" viewbox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
+       </div>
+       <h3 class="card-title">Resultados Obtidos</h3>
+      </div>
+      <div class="results-metrics">
+       <div class="metric-item">
+        <div class="metric-label-row"><span class="metric-label">Adoção do Sistema:</span> <span class="metric-percentage">85%</span>
+        </div>
+        <div class="progress-bar-container">
+         <div class="progress-bar-fill green-bar" style="width: 85%;"></div>
+        </div>
+       </div>
+       <div class="metric-item">
+        <div class="metric-label-row"><span class="metric-label">Redução de Erros:</span> <span class="metric-percentage">90%</span>
+        </div>
+        <div class="progress-bar-container">
+         <div class="progress-bar-fill green-bar" style="width: 90%;"></div>
+        </div>
+       </div>
+       <div class="metric-item">
+        <div class="metric-label-row"><span class="metric-label">Tempo de Processamento:</span> <span class="metric-percentage">-70%</span>
+        </div>
+        <div class="progress-bar-container">
+         <div class="progress-bar-fill blue-bar" style="width: 70%;"></div>
+        </div>
+       </div>
+       <div class="metric-item">
+        <div class="metric-label-row"><span class="metric-label">Tempo de Resolução:</span> <span class="metric-percentage">3 semanas</span>
+        </div>
+        <div class="progress-bar-container">
+         <div class="progress-bar-fill blue-bar" style="width: 100%;"></div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Decision Matrix Section -->
+  <section id="matrix" class="matrix-section">
+   <div class="container">
+    <h2 class="section-title">Matriz de Decisão: Escolhendo a Ferramenta Certa</h2>
+    <p class="section-subtitle">Maturidade sênior significa saber qual metodologia aplicar em cada contexto. Demonstro aqui minha capacidade analítica de escolher a abordagem mais eficaz.</p>
+    <div class="methodology-comparison-box">
+     <h3 class="comparison-title">Quando Usar Cada Metodologia</h3>
+     <div class="comparison-grid">
+      <div class="comparison-card">
+       <div class="comparison-header">
+        <div class="comparison-icon blue-icon"><span class="icon-number">5</span>
+        </div>
+        <h4 class="comparison-method-title">5 Porquês</h4>
+       </div>
+       <div class="comparison-content">
+        <div class="comparison-section">
+         <p class="comparison-label success-label">✅ Ideal para:</p>
+         <ul class="comparison-list">
+          <li>• Problemas com causa linear clara</li>
+          <li>• Análises rápidas (15-30 minutos)</li>
+          <li>• Equipes pequenas (2-4 pessoas)</li>
+          <li>• Problemas operacionais simples</li>
+         </ul>
+        </div>
+        <div class="comparison-section">
+         <p class="comparison-label limitation-label">❌ Limitações:</p>
+         <ul class="comparison-list">
+          <li>• Problemas com múltiplas causas</li>
+          <li>• Questões sistêmicas complexas</li>
+         </ul>
+        </div>
+       </div>
+      </div>
+      <div class="comparison-card">
+       <div class="comparison-header">
+        <div class="comparison-icon purple-icon">
+         <svg class="icon-svg-small" fill="none" stroke="currentColor" viewbox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+         </svg>
+        </div>
+        <h4 class="comparison-method-title">Ishikawa (Fishbone)</h4>
+       </div>
+       <div class="comparison-content">
+        <div class="comparison-section">
+         <p class="comparison-label success-label">✅ Ideal para:</p>
+         <ul class="comparison-list">
+          <li>• Problemas complexos e multifatoriais</li>
+          <li>• Análises estruturadas (1-2 horas)</li>
+          <li>• Equipes multidisciplinares</li>
+          <li>• Mapeamento completo de causas</li>
+         </ul>
+        </div>
+        <div class="comparison-section">
+         <p class="comparison-label limitation-label">❌ Limitações:</p>
+         <ul class="comparison-list">
+          <li>• Demanda mais tempo e recursos</li>
+          <li>• Pode ser excessivo para problemas simples</li>
+         </ul>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="hybrid-approach-box">
+      <h4 class="hybrid-title">💡 Minha Abordagem Híbrida</h4>
+      <p class="hybrid-description">Combino ambas as técnicas conforme a complexidade do problema: inicio com os 5 Porquês para identificação rápida, e quando necessário, aprofundo com Ishikawa para análise completa. Essa flexibilidade garante eficiência sem perder qualidade analítica.</p>
+     </div>
+    </div>
+   </div>
+  </section><!-- Ishikawa Section -->
+  <section id="ishikawa" class="ishikawa-section">
+   <div class="container">
+    <h2 class="section-title">Análise de Causa Raiz: Diagrama de Ishikawa</h2>
+    <p class="section-subtitle">Metodologia 6M aplicada a projetos reais com foco em melhoria contínua</p>
+    <div class="ishikawa-container">
+     <h3 style="text-align: center; margin-bottom: 0.5rem; color: var(--text-dark);">Problema Central</h3>
+     <p style="text-align: center; margin-bottom: 2rem; color: var(--text-medium);">Atrasos nas Entregas de Projetos | Impacto: Alto</p>
+     <svg class="fishbone-svg" viewbox="0 0 1000 600"><!-- Espinha principal --> <line x1="100" y1="300" x2="850" y2="300" stroke="#333" stroke-width="4" /> <!-- Cabeça do problema --> <circle cx="900" cy="300" r="80" fill="#ff6b6b" /> <text x="900" y="295" text-anchor="middle" font-size="14" font-weight="600" fill="white">
+       Atrasos nas
+      </text> <text x="900" y="310" text-anchor="middle" font-size="14" font-weight="600" fill="white">
+       Entregas de
+      </text> <text x="900" y="325" text-anchor="middle" font-size="14" font-weight="600" fill="white">
+       Projetos
+      </text> <!-- MÉTODO (superior esquerdo) --> <line x1="250" y1="300" x2="180" y2="180" stroke="#3498db" stroke-width="3" /> <text x="140" y="160" font-size="16" font-weight="700" fill="#3498db">
+       MÉTODO
+      </text> <text x="50" y="190" font-size="12" fill="#333">
+       • Falta clareza EPAN
+      </text> <text x="50" y="210" font-size="12" fill="#333">
+       • Ausência stakeholders
+      </text> <text x="50" y="230" font-size="12" fill="#333">
+       • Pipeline CI/CD lento
+      </text> <!-- PESSOAS (superior centro-esquerdo) --> <line x1="400" y1="300" x2="330" y2="180" stroke="#2ecc71" stroke-width="3" /> <text x="280" y="160" font-size="16" font-weight="700" fill="#2ecc71">
+       PESSOAS
+      </text> <text x="220" y="190" font-size="12" fill="#333">
+       • Baixa participação
+      </text> <text x="220" y="210" font-size="12" fill="#333">
+       Sprint Review
+      </text> <text x="220" y="230" font-size="12" fill="#333">
+       • Falta alinhamento
+      </text> <!-- FERRAMENTAS (superior centro-direito) --> <line x1="550" y1="300" x2="480" y2="180" stroke="#9b59b6" stroke-width="3" /> <text x="410" y="160" font-size="16" font-weight="700" fill="#9b59b6">
+       FERRAMENTAS
+      </text> <text x="380" y="190" font-size="12" fill="#333">
+       • Integrações fracas
+      </text> <text x="380" y="210" font-size="12" fill="#333">
+       • Falta automação
+      </text> <!-- REQUISITOS (inferior esquerdo) --> <line x1="250" y1="300" x2="180" y2="420" stroke="#f39c12" stroke-width="3" /> <text x="120" y="450" font-size="16" font-weight="700" fill="#f39c12">
+       REQUISITOS
+      </text> <text x="50" y="475" font-size="12" fill="#333">
+       • Mudança escopo
+      </text> <text x="50" y="495" font-size="12" fill="#333">
+       • Mal definidos
+      </text> <!-- AMBIENTE (inferior centro-esquerdo) --> <line x1="400" y1="300" x2="330" y2="420" stroke="#e67e22" stroke-width="3" /> <text x="275" y="450" font-size="16" font-weight="700" fill="#e67e22">
+       AMBIENTE
+      </text> <text x="220" y="475" font-size="12" fill="#333">
+       • Baixa cultura Lean
+      </text> <text x="220" y="495" font-size="12" fill="#333">
+       • Resistência mudança
+      </text> <!-- MEDIÇÃO (inferior centro-direito) --> <line x1="550" y1="300" x2="480" y2="420" stroke="#1abc9c" stroke-width="3" /> <text x="420" y="450" font-size="16" font-weight="700" fill="#1abc9c">
+       MEDIÇÃO
+      </text> <text x="370" y="475" font-size="12" fill="#333">
+       • Falta feedback ADKAR
+      </text> <text x="370" y="495" font-size="12" fill="#333">
+       • Métricas inconsistentes
+      </text>
+     </svg>
+    </div>
+    <div style="margin-top: 3rem; background: white; border-radius: 15px; padding: 2rem; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);">
+     <h3 style="text-align: center; margin-bottom: 1rem;">Análise Aplicada</h3>
+     <p style="text-align: center; color: var(--text-medium); margin-bottom: 2rem;">Este diagrama representa uma análise real de projeto onde identifiquei as principais causas de atrasos em entregas.</p>
+     <ul style="list-style: none; padding: 0; max-width: 700px; margin: 0 auto;">
+      <li style="padding: 0.8rem 0; color: var(--text-medium);">✓ 6 Categorias principais (6M) mapeadas sistematicamente</li>
+      <li style="padding: 0.8rem 0; color: var(--text-medium);">✓ Causas raiz identificadas através de análise detalhada</li>
+      <li style="padding: 0.8rem 0; color: var(--text-medium);">✓ Priorização baseada em impacto nos resultados</li>
+     </ul>
+    </div>
+    <h3 style="text-align: center; margin: 3rem 0 2rem; font-size: 1.8rem;">Resultados Obtidos</h3>
+    <div class="ishikawa-results">
+     <div class="ishikawa-result-card">
+      <svg viewbox="0 0 200 120" style="width: 100%; height: auto; margin-bottom: 1rem;"><rect x="20" y="80" width="30" height="30" fill="#e74c3c" rx="5" /> <text x="35" y="75" text-anchor="middle" font-size="12" fill="#e74c3c" font-weight="600">
+        100%
+       </text> <rect x="85" y="50" width="30" height="60" fill="#2ecc71" rx="5" /> <text x="100" y="45" text-anchor="middle" font-size="12" fill="#2ecc71" font-weight="600">
+        65%
+       </text> <path d="M 50 95 L 80 65" stroke="#00b894" stroke-width="2" marker-end="url(#arrowgreen)" /> <text x="100" y="125" text-anchor="middle" font-size="11" fill="#666">
+        Antes → Depois
+       </text> <defs>
+        <marker id="arrowgreen" markerwidth="10" markerheight="10" refx="5" refy="3" orient="auto" markerunits="strokeWidth">
+         <path d="M0,0 L0,6 L9,3 z" fill="#00b894" />
+        </marker>
+       </defs>
+      </svg>
+      <div class="ishikawa-result-value">
+       -35%
+      </div>
+      <div class="result-label">
+       Redução de Atrasos
+      </div>
+      <p style="color: var(--text-light); font-size: 0.9rem; margin-top: 0.5rem;">Após implementação das melhorias</p>
+     </div>
+     <div class="ishikawa-result-card">
+      <svg viewbox="0 0 200 120" style="width: 100%; height: auto; margin-bottom: 1rem;"><circle cx="100" cy="60" r="45" fill="none" stroke="#e9ecef" stroke-width="10" /> <circle cx="100" cy="60" r="45" fill="none" stroke="#3498db" stroke-width="10" stroke-dasharray="283" stroke-dashoffset="156" transform="rotate(-90 100 60)" /> <text x="100" y="67" text-anchor="middle" font-size="24" font-weight="700" fill="#3498db">
+        45%
+       </text>
+      </svg>
+      <div class="ishikawa-result-value">
+       +45%
+      </div>
+      <div class="result-label">
+       Melhoria na Comunicação
+      </div>
+      <p style="color: var(--text-light); font-size: 0.9rem; margin-top: 0.5rem;">Entre stakeholders e equipes</p>
+     </div>
+     <div class="ishikawa-result-card">
+      <svg viewbox="0 0 200 120" style="width: 100%; height: auto; margin-bottom: 1rem;"><rect x="30" y="30" width="35" height="70" fill="#2ecc71" rx="5" /> <rect x="75" y="45" width="35" height="55" fill="#3498db" rx="5" /> <rect x="120" y="60" width="35" height="40" fill="#9b59b6" rx="5" /> <text x="47" y="115" text-anchor="middle" font-size="10" fill="#666">
+        Velocity
+       </text> <text x="92" y="115" text-anchor="middle" font-size="10" fill="#666">
+        Lead Time
+       </text> <text x="137" y="115" text-anchor="middle" font-size="10" fill="#666">
+        Quality
+       </text>
+      </svg>
+      <div class="ishikawa-result-value">
+       100%
+      </div>
+      <div class="result-label">
+       Métricas Implementadas
+      </div>
+      <p style="color: var(--text-light); font-size: 0.9rem; margin-top: 0.5rem;">Velocity e Lead Time monitorados</p>
+     </div>
+    </div>
+   </div>
+  </section><!-- Projects Section - ATUALIZADO COM CHART.JS -->
+  <section id="projects" class="projects-section">
+   <div class="container">
+    <h2 class="section-title">Indicadores na Prática</h2>
+    <p class="section-subtitle">Como transformo metodologias complexas (Lean, ACR) em ferramentas digitais e resultados acionáveis</p><!-- Challenge Section -->
+    <div style="margin-bottom: 4rem;">
+     <h3 style="text-align: center; font-size: 1.8rem; margin-bottom: 2rem; color: var(--text-dark);">O Desafio: Análise Lenta e Inconsistente</h3>
+     <div class="indicators-grid">
+      <div class="indicator-card" style="border-left-color: #d62728;">
+       <div class="indicator-result" style="background: linear-gradient(135deg, #d62728 0%, #e74c3c 100%); font-size: 2.5rem; margin-bottom: 1rem;">
+        70%
+       </div>
+       <p style="text-align: center; color: var(--text-dark); font-weight: 600;">Das análises de causa raiz são feitas manualmente em planilhas, levando a conclusões inconsistentes.</p>
+      </div>
+      <div class="indicator-card" style="border-left-color: #ff7f0e;">
+       <div class="indicator-result" style="background: linear-gradient(135deg, #ff7f0e 0%, #f39c12 100%); font-size: 2.5rem; margin-bottom: 1rem;">
+        45%
+       </div>
+       <p style="text-align: center; color: var(--text-dark); font-weight: 600;">Dos projetos de melhoria falham em atacar a causa raiz correta, resultando em reincidência de problemas.</p>
+      </div>
+      <div class="indicator-card" style="border-left-color: #1f77b4;">
+       <div class="indicator-result" style="background: linear-gradient(135deg, #1f77b4 0%, #3498db 100%); font-size: 2.5rem; margin-bottom: 1rem;">
+        120+
+       </div>
+       <p style="text-align: center; color: var(--text-dark); font-weight: 600;">Horas/ano desperdiçadas por equipe em consolidação manual de dados para relatórios de diagnóstico.</p>
+      </div>
+     </div>
+    </div><!-- Solução 1: ACR -->
+    <div class="project-card">
+     <div class="project-header"><span class="project-label">Solução 1</span>
+      <h3 class="project-title">Sistema Interativo de Análise de Causa Raiz (ACR)</h3>
+      <p class="project-description">Uma SPA que guia o usuário de forma padronizada para encontrar a causa raiz e, mais importante, priorizar a ação corretiva correta.</p>
+     </div>
+     <div style="margin: 2rem 0;">
+      <h4 style="text-align: center; font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--text-dark);">O Fluxo da Ferramenta ACR</h4>
+      <div class="infographic-flow">
+       <div class="flow-step-info">
+        <div class="step-number">
+         1
+        </div>
+        <div class="step-title">
+         5 Porquês
+        </div>
+        <div class="step-desc">
+         Identificação inicial
+        </div>
+       </div>
+       <div class="flow-arrow-info">
+        <svg viewbox="0 0 60 40" class="arrow-svg"><path d="M5 20 L45 20 M35 10 L45 20 L35 30" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+       </div>
+       <div class="flow-step-info">
+        <div class="step-number">
+         2
+        </div>
+        <div class="step-title">
+         Ishikawa (6M)
+        </div>
+        <div class="step-desc">
+         Análise estruturada
+        </div>
+       </div>
+       <div class="flow-arrow-info">
+        <svg viewbox="0 0 60 40" class="arrow-svg"><path d="M5 20 L45 20 M35 10 L45 20 L35 30" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+       </div>
+       <div class="flow-step-info">
+        <div class="step-number">
+         3
+        </div>
+        <div class="step-title">
+         Pareto (80/20)
+        </div>
+        <div class="step-desc">
+         Priorização causas
+        </div>
+       </div>
+       <div class="flow-arrow-info">
+        <svg viewbox="0 0 60 40" class="arrow-svg"><path d="M5 20 L45 20 M35 10 L45 20 L35 30" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+       </div>
+       <div class="flow-step-info">
+        <div class="step-number" style="background: linear-gradient(135deg, #ff7f0e 0%, #f39c12 100%);">
+         4
+        </div>
+        <div class="step-title">
+         Matriz ICE
+        </div>
+        <div class="step-desc">
+         Decisão de ações
+        </div>
+       </div>
+       <div class="flow-arrow-info">
+        <svg viewbox="0 0 60 40" class="arrow-svg"><path d="M5 20 L45 20 M35 10 L45 20 L35 30" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+       </div>
+       <div class="flow-step-info">
+        <div class="step-number" style="background: linear-gradient(135deg, #2ca02c 0%, #2ecc71 100%);">
+         5
+        </div>
+        <div class="step-title">
+         Dashboard
+        </div>
+        <div class="step-desc">
+         Ação executável
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="tool-content-grid">
+      <div class="content-block">
+       <h4>Priorização com Pareto (80/20)</h4>
+       <p style="color: var(--text-medium); margin-bottom: 1rem;">A ferramenta gera automaticamente o gráfico de Pareto, mostrando as causas que representam 80% das ocorrências. Isso foca o esforço onde ele realmente importa.</p>
+       <canvas id="paretoChart" style="max-height: 300px;"></canvas>
+      </div>
+      <div class="content-block">
+       <h4>Decisão com Matriz ICE</h4>
+       <p style="color: var(--text-medium); margin-bottom: 1rem;">Ações são pontuadas por (I)mpacto, (C)onfiança e (E)sforço. O gráfico de radar expõe visualmente a melhor ação (Score alto, Esforço baixo).</p>
+       <canvas id="iceChart" style="max-height: 300px;"></canvas>
+      </div>
+     </div>
+    </div><!-- Solução 2: Diagnóstico Lean -->
+    <div class="project-card" style="background: linear-gradient(135deg, #1a1f3a 0%, #2c3e50 100%);">
+     <div class="project-header"><span class="project-label" style="background: linear-gradient(135deg, #2ca02c 0%, #2ecc71 100%);">Solução 2</span>
+      <h3 class="project-title" style="color: white;">Ferramenta Acelerada de Diagnóstico Lean (AI-Driven)</h3>
+      <p class="project-description" style="color: rgba(255, 255, 255, 0.9);">Uma plataforma de 4 etapas que coleta dados estruturados (BPMN, SIPOC, 5W2H) e usa um LLM para gerar um Relatório Kaizen completo em minutos.</p>
+     </div>
+     <div style="margin: 2rem 0;">
+      <h4 style="text-align: center; font-size: 1.3rem; margin-bottom: 1.5rem; color: white;">O Fluxo de Diagnóstico Acelerado</h4>
+      <div class="infographic-flow" style="background: rgba(255, 255, 255, 0.05);">
+       <div class="flow-step-info">
+        <div class="step-number" style="background: linear-gradient(135deg, #2ca02c 0%, #2ecc71 100%);">
+         1
+        </div>
+        <div class="step-title" style="color: white;">
+         Mapeamento BPMN
+        </div>
+        <div class="step-desc" style="color: rgba(255, 255, 255, 0.7);">
+         Processo visual
+        </div>
+       </div>
+       <div class="flow-arrow-info" style="color: #2ca02c;">
+        <svg viewbox="0 0 60 40" class="arrow-svg"><path d="M5 20 L45 20 M35 10 L45 20 L35 30" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+       </div>
+       <div class="flow-step-info">
+        <div class="step-number" style="background: linear-gradient(135deg, #2ca02c 0%, #2ecc71 100%);">
+         2
+        </div>
+        <div class="step-title" style="color: white;">
+         Definição SIPOC
+        </div>
+        <div class="step-desc" style="color: rgba(255, 255, 255, 0.7);">
+         Entradas/Saídas
+        </div>
+       </div>
+       <div class="flow-arrow-info" style="color: #2ca02c;">
+        <svg viewbox="0 0 60 40" class="arrow-svg"><path d="M5 20 L45 20 M35 10 L45 20 L35 30" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+       </div>
+       <div class="flow-step-info">
+        <div class="step-number" style="background: linear-gradient(135deg, #2ca02c 0%, #2ecc71 100%);">
+         3
+        </div>
+        <div class="step-title" style="color: white;">
+         Detalhamento 5W2H
+        </div>
+        <div class="step-desc" style="color: rgba(255, 255, 255, 0.7);">
+         Dados estruturados
+        </div>
+       </div>
+       <div class="flow-arrow-info" style="color: white;">
+        <svg viewbox="0 0 60 40" class="arrow-svg"><path d="M5 20 L45 20 M35 10 L45 20 L35 30" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+       </div>
+       <div class="flow-step-info">
+        <div class="step-number" style="background: linear-gradient(135deg, #9467bd 0%, #a855f7 100%);">
+         4
+        </div>
+        <div class="step-title" style="color: white;">
+         Análise IA Lean
+        </div>
+        <div class="step-desc" style="color: rgba(255, 255, 255, 0.7);">
+         Relatório Kaizen
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="tool-content-grid">
+      <div class="content-block" style="background: rgba(255, 255, 255, 0.95);">
+       <h4>Identificação de Desperdícios (Muda)</h4>
+       <p style="color: var(--text-medium); margin-bottom: 1rem;">A IA processa os dados do 5W2H e classifica os principais desperdícios (Muda) do processo, mostrando onde a otimização trará mais retorno.</p>
+       <canvas id="mudaChart" style="max-height: 300px;"></canvas>
+      </div>
+      <div class="content-block" style="background: rgba(255, 255, 255, 0.95);">
+       <h4>Análise SWOT (Gerada por IA)</h4>
+       <p style="color: var(--text-medium); margin-bottom: 1rem;">O relatório de IA inclui uma análise SWOT concisa, fornecendo um diagnóstico estratégico instantâneo do processo "As Is".</p>
+       <div class="swot-grid">
+        <div class="swot-item strengths">
+         <div class="swot-title">
+          Pontos Fortes
+         </div>
+         <div class="swot-content">
+          Processo bem documentado<br>
+          Equipe experiente
+         </div>
+        </div>
+        <div class="swot-item weaknesses">
+         <div class="swot-title">
+          Pontos Fracos
+         </div>
+         <div class="swot-content">
+          Gargalo na Aprovação<br>
+          Alto tempo de espera
+         </div>
+        </div>
+        <div class="swot-item opportunities">
+         <div class="swot-title">
+          Oportunidades
+         </div>
+         <div class="swot-content">
+          Automatizar aprovação<br>
+          Digitalizar checklist
+         </div>
+        </div>
+        <div class="swot-item threats">
+         <div class="swot-title">
+          Ameaças
+         </div>
+         <div class="swot-content">
+          Resistência à mudança<br>
+          Custo de nova ferramenta
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div><!-- Impacto -->
+    <h3 style="text-align: center; margin: 3rem 0 2rem; font-size: 1.8rem;">O Impacto: Resultados dos Cases de Sucesso</h3>
+    <div class="impact-cards">
+     <div class="impact-card">
+      <div class="impact-value">
+       90%
+      </div>
+      <div class="impact-label">
+       Redução na Reincidência<br>
+       (Case de Incidente de TI)
+      </div>
+     </div>
+     <div class="impact-card">
+      <div class="impact-value">
+       40%
+      </div>
+      <div class="impact-label">
+       Redução no Tempo de Onboarding<br>
+       (Case de Otimização Lean)
+      </div>
+     </div>
+     <div class="impact-card">
+      <div class="impact-value">
+       5d → 30m
+      </div>
+      <div class="impact-label">
+       Diagnóstico Acelerado por IA<br>
+       (Redução no tempo de consultoria)
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- AI Lab Section -->
+  <section id="ai-lab" class="ai-lab-section">
+   <div class="container">
+    <h2 class="ai-lab-title">Laboratório de Inovação e IA</h2>
+    <p class="ai-lab-subtitle">A colaboração entre humano e tecnologia para transformar processos organizacionais</p>
+    <div class="ai-hero-card">
+     <div class="data-orb"></div>
+     <div class="ai-hero-content">
+      <h3>Laboratório de Inovação: Otimização com IA &amp; Automação</h3>
+      <p style="opacity: 0.9; max-width: 900px; margin: 1rem auto;">Onde a inteligência humana encontra a capacidade computacional para criar soluções transformadoras. Combinando metodologias ágeis, análise de dados e inteligência artificial para acelerar decisões e maximizar resultados organizacionais.</p>
+     </div>
+    </div>
+    <div class="ai-cards-grid"><!-- Card 1 -->
+     <div class="ai-card">
+      <div class="ai-card-icon">
+       👥
+      </div>
+      <div class="ai-card-title">
+       GESTÃO DA MUDANÇA
+      </div>
+      <div class="ai-card-subtitle">
+       Análise Preditiva de Adoção e Resistência
+      </div>
+      <p class="ai-card-description">Usar algoritmos de Machine Learning (ML) em dados de treinamento, comunicação e surveys para prever quais usuários ou áreas terão maior dificuldade em adotar o novo processo. Isso permite intervenções personalizadas e aumento da taxa de sucesso da transformação.</p>
+     </div><!-- Card 2 -->
+     <div class="ai-card">
+      <div class="ai-card-icon">
+       ⚙️
+      </div>
+      <div class="ai-card-title">
+       PROCESSOS &amp; MELHORIA CONTÍNUA
+      </div>
+      <div class="ai-card-subtitle">
+       Process Mining e Hyperautomation
+      </div>
+      <p class="ai-card-description">Aplicar ferramentas de Process Mining (como o Power Automate Process Advisor ou Celonis) para mapear automaticamente os fluxos AS-IS a partir de logs do sistema. A IA identifica gargalos, retrabalhos e oportunidades de automação sem depender apenas de entrevistas.</p>
+     </div><!-- Card 3 -->
+     <div class="ai-card">
+      <div class="ai-card-icon">
+       🚀
+      </div>
+      <div class="ai-card-title">
+       GESTÃO ÁGIL (Projetos)
+      </div>
+      <div class="ai-card-subtitle">
+       Modelagem de Risco e Previsibilidade Ágil
+      </div>
+      <p class="ai-card-description">Utilizar dados históricos de Velocity, Cycle Time e Burn-down para treinar modelos preditivos. A IA pode estimar prazos realistas, identificar sprints com risco de atraso e sugerir redistribuição de tarefas baseada em padrões de desempenho da equipe.</p>
+     </div><!-- Card 4 -->
+     <div class="ai-card">
+      <div class="ai-card-icon">
+       ⚙️
+      </div>
+      <div class="ai-card-title">
+       PROCESS MINING IA
+      </div>
+      <div class="ai-card-subtitle">
+       Mapeamento Automático de Fluxos
+      </div>
+      <p class="ai-card-description">Utilizar inteligência artificial para analisar logs de sistemas e mapear automaticamente os processos reais (AS-IS), identificando gargalos, desvios e oportunidades de otimização sem necessidade de mapeamento manual extensivo.</p>
+     </div><!-- Card 5 -->
+     <div class="ai-card">
+      <div class="ai-card-icon">
+       🎯
+      </div>
+      <div class="ai-card-title">
+       ANÁLISE PREDITIVA
+      </div>
+      <div class="ai-card-subtitle">
+       ML para Adoção e Resistência
+      </div>
+      <p class="ai-card-description">Aplicar modelos de Machine Learning para prever padrões de adoção e resistência organizacional, permitindo ações preventivas e estratégias de mudança personalizadas por perfil de usuário e departamento.</p>
+     </div><!-- Card 6 - Colaboração (Full Width) -->
+     <div class="ai-card collab-card">
+      <div class="ai-card-title">
+       🤝 COLABORAÇÃO HUMANO-IA
+      </div>
+      <div class="ai-card-subtitle">
+       Decisões Aumentadas por IA
+      </div>
+      <p class="ai-card-description">Criar sinergia entre inteligência humana e capacidade computacional para análises profundas de dados, identificação de padrões invisíveis e tomada de decisões estratégicas baseadas em insights preditivos e prescritivos.</p>
+      <div class="collab-flow">
+       <div class="collab-step">
+        <div class="collab-step-icon">
+         👩
+        </div>
+        <div>
+         Analista
+        </div>
+       </div>
+       <div class="collab-arrow">
+        →
+       </div>
+       <div class="collab-step">
+        <div class="collab-step-icon">
+         📊
+        </div>
+        <div>
+         Análise de Dados
+        </div>
+       </div>
+       <div class="collab-arrow">
+        →
+       </div>
+       <div class="collab-step">
+        <div class="collab-step-icon">
+         🤖
+        </div>
+        <div>
+         IA
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="ai-cta"><a href="#projects" class="ai-button">Explorar Projetos de IA</a>
+    </div>
+   </div>
+  </section><!-- Education Section -->
+  <section id="education" class="education-section">
+   <div class="container">
+    <h2 class="section-title">🎓 Formação Acadêmica</h2>
+    <div class="academic-card" id="academicCard">
+     <div class="academic-header">
+      <h3 class="academic-title"><span>🎓</span> Formação Completa</h3><span class="toggle-icon" id="toggleIcon">▼</span>
+     </div>
+     <div class="academic-content" id="academicContent">
+      <div class="education-grid">
+       <div class="education-item">
+        <h4>🎓 Pedagogia</h4>
+        <p>Universidade Estácio de Sá</p>
+       </div>
+       <div class="education-item">
+        <h4>💻 Análise e Desenvolvimento de Sistemas</h4>
+        <p>Universidade Estácio de Sá (em andamento)</p>
+       </div>
+      </div>
+      <h3 style="margin-top: 2rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;"><span>⏰</span> MBA</h3>
+      <div class="education-item">
+       <h4>Psicopedagogia</h4>
+      </div>
+      <h3 style="margin-top: 2rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;"><span>🏆</span> Certificações e Cursos</h3>
+      <ul class="certifications-list">
+       <li class="cert-item"><span class="cert-icon">🎯</span> <span>PUCRS — Gestão da Mudança Organizacional</span></li>
+       <li class="cert-item"><span class="cert-icon">🔄</span> <span>Transformação Digital: a Organização Lean-Ágil – Alura</span></li>
+       <li class="cert-item"><span class="cert-icon">⚙️</span> <span>Gestão de Processos para Agilidade (Processos e Projetos de TI • BPMN • UML • SIPOC • VSM • Jornada do Usuário • Melhoria de Processos - PDCA (AS IS e TO BE) • Kaizen) – Alura</span></li>
+       <li class="cert-item"><span class="cert-icon">🚀</span> <span>Gestão Ágil de Projetos – Alura</span></li>
+       <li class="cert-item"><span class="cert-icon">🛡️</span> <span>COBIT Fundamentals – Alura</span></li>
+       <li class="cert-item"><span class="cert-icon">📦</span> <span>PMP - Product Management – Alura</span></li>
+       <li class="cert-item"><span class="cert-icon">📊</span> <span>Power Platform (Power BI, Power Automate) e Excel – Alura</span></li>
+      </ul>
+      <div class="education-quote">
+       "Minha formação combina educação, tecnologia e gestão, proporcionando uma visão holística para liderar mudanças organizacionais."
+      </div>
+     </div>
+    </div>
+   </div>
+  </section><!-- Contact Section -->
+  <section id="contact" class="contact-section">
+   <div class="container">
+    <h2 class="section-title">📞 Contato</h2>
+    <p class="section-subtitle">Entre em contato para conversarmos sobre como posso ajudar na transformação da sua organização</p>
+    <div class="contact-grid">
+     <div class="contact-card">
+      <div class="contact-icon">
+       📍
+      </div>
+      <div class="contact-label">
+       Localização
+      </div>
+      <div class="contact-value">
+       Rio de Janeiro, Brasil
+      </div>
+     </div>
+     <div class="contact-card">
+      <div class="contact-icon">
+       ✉️
+      </div>
+      <div class="contact-label">
+       E-mail
+      </div>
+      <div class="contact-value"><a href="mailto:daiane.nicacio_@outlook.com.br" class="contact-link">daiane.nicacio_@outlook.com.br</a>
+      </div>
+     </div>
+     <div class="contact-card">
+      <div class="contact-icon">
+       💼
+      </div>
+      <div class="contact-label">
+       LinkedIn
+      </div>
+      <div class="contact-value"><a href="https://linkedin.com/in/daiane-nicacio" target="_blank" rel="noopener noreferrer" class="contact-link">/in/daiane-nicacio</a>
+      </div>
+     </div>
+     <div class="contact-card">
+      <div class="contact-icon">
+       💬
+      </div>
+      <div class="contact-label">
+       WhatsApp
+      </div>
+      <div class="contact-value">
+       (21) 99227-5052
+      </div>
+     </div>
+    </div>
+    <div class="cta-container"><a href="https://wa.me/5521992275052" target="_blank" rel="noopener noreferrer" class="whatsapp-button"> 💬 Iniciar Conversa </a>
+    </div>
+   </div>
+  </section><!-- Footer -->
+  <footer>
+   <div class="footer-content">
+    <p>© 2025 Daiane Nicácio. Todos os direitos reservados.</p>
+    <p class="footer-tagline">Gestão da Mudança Organizacional • Projetos Ágeis • Transformação Digital</p>
+    <p style="margin-top: 1rem; opacity: 0.8;">Desenvolvido com foco em resultados e transformações sustentáveis</p>
+   </div>
+  </footer>
+  <script>
+    // Navegação suave
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Highlight de navegação ativa
+    function highlightNavigation() {
+      const scrollPosition = window.scrollY + 100;
+      const sections = document.querySelectorAll('section');
+      const navLinks = document.querySelectorAll('.nav-links a');
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id');
+
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${sectionId}`) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }
+
+    window.addEventListener('scroll', highlightNavigation);
+
+    // Accordion Formação Acadêmica
+    const academicCard = document.getElementById('academicCard');
+    const academicContent = document.getElementById('academicContent');
+    const toggleIcon = document.getElementById('toggleIcon');
+
+    academicCard.addEventListener('click', function() {
+      academicContent.classList.toggle('open');
+      toggleIcon.classList.toggle('open');
+    });
+
+    // Chart.js - Inicialização dos Gráficos
+    window.addEventListener('DOMContentLoaded', function() {
+      highlightNavigation();
+
+      const colors = {
+        blue: '#1f77b4',
+        orange: '#ff7f0e',
+        green: '#2ca02c',
+        red: '#d62728',
+        purple: '#9467bd',
+        gray: '#7f7f7f'
+      };
+
+      // Gráfico de Pareto
+      if (document.getElementById('paretoChart')) {
+        const ctxPareto = document.getElementById('paretoChart').getContext('2d');
+        new Chart(ctxPareto, {
+          type: 'bar',
+          data: {
+            labels: ['Falha no Script de Backup', 'Sobrecarga de Servidor', 'Erro de Configuração', 'Falha de Hardware', 'Erro Humano'],
+            datasets: [{
+              label: 'Ocorrências',
+              data: [120, 55, 30, 15, 10],
+              backgroundColor: colors.blue,
+              borderColor: colors.blue,
+              borderWidth: 1
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: {
+                beginAtZero: true,
+                title: { display: true, text: 'Nº de Ocorrências' }
+              },
+              x: {
+                ticks: {
+                  autoSkip: false
+                }
+              }
+            }
+          }
+        });
+      }
+
+      // Gráfico ICE (Radar) - MANTIDO COM TRIÂNGULOS
+      if (document.getElementById('iceChart')) {
+        const ctxIce = document.getElementById('iceChart').getContext('2d');
+        new Chart(ctxIce, {
+          type: 'radar',
+          data: {
+            labels: ['Impacto ▲', 'Confiança ▲', 'Esforço ▼'],
+            datasets: [
+              {
+                label: 'Ação 1: Otimizar Script',
+                data: [9, 8, 3],
+                fill: true,
+                backgroundColor: 'rgba(31, 119, 180, 0.2)',
+                borderColor: colors.blue,
+                pointBackgroundColor: colors.blue,
+              },
+              {
+                label: 'Ação 2: Substituir Hardware',
+                data: [10, 6, 9],
+                fill: true,
+                backgroundColor: 'rgba(214, 39, 40, 0.2)',
+                borderColor: colors.red,
+                pointBackgroundColor: colors.red,
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              r: {
+                beginAtZero: true,
+                max: 10,
+                pointLabels: {
+                  font: {
+                    size: 14
+                  }
+                }
+              }
+            }
+          }
+        });
+      }
+
+      // Gráfico Muda (Donut) - ATUALIZADO
+      if (document.getElementById('mudaChart')) {
+        const ctxMuda = document.getElementById('mudaChart').getContext('2d');
+        new Chart(ctxMuda, {
+          type: 'doughnut',
+          data: {
+            labels: ['Espera (Aprovação)', 'Processamento Extra', 'Movimentação', 'Defeitos'],
+            datasets: [{
+              label: 'Tipos de Desperdício (Muda)',
+              data: [45, 25, 20, 10],
+              backgroundColor: [
+                colors.red,
+                colors.orange,
+                colors.purple,
+                colors.gray
+              ],
+              hoverOffset: 4
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                position: 'bottom',
+                labels: {
+                  boxWidth: 20,
+                  padding: 15,
+                  font: {
+                    size: 13
+                  }
+                }
+              },
+              tooltip: {
+                callbacks: {
+                  label: function(context) {
+                    const label = context.label || '';
+                    const value = context.parsed || 0;
+                    return `${label}: ${value}%`;
+                  }
+                }
+              }
+            }
+          }
+        });
+      }
+    });
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a8d5b95e53e6481',t:'MTc2NDg3Mjg0NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
