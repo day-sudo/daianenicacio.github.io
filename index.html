@@ -220,142 +220,132 @@
       margin-right: auto;
     }
 
-    /* Venn Diagram Section */
-    .venn-section {
-      background: linear-gradient(135deg, #0a0e27, #1a1f3a);
-      position: relative;
-      overflow: hidden;
-    }
+/* ==================================== */
+/* CÓDIGO CORRIGIDO - VERSÃO NEON */
+/* ==================================== */
 
-    .venn-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-image: 
-        linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
-      background-size: 30px 30px;
-      animation: grid-move 20s linear infinite;
-    }
-
-    @keyframes grid-move {
-      0% {
-        transform: translate(0, 0);
-      }
-      100% {
-        transform: translate(30px, 30px);
-      }
-    }
-
-    .venn-container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    .venn-header {
-      text-align: center;
-      margin-bottom: 4rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    .venn-header h2 {
-      color: white;
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .venn-header p {
-      color: rgba(255, 255, 255, 0.8);
-      font-size: 1.1rem;
-    }
-
-    .venn-diagram {
-      position: relative;
-      width: 100%;
-      height: 600px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1;
-    }
-
-    .venn-circle {
-      position: absolute;
-      width: 320px;
-      height: 320px;
-      border-radius: 50%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 2rem;
-      font-weight: 600;
-      font-size: 1.2rem;
-      mix-blend-mode: screen;
-      will-change: transform, box-shadow;
-      animation: pulse-glow 2.5s ease-in-out infinite;
-    }
-
-    @keyframes pulse-glow {
-      0%, 100% {
-        box-shadow: 0 0 60px currentColor;
-        filter: brightness(1.3);
-      }
-      50% {
-        box-shadow: 0 0 140px currentColor;
-        filter: brightness(1.6);
-      }
-    }
-
-.venn-pessoas {
-    background: radial-gradient(circle, rgba(0, 255, 255, 0.4), rgba(0, 255, 255, 0.1));
-    color: #00ffff;
-    /* NOVO POSICIONAMENTO: Centralizado no topo */
-    top: 0; 
-    left: 50%;
-    transform: translateX(-50%); /* Centraliza */
+/* Container da Seção com Fundo Escuro */
+.venn-section {
+  background-color: #0f172a; /* Fundo azul escuro profundo */
+  padding: 4rem 1rem;
+  color: white;
+  overflow: hidden; 
+  font-family: 'Segoe UI', sans-serif;
 }
 
-.venn-processos {
-    background: radial-gradient(circle, rgba(0, 255, 136, 0.4), rgba(0, 255, 136, 0.1));
-    color: #00ff88;
-    /* NOVO POSICIONAMENTO: Inferior Esquerdo */
-    top: 200px; /* Empurra para baixo para cruzar com o círculo do topo */
-    left: calc(50% - 160px); /* Move 160px para a esquerda do centro */
-    transform: translateX(-100%); /* Ajuste fino */
+.venn-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
 }
 
-.venn-tecnologia {
-    background: radial-gradient(circle, rgba(136, 192, 255, 0.4), rgba(136, 192, 255, 0.1));
-    color: #88c0ff;
-    /* NOVO POSICIONAMENTO: Inferior Direito */
-    top: 200px; /* Mesma altura do Processos */
-    right: calc(50% - 160px); /* Move 160px para a direita do centro */
-    transform: translateX(100%); /* Ajuste fino */
+.venn-header h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: #fff;
 }
 
-    .venn-center {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: white;
-      font-size: 1.5rem;
-      font-weight: 700;
-      text-align: center;
-      z-index: 10;
-      background: rgba(0, 0, 0, 0.3);
-      padding: 1.5rem 2rem;
-      border-radius: 15px;
-      backdrop-filter: blur(10px);
-      border: 2px solid rgba(255, 255, 255, 0.2);
-    }
+.venn-header p {
+  color: #94a3b8; /* Cinza claro */
+  margin-bottom: 3rem;
+}
+
+/* Área do Diagrama (O wrapper) */
+.venn-wrapper {
+  position: relative;
+  width: 600px;
+  height: 550px;
+  margin: 0 auto;
+}
+
+/* Estilo Base dos Círculos */
+.venn-circle {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  
+  background: rgba(0, 0, 0, 0.2); 
+  backdrop-filter: blur(2px);
+  border: 2px solid; 
+  box-shadow: 0 0 20px rgba(0,0,0,0.3); 
+}
+
+/* Texto dentro dos círculos */
+.circle-title {
+  font-weight: 800;
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+.circle-desc {
+  font-size: 0.9rem;
+  line-height: 1.3;
+  color: #e2e8f0;
+  max-width: 80%;
+}
+
+/* --- POSICIONAMENTO E CORES (A Correção Geométrica) --- */
+
+/* 1. PESSOAS (Azul - Topo) */
+.circle-top {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%); 
+  border-color: #00b4d8; /* COR DA BORDA */
+  box-shadow: 0 0 15px #00b4d8; /* BRILHO NEON */
+}
+.circle-top .circle-title { color: #00b4d8; }
+
+/* 2. PROCESSOS (Verde - Esquerda Baixo) */
+.circle-left {
+  top: 180px; /* ALTURA - Mude aqui se quiser subir/descer */
+  left: 50%;
+  transform: translateX(-85%); 
+  border-color: #00ff88; 
+  box-shadow: 0 0 15px #00ff88;
+}
+.circle-left .circle-title { color: #00ff88; }
+
+/* 3. TECNOLOGIA (Roxo - Direita Baixo) */
+.circle-right {
+  top: 180px; /* ALTURA - Deve ser a mesma do PROCESSOS */
+  left: 50%;
+  transform: translateX(-15%); 
+  border-color: #d946ef; 
+  box-shadow: 0 0 15px #d946ef;
+}
+.circle-right .circle-title { color: #d946ef; }
+
+/* CENTRO: TRANSFORMAÇÃO SUSTENTÁVEL */
+.venn-center-text {
+  position: absolute;
+  top: 260px; /* Posição Vertical do Texto Central */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  color: #fff; 
+  font-weight: 900;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  z-index: 10;
+  width: 150px;
+  line-height: 1.2;
+}
+
+/* Responsividade para Celular */
+@media (max-width: 650px) {
+  .venn-wrapper {
+    transform: scale(0.55); 
+    transform-origin: top center;
+    height: 400px;
+  }
 
     /* Tools Grid Section */
     .tools-section {
@@ -3045,6 +3035,7 @@
   </script>
  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a8d5b95e53e6481',t:'MTc2NDg3Mjg0NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
+
 
 
 
