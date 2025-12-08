@@ -1498,42 +1498,46 @@
       height: 600px;
     }
 
-  /* --- ESTILOS PARA A NOVA SEÇÃO DE ANÁLISE (Onde ficam os cards lado a lado) --- */
-
-.analysis-cards-grid {
-    /* CHAVE 1: Usa o Flexbox para alinhar o card de Análise e o card de Resultados lado a lado */
-    display: flex;
-    /* Adiciona um espaço entre os dois cards */
-    gap: 2rem; 
-    /* Garante que os cards fiquem alinhados no topo */
-    align-items: flex-start;
-    /* Centraliza a grade dentro da seção principal */
-    justify-content: center;
-    padding-top: 2rem;
-}
-
-.analysis-card {
-    /* CHAVE 2: Define que cada card ocupe metade do espaço disponível */
-    flex: 1; 
-    /* Define a largura máxima para não ficarem gigantes em telas grandes */
-    max-width: 500px;
-    /* Estilo visual opcional */
-    background: #ffffff;
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-}
-
-/* Garante que em telas pequenas (como celulares), eles fiquem empilhados */
-@media (max-width: 768px) {
     .analysis-cards-grid {
-        flex-direction: column; /* Empilha o conteúdo */
-        align-items: center;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
     }
+
     .analysis-card {
-        max-width: 90%; /* Ocupa quase toda a largura do celular */
+      background: white;
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 2px solid #f0f0f0;
     }
- 
+
+    .analysis-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-icon-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .card-emoji {
+      font-size: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
     .card-icon-header h3 {
       font-size: 1.5rem;
       font-weight: 600;
@@ -2452,8 +2456,10 @@
       text-transform: uppercase;
       letter-spacing: 1px;
       white-space: nowrap;
-      min-width: 70px;
+      min-width: 80px;
       text-align: center;
+      display: block;
+      width: 100%;
     }
 
     .robot-figure {
@@ -2943,8 +2949,7 @@
       </svg>
      </div>
      <h3>Transformação com Propósito</h3>
-     <p style="margin: 1rem 0 1.5rem; color: #666; font-size: 1rem; line-height: 1.6;">🤖 <strong>Minha identidade, meu estilo — agora em versão avatar IA.</strong></p><a 
-     <a href="https://www.canva.com/design/DAGy5-8yRHk/kC8mJ4TywMv271lZwxfxAg/watch?utm_content=DAGy5-8yRHk&amp;utm_campaign=designshare&amp;utm_medium=link2&amp;utm_source=uniquelinks&amp;utlId=h0b5c6074fa" target="_blank" rel="noopener noreferrer" class="video-button">Assistir Vídeo</a>
+     <p style="margin: 1rem 0 1.5rem; color: #666; font-size: 1rem; line-height: 1.6;">🤖 <strong>Minha identidade, meu estilo — agora em versão avatar IA.</strong></p><a href="https://www.canva.com/design/DAGy5-8yRHk/kC8mJ4TywMv271lZwxfxAg/watch?utm_content=DAGy5-8yRHk&amp;utm_campaign=designshare&amp;utm_medium=link2&amp;utm_source=uniquelinks&amp;utlId=h0b5c6074fa" target="_blank" rel="noopener noreferrer" class="video-button">Assistir Vídeo</a>
     </div>
    </div>
   </section><!-- Tools Section -->
@@ -3302,7 +3307,7 @@
        </div>
        <div class="why-content">
         <h4>1º Por quê?</h4>
-        <p class="why-question">O novo sistema de relatórios não estão sendo usado?</p>
+        <p class="why-question">O novo sistema de relatórios não está sendo usado?</p>
         <div class="why-answer">
          Os usuários não confiam nos dados que ele apresenta.
         </div>
@@ -3334,7 +3339,7 @@
        </div>
        <div class="why-content">
         <h4>3º Por quê?</h4>
-        <p class="why-question">Por que a importação foi manual?</p>
+        <p class="why-question">Por que a importação é manual?</p>
         <div class="why-answer">
          Não há automação entre o ERP e o sistema de BI.
         </div>
@@ -3553,65 +3558,40 @@
        • Métricas inconsistentes
       </text>
      </svg>
-     </ul>
     </div>
-     <h3 style="text-align: center; margin: 3rem 0 2rem; font-size: 1.8rem;">Resultados Obtidos</h3>
-    <div class="ishikawa-results">
-     <div class="ishikawa-result-card">
-      <svg viewbox="0 0 200 120" style="width: 100%; height: auto; margin-bottom: 1rem;"><rect x="20" y="80" width="30" height="30" fill="#e74c3c" rx="5" /> <text x="35" y="75" text-anchor="middle" font-size="12" fill="#e74c3c" font-weight="600">
-        100%
-       </text> <rect x="85" y="50" width="30" height="60" fill="#2ecc71" rx="5" /> <text x="100" y="45" text-anchor="middle" font-size="12" fill="#2ecc71" font-weight="600">
-        65%
-       </text> <path d="M 50 95 L 80 65" stroke="#00b894" stroke-width="2" marker-end="url(#arrowgreen)" /> <text x="100" y="125" text-anchor="middle" font-size="11" fill="#666">
-        Antes → Depois
-       </text> <defs>
-        <marker id="arrowgreen" markerwidth="10" markerheight="10" refx="5" refy="3" orient="auto" markerunits="strokeWidth">
-         <path d="M0,0 L0,6 L9,3 z" fill="#00b894" />
-        </marker>
-       </defs>
-      </svg>
-      <div class="ishikawa-result-value">
-       -35%
+    <div class="analysis-cards-grid">
+     <div class="analysis-card">
+      <div class="card-icon-header"><span class="card-emoji">🔍</span>
+       <h3>Análise Aplicada</h3>
       </div>
-      <div class="result-label">
-       Redução de Atrasos
-      </div>
-      <p style="color: var(--text-light); font-size: 0.9rem; margin-top: 0.5rem;">Após implementação das melhorias</p>
+      <p class="card-description">Este diagrama representa uma análise real de projeto onde identifiquei as principais causas de atrasos em entregas.</p>
+      <ul class="card-list">
+       <li><strong>6 Categorias principais (6M)</strong> mapeadas sistematicamente</li>
+       <li><strong>Causas raiz identificadas</strong> através de análise detalhada</li>
+       <li><strong>Priorização baseada em impacto</strong> nos resultados</li>
+      </ul>
      </div>
-     <div class="ishikawa-result-card">
-      <svg viewbox="0 0 200 120" style="width: 100%; height: auto; margin-bottom: 1rem;"><circle cx="100" cy="60" r="45" fill="none" stroke="#e9ecef" stroke-width="10" /> <circle cx="100" cy="60" r="45" fill="none" stroke="#3498db" stroke-width="10" stroke-dasharray="283" stroke-dashoffset="156" transform="rotate(-90 100 60)" /> <text x="100" y="67" text-anchor="middle" font-size="24" font-weight="700" fill="#3498db">
-        45%
-       </text>
-      </svg>
-      <div class="ishikawa-result-value">
-       +45%
+     <div class="analysis-card results-card-special">
+      <div class="card-icon-header"><span class="card-emoji">📊</span>
+       <h3>Resultados Obtidos</h3>
       </div>
-      <div class="result-label">
-       Melhoria na Comunicação
-      </div>
-      <p style="color: var(--text-light); font-size: 0.9rem; margin-top: 0.5rem;">Entre stakeholders e equipes</p>
-     </div>
-     <div class="ishikawa-result-card">
-      <svg viewbox="0 0 200 120" style="width: 100%; height: auto; margin-bottom: 1rem;"><rect x="30" y="30" width="35" height="70" fill="#2ecc71" rx="5" /> <rect x="75" y="45" width="35" height="55" fill="#3498db" rx="5" /> <rect x="120" y="60" width="35" height="40" fill="#9b59b6" rx="5" /> <text x="47" y="115" text-anchor="middle" font-size="10" fill="#666">
-        Velocity
-       </text> <text x="92" y="115" text-anchor="middle" font-size="10" fill="#666">
-        Lead Time
-       </text> <text x="137" y="115" text-anchor="middle" font-size="10" fill="#666">
-        Quality
-       </text>
-      </svg>
-      <div class="ishikawa-result-value">
-       100%
-      </div>
-      <div class="result-label">
-       Métricas Implementadas
-      </div>
-      <p style="color: var(--text-light); font-size: 0.9rem; margin-top: 0.5rem;">Velocity e Lead Time monitorados</p>
-     </div>
+      <ul class="card-list results-list">
+       <li><span class="result-icon">📉</span>
+        <div><strong>Redução de 35% nos atrasos</strong>
+         <p>Após implementação das melhorias</p>
+        </div></li>
+       <li><span class="result-icon">💬</span>
+        <div><strong>Melhoria na comunicação</strong>
+         <p>Entre stakeholders e equipes</p>
+        </div></li>
+       <li><span class="result-icon">📈</span>
+        <div><strong>Implementação de métricas</strong>
+         <p>Velocity e Lead Time monitorados</p>
         </div></li>
       </ul>
      </div>
     </div>
+   </div>
   </section><!-- Authorial Tools Section -->
   <section id="ferramentas-autorais" class="authorial-tools-section">
    <div class="authorial-container">
@@ -3711,7 +3691,7 @@
       </div>
      </div>
     </div><!-- AI Knowledge Cards -->
-    <div class="ai-knowledge-grid"><!-- Card 1 - Gest��o da Mudança -->
+    <div class="ai-knowledge-grid"><!-- Card 1 - Gestão da Mudança -->
      <div class="ai-knowledge-card">
       <div class="ai-card-header"><span class="ai-card-icon">👥</span>
        <h4>GESTÃO DA MUDANÇA</h4>
@@ -3819,7 +3799,7 @@
         <li><strong>ALURA</strong> — Certificação COBIT</li>
         <li><strong>ALURA</strong> — Certificação PMP</li>
         <li><strong>ALURA</strong> — Power Platform (Power BI), Excel</li>
-        <li><strong>DATABRICKS</strong> — SQL &amp; Analytics on Databricks <br><span style="margin-left: 1.5rem; font-size: 0.9rem; color: #666;">��️ Governança e Auditoria de Mudanças mais robustas</span> <br><span style="margin-left: 1.5rem; font-size: 0.9rem; color: #666;">🚨 Redução de riscos organizacionais</span> <br><span style="margin-left: 1.5rem; font-size: 0.9rem; color: #666;">⚙️ Autonomia para quick audits</span></li>
+        <li><strong>DATABRICKS</strong> — SQL &amp; Analytics on Databricks <br><span style="margin-left: 1.5rem; font-size: 0.9rem; color: #666;">🛡️ Governança e Auditoria de Mudanças mais robustas</span> <br><span style="margin-left: 1.5rem; font-size: 0.9rem; color: #666;">🚨 Redução de riscos organizacionais</span> <br><span style="margin-left: 1.5rem; font-size: 0.9rem; color: #666;">⚙️ Autonomia para quick audits</span></li>
        </ul>
       </div>
       <div class="academic-footer">
@@ -3846,84 +3826,13 @@
        ✉️
       </div>
       <h3>E-mail</h3>
-      <p><a href="mailto:daiane.nicacio_@outlook.com.br">daiane.nicacio_@outlook.com.br</a></p>
-     </div>
-     <div class="contact-card">
-      <div class="contact-icon">
-       💼
-      </div>
-      <h3>LinkedIn</h3>
-      <p><a href="https://www.linkedin.com/in/daiane-nicacio" target="_blank" rel="noopener noreferrer">/in/daiane-nicacio</a></p>
-     </div>
-     <div class="contact-card">
-      <div class="contact-icon">
-       💬
-      </div>
-      <h3>WhatsApp</h3>
-      <p><a href="https://wa.me/5521992275052" target="_blank" rel="noopener noreferrer">(21) 99227-5052</a></p><a href="https://wa.me/5521992275052" target="_blank" rel="noopener noreferrer" class="whatsapp-button">Iniciar Conversa</a>
+      <p></p>
      </div>
     </div>
    </div>
-  </section><!-- Footer -->
-  <footer class="footer">
-   <div class="footer-container">
-    <p class="footer-copyright">© 2025 Daiane Nicácio. Todos os direitos reservados.</p>
-    <p class="footer-tagline">Gestão da Mudança Organizacional • Projetos Ágeis • Transformação Digital</p>
-    <p class="footer-subtitle">Desenvolvido com foco em resultados e transformações sustentáveis</p>
-   </div>
-  </footer>
-  <script>
-    // Academic card toggle
-    const academicCard = document.getElementById('academicCard');
-    const academicContent = document.getElementById('academicContent');
-    const toggleIcon = document.getElementById('toggleIcon');
-
-    academicCard.addEventListener('click', function() {
-      academicContent.classList.toggle('open');
-      toggleIcon.classList.toggle('open');
-    });
-
-    // Smooth scroll for navigation
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      });
-    });
-
-    // Active navigation highlighting
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-links a');
-
-    function highlightNavigation() {
-      const scrollPosition = window.scrollY + 100;
-
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-        const sectionId = section.getAttribute('id');
-
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-          navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${sectionId}`) {
-              link.classList.add('active');
-            }
-          });
-        }
-      });
-    }
-
-    window.addEventListener('scroll', highlightNavigation);
-    window.addEventListener('load', highlightNavigation);
-  </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9aa6b30cd3f38aef',t:'MTc2NTEzODU3Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+  </section>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9aa43f73320d8aef',t:'MTc2NTExMjg2Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
+
 
 
