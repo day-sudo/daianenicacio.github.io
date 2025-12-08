@@ -1498,46 +1498,42 @@
       height: 600px;
     }
 
+  /* --- ESTILOS PARA A NOVA SEÇÃO DE ANÁLISE (Onde ficam os cards lado a lado) --- */
+
+.analysis-cards-grid {
+    /* CHAVE 1: Usa o Flexbox para alinhar o card de Análise e o card de Resultados lado a lado */
+    display: flex;
+    /* Adiciona um espaço entre os dois cards */
+    gap: 2rem; 
+    /* Garante que os cards fiquem alinhados no topo */
+    align-items: flex-start;
+    /* Centraliza a grade dentro da seção principal */
+    justify-content: center;
+    padding-top: 2rem;
+}
+
+.analysis-card {
+    /* CHAVE 2: Define que cada card ocupe metade do espaço disponível */
+    flex: 1; 
+    /* Define a largura máxima para não ficarem gigantes em telas grandes */
+    max-width: 500px;
+    /* Estilo visual opcional */
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* Garante que em telas pequenas (como celulares), eles fiquem empilhados */
+@media (max-width: 768px) {
     .analysis-cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
+        flex-direction: column; /* Empilha o conteúdo */
+        align-items: center;
     }
-
     .analysis-card {
-      background: white;
-      padding: 2.5rem;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
-      border: 2px solid #f0f0f0;
+        max-width: 90%; /* Ocupa quase toda a largura do celular */
     }
-
-    .analysis-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-    }
-
-    .card-icon-header {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .card-emoji {
-      font-size: 2.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 60px;
-      height: 60px;
-      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    }
-
+ 
     .card-icon-header h3 {
       font-size: 1.5rem;
       font-weight: 600;
@@ -3616,7 +3612,6 @@
       </ul>
      </div>
     </div>
-   </div>
   </section><!-- Authorial Tools Section -->
   <section id="ferramentas-autorais" class="authorial-tools-section">
    <div class="authorial-container">
@@ -3930,4 +3925,5 @@
   </script>
  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9aa6b30cd3f38aef',t:'MTc2NTEzODU3Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
+
 
