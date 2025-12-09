@@ -1,3 +1,3 @@
 # daianenicacio.github.io
 Site profissional – Portfólio DN
-<img width="3780" height="1890" alt="💡" src="https://github.com/user-attachments/assets/7035efb0-02c6-4f23-885a-d3ff543b6775" />
+<img width="500" height="500" alt="favicon" src="https://github.com/user-attachments/assets/10c48607-acdd-4edf-82cb-d28be0c4faf0" />
