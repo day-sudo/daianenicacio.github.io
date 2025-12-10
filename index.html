@@ -753,24 +753,21 @@
     }
 
     /* 5 Whys */
-    .five-whys-container {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      overflow-x: auto;
-      padding: 2rem 0;
-      min-width: 1200px;
+   .five-whys-container {
+     display: flex;
+     gap: 16px;
+     overflow-x: auto;   /* permite rolagem horizontal */
+     padding: 16px;
     }
 
-    .why-card {
-      position: relative;
-      min-width: 256px;
-      padding: 2rem 1.5rem;
-      border-radius: 16px;
-      border: 3px solid;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
-    }
+   .why-card {
+     min-width: 220px;   /* largura mínima para não quebrar */
+     flex-shrink: 0;     /* impede que o cartão seja comprimido */
+     background: #f9fafb;
+     border: 2px solid #e5e7eb;
+     border-radius: 12px;
+     padding: 16px;
+}
 
     .why-card:hover {
       transform: translateY(-5px);
@@ -858,11 +855,11 @@
     }
 
     .why-arrow {
-      font-size: 2rem;
-      color: #cbd5e0;
-      font-weight: 700;
-      flex-shrink: 0;
-    }
+     display: flex;
+     align-items: center;
+     font-size: 24px;
+     color: #6b7280;
+   }
 
     /* Matriz de Decisão */
     .decision-matrix {
@@ -4099,128 +4096,71 @@
        </div>
       </div>
      </div><!-- Cartões Expansíveis -->
-     <div class="education-cards-grid"><!-- Card 1: Transição/ADS -->
-      <div class="education-card">
-       <div class="education-card-header">
-        <div class="education-card-icon">
-         🔄
+     <div class="main-wrapper">
+    <div class="header">
+        <h1 id="profile-name">Profissional de Excelência</h1>
+        <p id="profile-title">Catalisadora da Conexão</p>
+    </div>
+    <div class="infographic-container">
+        <svg id="connections-svg">
+            <defs>
+                <lineargradient id="lightGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:#4299e1;stop-opacity:0" />
+                    <stop offset="30%" style="stop-color:#ffffff;stop-opacity:1" />
+                    <stop offset="70%" style="stop-color:#ffffff;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#4299e1;stop-opacity:0" />
+                </lineargradient>
+                <filter id="glow">
+                    <fegaussianblur stddeviation="4" result="coloredBlur" />
+                    <femerge>
+                        <femergenode in="coloredBlur" />
+                        <femergenode in="SourceGraphic" />
+                    </femerge>
+                </filter>
+            </defs>
+        </svg>
+        <div class="hub">
+            <div class="avatar">
+                👩‍💼
+            </div>
         </div>
-        <h4 class="education-card-title">Transição de Carreira &amp; Análise de Dados</h4><button class="expand-button" aria-label="Expandir detalhes"> <span class="expand-icon">+</span> </button>
-       </div>
-       <div class="education-card-content">
-        <div class="courses-list">
-         <div class="course-item">
-          <div class="course-dot"></div>
-          <div class="course-text"><strong>Transição de Carreira - Start na Análise de Dados</strong> <span class="course-institution">DATA VIKING</span>
-          </div>
-         </div>
-         <div class="course-item">
-          <div class="course-dot"></div>
-          <div class="course-text"><strong>Intensivão de Python</strong> <span class="course-institution">Hashtag Treinamentos</span>
-          </div>
-         </div>
-         <div class="course-item">
-          <div class="course-dot"></div>
-          <div class="course-text"><strong>Power BI Impressionador</strong> <span class="course-institution">Hashtag Treinamentos</span>
-          </div>
-         </div>
+        <div class="area-node" data-area="1" style="top: 10%; left: 50%; transform: translate(-50%, 0);">
+            <div class="icon"> ⚙️ </div>
+            <div class="area-text" id="area-text-1"> Processos </div>
+            <div class="tooltip"> Otimizando fluxos e garantindo eficiência </div>
         </div>
-        <div class="skill-gain-box">
-         <div class="skill-gain-label">
-          🎯 Ganho de Habilidade
-         </div>
-         <div class="skill-gain-text">
-          Capacidade de criar dashboards executivos, automatizar análises e comunicar insights técnicos de forma acessível para stakeholders não-técnicos.
-         </div>
+        <div class="area-node" data-area="2" style="top: 25%; left: 85%; transform: translate(-50%, 0);">
+            <div class="icon"> 🎯 </div>
+            <div class="area-text" id="area-text-2"> Projetos </div>
+            <div class="tooltip"> Entregando resultados com excelência </div>
         </div>
-       </div>
-      </div><!-- Card 2: Governança/Databricks -->
-      <div class="education-card">
-       <div class="education-card-header">
-        <div class="education-card-icon">
-         🔐
+        <div class="area-node" data-area="3" style="top: 60%; left: 90%; transform: translate(-50%, 0);">
+            <div class="icon"> 🔄 </div>
+            <div class="area-text" id="area-text-3"> Change Management </div>
+            <div class="tooltip"> Garantindo adoção e reduzindo resistência </div>
         </div>
-        <h4 class="education-card-title">Governança de Dados &amp; Engenharia</h4><button class="expand-button" aria-label="Expandir detalhes"> <span class="expand-icon">+</span> </button>
-       </div>
-       <div class="education-card-content">
-        <div class="courses-list">
-         <div class="course-item">
-          <div class="course-dot"></div>
-          <div class="course-text"><strong>Data Governance Fundamentals</strong> <span class="course-institution">Databricks Academy</span>
-          </div>
-         </div>
-         <div class="course-item">
-          <div class="course-dot"></div>
-          <div class="course-text"><strong>Lakehouse Fundamentals</strong> <span class="course-institution">Databricks Academy</span>
-          </div>
-         </div>
-         <div class="course-item">
-          <div class="course-dot"></div>
-          <div class="course-text"><strong>Data Engineering with Databricks</strong> <span class="course-institution">Databricks Academy</span>
-          </div>
-         </div>
-         <div class="course-item">
-          <div class="course-dot"></div>
-          <div class="course-text"><strong>Generative AI Fundamentals</strong> <span class="course-institution">Databricks Academy</span>
-          </div>
-         </div>
+        <div class="area-node" data-area="4" style="bottom: 10%; left: 70%; transform: translate(-50%, 0);">
+            <div class="icon"> 📊 </div>
+            <div class="area-text" id="area-text-4"> Análise de Dados </div>
+            <div class="tooltip"> Transformando dados em insights estratégicos </div>
         </div>
-        <div class="skill-gain-box">
-         <div class="skill-gain-label">
-          🎯 Ganho de Habilidade
-         </div>
-         <div class="skill-gain-text">
-          Compreensão profunda de arquiteturas modernas de dados (Lakehouse), governança e ética de IA - essencial para liderar iniciativas de transformação digital data-driven.
-         </div>
+        <div class="area-node" data-area="5" style="bottom: 10%; left: 30%; transform: translate(-50%, 0);">
+            <div class="icon"> 🚀 </div>
+            <div class="area-text" id="area-text-5"> Transformação Digital </div>
+            <div class="tooltip"> Impulsionando a inovação organizacional </div>
         </div>
-       </div>
-      </div><!-- Card 3: Gestão de Mudança/Processos -->
-      <div class="education-card">
-       <div class="education-card-header">
-        <div class="education-card-icon">
-         🚀
+        <div class="area-node" data-area="6" style="top: 60%; left: 10%; transform: translate(-50%, 0);">
+            <div class="icon"> 🛠️ </div>
+            <div class="area-text" id="area-text-6"> Sustentação de Sistemas </div>
+            <div class="tooltip"> Mantendo a estabilidade e continuidade </div>
         </div>
-        <h4 class="education-card-title">Gestão de Mudança &amp; Processos</h4><button class="expand-button" aria-label="Expandir detalhes"> <span class="expand-icon">+</span> </button>
-       </div>
-       <div class="education-card-content">
-        <div class="courses-list">
-         <div class="course-item">
-          <div class="course-dot"></div>
-          <div class="course-text"><strong>Gestão de Mudança Organizacional - ADKAR</strong> <span class="course-institution">Prosci</span>
-          </div>
-         </div>
-         <div class="course-item">
-          <div class="course-dot"></div>
-          <div class="course-text"><strong>Modelagem de Processos BPMN 2.0</strong> <span class="course-institution">Bizagi</span>
-          </div>
-         </div>
-         <div class="course-item">
-          <div class="course-dot"></div>
-          <div class="course-text"><strong>Lean Six Sigma Yellow Belt</strong> <span class="course-institution">6Sigma Study</span>
-          </div>
-         </div>
-         <div class="course-item">
-          <div class="course-dot"></div>
-          <div class="course-text"><strong>Scrum Master Certified (SMC)</strong> <span class="course-institution">SCRUMstudy</span>
-          </div>
-         </div>
-         <div class="course-item">
-          <div class="course-dot"></div>
-          <div class="course-text"><strong>Kanban Essentials Professional Certificate</strong> <span class="course-institution">CertiProf</span>
-          </div>
-         </div>
+        <div class="area-node" data-area="7" style="top: 25%; left: 15%; transform: translate(-50%, 0);">
+            <div class="icon"> 🤖 </div>
+            <div class="area-text" id="area-text-7"> Desenvolvimento e Automação com IA </div>
+            <div class="tooltip"> Criando soluções inteligentes e automatizadas </div>
         </div>
-        <div class="skill-gain-box">
-         <div class="skill-gain-label">
-          🎯 Ganho de Habilidade
-         </div>
-         <div class="skill-gain-text">
-          Competência para orquestrar transformações organizacionais end-to-end: da análise de processos (BPMN) à implementação ágil (Scrum/Kanban) e consolidação da mudança (ADKAR).
-         </div>
-        </div>
-       </div>
-      </div>
-     </div>
+    </div>
+</div>
     </section>
     <section id="contato">
      <h2 class="section-title" id="contato-title">💬 Vamos Transformar Juntos?</h2>
@@ -4471,16 +4411,47 @@
     });
 
     // Education card expansion functionality
+    <script>
+    // Education card expansion functionality
     document.querySelectorAll('.education-card-header').forEach(header => {
       header.addEventListener('click', function() {
         const card = this.closest('.education-card');
         card.classList.toggle('expanded');
       });
+
+    // ******************************************************
+    // --- COLE O JAVASCRIPT DO INFOGRÁFICO AQUI ABAIXO ---
+    // ******************************************************
+    
+    // --- LÓGICA DO INFOGRÁFICO (NOVA) ---
+    const defaultConfig = { 
+        // ... todo o código JS do infográfico que te enviei antes ...
+    }
+    
+    function createConnections() {
+        // ...
+    }
+    
+    // ... e o resto do código JS ...
+
+    // Chama as funções ao carregar a página e ao redimensionar
+    window.addEventListener('load', () => {
+        createConnections();
     });
+    
+    window.addEventListener('resize', () => {
+        createConnections();
+    });
+    
+    // Fechamento da tag script
+</script>
+      });
+      }
   </script>
  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ab13931712c8aef',t:'MTc2NTI0ODkyNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
         
+
 
 
 
