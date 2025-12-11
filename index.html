@@ -2103,7 +2103,387 @@
     }
 
     /* Education Cards Grid */
-     
+ .main-wrapper {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 2rem;
+      animation: fadeInDown 0.8s ease-out;
+    }
+
+    .header h1 {
+      color: #ffffff;
+      font-size: 2rem;
+      font-weight: 300;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    .header p {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1rem;
+      font-weight: 300;
+    }
+
+   .infographic-container {
+     position: relative;
+     width: 100%;
+     max-width: 600px; 
+     aspect-ratio: 1;
+     margin: 0 auto;
+   }
+
+    svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .connection-line {
+      stroke: #4299e1;
+      stroke-width: 2;
+      opacity: 0.6;
+      filter: drop-shadow(0 0 8px #4299e1);
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      animation: drawLine 1.5s ease-out forwards;
+      transition: all 0.3s ease;
+    }
+
+    @keyframes drawLine {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    .light-flow {
+      stroke: url(#lightGradient);
+      stroke-width: 4;
+      opacity: 0;
+      filter: drop-shadow(0 0 12px #4299e1) drop-shadow(0 0 20px rgba(66, 153, 225, 0.6));
+      stroke-dasharray: 30 150;
+      animation: flowLight 2.5s linear infinite;
+      stroke-linecap: round;
+    }
+
+    @keyframes flowLight {
+      0% {
+        stroke-dashoffset: 180;
+        opacity: 0;
+      }
+      5% {
+        opacity: 0.9;
+      }
+      95% {
+        opacity: 0.9;
+      }
+      100% {
+        stroke-dashoffset: 0;
+        opacity: 0;
+      }
+    }
+    
+    .light-particle {
+      fill: #ffffff;
+      filter: drop-shadow(0 0 8px #4299e1) drop-shadow(0 0 15px rgba(66, 153, 225, 0.8));
+      opacity: 0;
+      animation: particleFlow 2.5s ease-in-out infinite;
+    }
+    
+    @keyframes particleFlow {
+      0% {
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+
+    .hub {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 140px;
+      height: 140px;
+      background: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+      animation: fadeIn 1s ease-out 0.5s both;
+      z-index: 10;
+    }
+
+    .hub::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(66, 153, 225, 0.4) 0%, transparent 70%);
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.6;
+      }
+      50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+      }
+    }
+
+    .avatar {
+      width: 100px;
+      height: 100px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: #ffffff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .avatar::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      transform: translate(-60%, -70%);
+    }
+
+    .area-node {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      background: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+      opacity: 0;
+      animation: fadeInBounce 0.6s ease-out forwards;
+    }
+
+    .area-node:nth-child(1) { animation-delay: 0.7s; }
+    .area-node:nth-child(2) { animation-delay: 0.8s; }
+    .area-node:nth-child(3) { animation-delay: 0.9s; }
+    .area-node:nth-child(4) { animation-delay: 1s; }
+    .area-node:nth-child(5) { animation-delay: 1.1s; }
+    .area-node:nth-child(6) { animation-delay: 1.2s; }
+    .area-node:nth-child(7) { animation-delay: 1.3s; }
+
+    @keyframes fadeInBounce {
+      0% {
+        opacity: 0;
+        transform: scale(0.3) rotate(-10deg);
+      }
+      60% {
+        opacity: 1;
+        transform: scale(1.05) rotate(2deg);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .area-node:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 30px rgba(66, 153, 225, 0.4), 
+                  0 0 40px rgba(66, 153, 225, 0.3),
+                  inset 0 0 20px rgba(66, 153, 225, 0.1);
+      z-index: 20;
+      background: linear-gradient(135deg, #ffffff 0%, rgba(66, 153, 225, 0.1) 100%);
+    }
+
+    .area-node.active .connection-line {
+      stroke-width: 4;
+      opacity: 1;
+      filter: drop-shadow(0 0 20px #4299e1) drop-shadow(0 0 35px rgba(66, 153, 225, 0.8));
+      animation: pulseGlow 1.5s ease-in-out infinite;
+    }
+    
+    @keyframes pulseGlow {
+      0%, 100% {
+        filter: drop-shadow(0 0 20px #4299e1) drop-shadow(0 0 35px rgba(66, 153, 225, 0.8));
+      }
+      50% {
+        filter: drop-shadow(0 0 30px #4299e1) drop-shadow(0 0 50px rgba(66, 153, 225, 1));
+      }
+    }
+    
+    .area-node.active .light-flow {
+      opacity: 1;
+      stroke-width: 6;
+      animation: flowLightActive 1.2s linear infinite;
+    }
+    
+    @keyframes flowLightActive {
+      0% {
+        stroke-dashoffset: 180;
+        opacity: 0;
+      }
+      5% {
+        opacity: 1;
+      }
+      95% {
+        opacity: 1;
+      }
+      100% {
+        stroke-dashoffset: 0;
+        opacity: 0;
+      }
+    }
+
+    .icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .area-node:hover .icon {
+      transform: scale(1.2) rotate(5deg);
+    }
+
+    .area-text {
+      font-size: 0.75rem;
+      text-align: center;
+      color: #333;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .tooltip {
+      position: absolute;
+      bottom: 130%;
+      left: 50%;
+      transform: translateX(-50%) scale(0);
+      background: rgba(0, 0, 0, 0.9);
+      color: #ffffff;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      white-space: nowrap;
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      opacity: 0;
+      z-index: 100;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    .tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 8px solid transparent;
+      border-top-color: rgba(0, 0, 0, 0.9);
+    }
+
+    .area-node:hover .tooltip {
+      transform: translateX(-50%) scale(1);
+      opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 1.5rem;
+      }
+      
+      .header p {
+        font-size: 0.9rem;
+      }
+      
+      .hub {
+        width: 100px;
+        height: 100px;
+      }
+      
+      .avatar {
+        width: 70px;
+        height: 70px;
+        font-size: 2rem;
+      }
+      
+      .area-node {
+        width: 90px;
+        height: 90px;
+        padding: 0.5rem;
+      }
+      
+      .icon {
+        font-size: 1.5rem;
+      }
+      
+      .area-text {
+        font-size: 0.65rem;
+      }
+      
+      .tooltip {
+        font-size: 0.75rem;
+        white-space: normal;
+        max-width: 200px;
+      }
+    }
 
     /* Contact Section */
     #contato {
@@ -4275,46 +4655,251 @@
     });
 
     // Education card expansion functionality
-    <script>
-    // Education card expansion functionality
-    document.querySelectorAll('.education-card-header').forEach(header => {
-      header.addEventListener('click', function() {
-        const card = this.closest('.education-card');
-        card.classList.toggle('expanded');
-      });
+   const svg = document.getElementById('connections-svg'); // Garante que o SVG seja acessível globalmente
 
-    // ******************************************************
-    // --- COLE O JAVASCRIPT DO INFOGRÁFICO AQUI ABAIXO ---
-    // ******************************************************
-    
-    // --- LÓGICA DO INFOGRÁFICO (NOVA) ---
-    const defaultConfig = { 
-        // ... todo o código JS do infográfico que te enviei antes ...
-    }
-    
-    function createConnections() {
-        // ...
-    }
-    
-    // ... e o resto do código JS ...
+    const defaultConfig = {
+      profile_name: 'Profissional de Excelência',
+      profile_title: 'Catalisadora da Conexão',
+      background_color: '#667eea',
+      secondary_color: '#764ba2',
+      accent_color: '#4299e1',
+      text_color: '#ffffff',
+      node_color: '#ffffff',
+      area_1: 'Processos',
+      area_2: 'Projetos',
+      area_3: 'Change Management',
+      area_4: 'Análise de Dados',
+      area_5: 'Transformação Digital',
+      area_6: 'Sustentação de Sistemas',
+      area_7: 'Desenvolvimento e Automação com IA',
+      font_family: 'Segoe UI',
+      font_size: 16
+    };
 
-    // Chama as funções ao carregar a página e ao redimensionar
-    window.addEventListener('load', () => {
-        createConnections();
-    });
-    
-    window.addEventListener('resize', () => {
-        createConnections();
-    });
-    
-    // Fechamento da tag script
-</script>
-      });
+    async function onConfigChange(config) {
+      const customFont = config.font_family || defaultConfig.font_family;
+      const baseFontStack = 'Tahoma, Geneva, Verdana, sans-serif';
+      const baseSize = config.font_size || defaultConfig.font_size;
+      
+      // O restante do código de configuração (onConfigChange)
+      document.body.style.fontFamily = `${customFont}, ${baseFontStack}`;
+      
+      const profileName = document.getElementById('profile-name');
+      const profileTitle = document.getElementById('profile-title');
+      
+      if (profileName) {
+        profileName.textContent = config.profile_name || defaultConfig.profile_name;
+        profileName.style.fontSize = `${baseSize * 2}px`;
+        profileName.style.fontFamily = `${customFont}, ${baseFontStack}`;
+        profileName.style.color = config.text_color || defaultConfig.text_color;
       }
+      
+      if (profileTitle) {
+        profileTitle.textContent = config.profile_title || defaultConfig.profile_title;
+        profileTitle.style.fontSize = `${baseSize}px`;
+        profileTitle.style.fontFamily = `${customFont}, ${baseFontStack}`;
+        profileTitle.style.color = config.text_color || defaultConfig.text_color;
+      }
+      
+      const background = config.background_color || defaultConfig.background_color;
+      const secondary = config.secondary_color || defaultConfig.secondary_color;
+      // Nota: Esta linha abaixo altera o background de TODO o body, o que pode entrar em conflito com seus estilos de seção.
+      // Você pode querer comentar ou ajustar.
+      // document.body.style.background = `linear-gradient(135deg, ${background} 0%, ${secondary} 100%)`;
+      
+      const accent = config.accent_color || defaultConfig.accent_color;
+      const lines = document.querySelectorAll('.connection-line, .light-flow');
+      lines.forEach(line => {
+        // Ajuste de cor nas linhas. No CSS, usamos classes, então este setAttribute pode ser substituído por classList.add/remove se houver conflito.
+        // line.setAttribute('stroke', accent);
+      });
+      
+      // O restante das configurações do SDK...
+      const hubBefore = document.querySelector('.hub::before');
+      document.documentElement.style.setProperty('--accent-color', accent);
+      
+      const nodes = document.querySelectorAll('.area-node');
+      const nodeColor = config.node_color || defaultConfig.node_color;
+      nodes.forEach(node => {
+        node.style.background = nodeColor;
+      });
+      
+      for (let i = 1; i <= 7; i++) {
+        const areaText = document.getElementById(`area-text-${i}`);
+        if (areaText) {
+          areaText.textContent = config[`area_${i}`] || defaultConfig[`area_${i}`];
+          areaText.style.fontSize = `${baseSize * 0.75}px`;
+          areaText.style.fontFamily = `${customFont}, ${baseFontStack}`;
+        }
+      }
+    }
+
+    function createConnections() {
+      const svg = document.getElementById('connections-svg');
+      if (!svg) return; // Proteção caso o HTML não tenha carregado
+
+      // Limpar SVG para redraw (necessário para resize)
+      svg.innerHTML = `
+        <defs>
+          <lineargradient id="lightGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#4299e1;stop-opacity:0" />
+            <stop offset="30%" style="stop-color:#ffffff;stop-opacity:1" />
+            <stop offset="70%" style="stop-color:#ffffff;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#4299e1;stop-opacity:0" />
+          </lineargradient>
+          <filter id="glow">
+            <fegaussianblur stddeviation="4" result="coloredBlur" />
+            <femerge>
+                <femergenode in="coloredBlur" />
+                <femergenode in="SourceGraphic" />
+            </femerge>
+          </filter>
+        </defs>`;
+        
+      const hub = document.querySelector('.hub');
+      const nodes = document.querySelectorAll('.area-node');
+      
+      if (!hub || nodes.length === 0) return; // Proteção
+
+      const hubRect = hub.getBoundingClientRect();
+      const containerRect = svg.getBoundingClientRect();
+      
+      const hubCenterX = hubRect.left + hubRect.width / 2 - containerRect.left;
+      const hubCenterY = hubRect.top + hubRect.height / 2 - containerRect.top;
+      
+      nodes.forEach((node, index) => {
+        const nodeRect = node.getBoundingClientRect();
+        const nodeCenterX = nodeRect.left + nodeRect.width / 2 - containerRect.left;
+        const nodeCenterY = nodeRect.top + nodeRect.height / 2 - containerRect.top;
+        
+        // Linha base (connection-line)
+        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        line.setAttribute('x1', nodeCenterX);
+        line.setAttribute('y1', nodeCenterY);
+        line.setAttribute('x2', hubCenterX);
+        line.setAttribute('y2', hubCenterY);
+        line.setAttribute('class', 'connection-line');
+        line.setAttribute('data-node', index);
+        svg.appendChild(line);
+        
+        // Linha de fluxo de luz (light-flow)
+        const flowLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+        flowLine.setAttribute('x1', nodeCenterX);
+        flowLine.setAttribute('y1', nodeCenterY);
+        flowLine.setAttribute('x2', hubCenterX);
+        flowLine.setAttribute('y2', hubCenterY);
+        flowLine.setAttribute('class', 'light-flow');
+        flowLine.setAttribute('data-node', index);
+        flowLine.style.animationDelay = `${index * 0.35}s`;
+        svg.appendChild(flowLine);
+
+        // Path invisível para animação de partículas
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path.setAttribute('id', `path-${index}`);
+        path.setAttribute('d', `M ${nodeCenterX} ${nodeCenterY} L ${hubCenterX} ${hubCenterY}`);
+        path.style.display = 'none';
+        svg.appendChild(path);
+        
+        // Partículas de luz
+        for (let i = 0; i < 3; i++) {
+          const particle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+          particle.setAttribute('r', '3');
+          particle.setAttribute('class', 'light-particle');
+          particle.setAttribute('data-node', index);
+          particle.style.animationDelay = `${index * 0.35 + i * 0.8}s`;
+          
+          particle.innerHTML = `
+            <animateMotion dur="2.5s" repeatCount="indefinite" begin="${index * 0.35 + i * 0.8}s">
+              <mpath href="#path-${index}"/>
+            </animateMotion>
+          `;
+          svg.appendChild(particle);
+        }
+      });
+    }
+    
+    // --- Lógica de Interatividade (Hover) ---
+    const nodes = document.querySelectorAll('.area-node');
+    // Adicionamos a lógica de interatividade no evento 'load' para garantir que o SVG esteja carregado
+    // Se a variável 'svg' não for global, precisamos redeclará-la aqui: 
+    // const svg = document.getElementById('connections-svg'); 
+    
+    nodes.forEach((node, index) => {
+      node.addEventListener('mouseenter', () => {
+        const currentSvg = document.getElementById('connections-svg');
+        if (!currentSvg) return;
+        node.classList.add('active');
+        const lines = currentSvg.querySelectorAll(`.connection-line[data-node="${index}"], .light-flow[data-node="${index}"]`);
+        lines.forEach(line => {
+          line.classList.add('active-line'); 
+        });
+      });
+      
+      node.addEventListener('mouseleave', () => {
+        const currentSvg = document.getElementById('connections-svg');
+        if (!currentSvg) return;
+        node.classList.remove('active');
+        const lines = currentSvg.querySelectorAll(`.connection-line[data-node="${index}"], .light-flow[data-node="${index}"]`);
+        lines.forEach(line => {
+          line.classList.remove('active-line');
+        });
+      });
+    });
+
+    // Chamadas de inicialização e SDK
+    window.addEventListener('load', () => {
+      createConnections();
+      if (window.elementSdk && window.elementSdk.config) {
+        onConfigChange(window.elementSdk.config);
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      createConnections();
+    });
+    
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            // ... (mapeamento de cores)
+          ],
+          borderables: [],
+          fontEditable: {
+            get: () => config.font_family || defaultConfig.font_family,
+            set: (value) => {
+              config.font_family = value;
+              window.elementSdk.setConfig({ font_family: value });
+            }
+          },
+          fontSizeable: {
+            get: () => config.font_size || defaultConfig.font_size,
+            set: (value) => {
+              config.font_size = value;
+              window.elementSdk.setConfig({ font_size: value });
+            }
+          }
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ['profile_name', config.profile_name || defaultConfig.profile_name],
+          ['profile_title', config.profile_title || defaultConfig.profile_title],
+          ['area_1', config.area_1 || defaultConfig.area_1],
+          ['area_2', config.area_2 || defaultConfig.area_2],
+          ['area_3', config.area_3 || defaultConfig.area_3],
+          ['area_4', config.area_4 || defaultConfig.area_4],
+          ['area_5', config.area_5 || defaultConfig.area_5],
+          ['area_6', config.area_6 || defaultConfig.area_6],
+          ['area_7', config.area_7 || defaultConfig.area_7]
+        ])
+      });
+    }
   </script>
  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ab13931712c8aef',t:'MTc2NTI0ODkyNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
         
+
 
 
 
