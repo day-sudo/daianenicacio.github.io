@@ -4666,7 +4666,7 @@
         svg.appendChild(line);
         
         // Linha de fluxo de luz (light-flow)
-        const flowLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+       const flowLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
         flowLine.setAttribute('x1', nodeCenterX);
         flowLine.setAttribute('y1', nodeCenterY);
         flowLine.setAttribute('x2', hubCenterX);
@@ -4682,8 +4682,9 @@
         path.setAttribute('d', `M ${nodeCenterX} ${nodeCenterY} L ${hubCenterX} ${hubCenterY}`);
         path.style.display = 'none';
         svg.appendChild(path);
-        
-        // Partículas de luz
+      });
+    }
+           // Partículas de luz
         for (let i = 0; i < 3; i++) {
           const particle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
           particle.setAttribute('r', '3');
@@ -4691,16 +4692,18 @@
           particle.setAttribute('data-node', index);
           particle.style.animationDelay = `${index * 0.35 + i * 0.8}s`;
           
+          
+         const length = Math.sqrt(Math.pow(hubCenterX - nodeCenterX, 2) + Math.pow(hubCenterY - nodeCenterY, 2));
+          const steps = 100;
+          
           particle.innerHTML = `
             <animateMotion dur="2.5s" repeatCount="indefinite" begin="${index * 0.35 + i * 0.8}s">
               <mpath href="#path-${index}"/>
             </animateMotion>
           `;
+          
           svg.appendChild(particle);
         }
-      });
-    }
-    
     // --- Lógica de Interatividade (Hover) ---
     const nodes = document.querySelectorAll('.area-node');
     // Adicionamos a lógica de interatividade no evento 'load' para garantir que o SVG esteja carregado
@@ -4782,6 +4785,7 @@
  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ab13931712c8aef',t:'MTc2NTI0ODkyNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
         
+
 
 
 
