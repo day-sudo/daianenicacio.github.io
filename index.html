@@ -4330,486 +4330,236 @@
   </div>
 </footer>
 <script>
- console.log("JS carregou! ✔️");
-    const defaultConfig = {
-      background_color: "#f8f9fa",
-      surface_color: "#ffffff",
-      text_color: "#2d3748",
-      primary_action: "#4299e1",
-      secondary_action: "#48bb78",
-      font_family: "Inter",
-      font_size: 16,
-      nav_logo: "Daiane Nicácio",
-      hero_title: "Eficiência em movimento",
-      hero_subtitle: "Conectando pessoas, processos e tecnologia para transformações sustentáveis e inovadoras.",
-      proposta_title: "Minha Proposta de Valor",
-      proposta_subtitle: "Integrando os pilares da transformação organizacional.",
-      apresentacao_title: "Apresentação",
-      contato_title: "Contato",
-      footer_text: "© 2024 Daiane Nicácio. Todos os direitos reservados."
-    };
+/* ============================================
+   CONFIGURAÇÃO UNIFICADA (SITE + HUB + SVG)
+=============================================== */
+const defaultConfig = {
+  /* --- SITE --- */
+  background_color: "#f8f9fa",
+  surface_color: "#ffffff",
+  text_color: "#2d3748",
+  primary_action: "#4299e1",
+  secondary_action: "#48bb78",
+  font_family: "Inter",
+  font_size: 16,
+  nav_logo: "Daiane Nicácio",
+  hero_title: "Eficiência em movimento",
+  hero_subtitle: "Conectando pessoas, processos e tecnologia para transformações sustentáveis e inovadoras.",
+  proposta_title: "Minha Proposta de Valor",
+  proposta_subtitle: "Integrando os pilares da transformação organizacional.",
+  apresentacao_title: "Apresentação",
+  contato_title: "Contato",
+  footer_text: "© 2024 Daiane Nicácio. Todos os direitos reservados.",
 
-    async function onConfigChange(config) {
-      const baseSize = config.font_size || defaultConfig.font_size;
-      const customFont = config.font_family || defaultConfig.font_family;
-      const baseFontStack = 'Arial, sans-serif';
-      
-      document.body.style.fontFamily = `${customFont}, ${baseFontStack}`;
-      document.body.style.fontSize = `${baseSize}px`;
-      
-      const background = config.background_color || defaultConfig.background_color;
-      const surface = config.surface_color || defaultConfig.surface_color;
-      const text = config.text_color || defaultConfig.text_color;
-      const primary = config.primary_action || defaultConfig.primary_action;
-      const secondary = config.secondary_action || defaultConfig.secondary_action;
-      
-      document.body.style.background = background;
-      document.body.style.color = text;
-      
-      const navLogo = document.getElementById('nav-logo');
-      if (navLogo) navLogo.textContent = config.nav_logo || defaultConfig.nav_logo;
-      
-      const heroTitle = document.getElementById('hero-title');
-      if (heroTitle) {
-        heroTitle.textContent = config.hero_title || defaultConfig.hero_title;
-        heroTitle.style.fontFamily = `Poppins, ${baseFontStack}`;
-        heroTitle.style.fontSize = `${baseSize * 2.2}px`;
-      }
-      
-      const heroSubtitle = document.getElementById('hero-subtitle');
-      if (heroSubtitle) {
-        heroSubtitle.textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
-        heroSubtitle.style.fontSize = `${baseSize * 1.25}px`;
-      }
-      
-      const propostaTitle = document.getElementById('proposta-title');
-      if (propostaTitle) propostaTitle.textContent = config.proposta_title || defaultConfig.proposta_title;
-      
-      const propostaSubtitle = document.getElementById('proposta-subtitle');
-      if (propostaSubtitle) propostaSubtitle.textContent = config.proposta_subtitle || defaultConfig.proposta_subtitle;
-      
-      const apresentacaoTitle = document.getElementById('apresentacao-title');
-      if (apresentacaoTitle) apresentacaoTitle.textContent = config.apresentacao_title || defaultConfig.apresentacao_title;
-      
-      const contatoTitle = document.getElementById('contato-title');
-      if (contatoTitle) contatoTitle.textContent = config.contato_title || defaultConfig.contato_title;
-      
-      const footerText = document.getElementById('footer-text');
-      if (footerText) footerText.textContent = config.footer_text || defaultConfig.footer_text;
-      
-      const sectionTitles = document.querySelectorAll('.section-title');
-      sectionTitles.forEach(title => {
-        title.style.fontFamily = `Poppins, ${baseFontStack}`;
-        title.style.fontSize = `${baseSize * 2}px`;
-      });
+  /* --- HUB ANIMADO --- */
+  profile_name: 'Profissional de Excelência',
+  profile_title: 'Catalisadora da Conexão',
+  secondary_color: '#764ba2',
+  accent_color: '#4299e1',
+  node_color: '#ffffff',
+  area_1: 'Processos',
+  area_2: 'Projetos',
+  area_3: 'Change Management',
+  area_4: 'Análise de Dados',
+  area_5: 'Transformação Digital',
+  area_6: 'Sustentação de Sistemas',
+  area_7: 'Desenvolvimento e Automação com IA'
+};
+
+/* =====================================================
+   onConfigChange – AGORA UNIFICADO (SITE + HUB)
+===================================================== */
+async function onConfigChange(config) {
+  const baseSize = config.font_size || defaultConfig.font_size;
+  const customFont = config.font_family || defaultConfig.font_family;
+  const baseFontStack = "Arial, sans-serif";
+
+  /* -------- SITE -------- */
+  document.body.style.fontFamily = `${customFont}, ${baseFontStack}`;
+  document.body.style.background = config.background_color;
+  document.body.style.color = config.text_color;
+
+  const updateText = (id, value) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = value;
+  };
+
+  updateText("nav-logo", config.nav_logo);
+  updateText("hero-title", config.hero_title);
+  updateText("hero-subtitle", config.hero_subtitle);
+  updateText("proposta-title", config.proposta_title);
+  updateText("proposta-subtitle", config.proposta_subtitle);
+  updateText("apresentacao-title", config.apresentacao_title);
+  updateText("contato-title", config.contato_title);
+  updateText("footer-text", config.footer_text);
+
+  /* -------- HUB -------- */
+  const profileName = document.getElementById("profile-name");
+  if (profileName) profileName.textContent = config.profile_name;
+
+  const profileTitle = document.getElementById("profile-title");
+  if (profileTitle) profileTitle.textContent = config.profile_title;
+
+  for (let i = 1; i <= 7; i++) {
+    updateText(`area-text-${i}`, config[`area_${i}`]);
+  }
+
+  document.documentElement.style.setProperty("--accent-color", config.accent_color);
+
+  const nodes = document.querySelectorAll(".area-node");
+  nodes.forEach(n => n.style.background = config.node_color);
+}
+
+/* =====================================================
+   FUNÇÃO PRINCIPAL DO SVG (LINHAS + PARTÍCULAS)
+===================================================== */
+function createConnections() {
+  const svg = document.getElementById("connections-svg");
+  if (!svg) return;
+
+  svg.innerHTML = `
+    <defs>
+      <linearGradient id="lightGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#4299e1;stop-opacity:0"/>
+        <stop offset="30%" style="stop-color:#fff;stop-opacity:1"/>
+        <stop offset="70%" style="stop-color:#fff;stop-opacity:1"/>
+        <stop offset="100%" style="stop-color:#4299e1;stop-opacity:0"/>
+      </linearGradient>
+      <filter id="glow">
+        <feGaussianBlur stddeviation="4" result="blur"/>
+        <feMerge>
+          <feMergeNode in="blur"/>
+          <feMergeNode in="SourceGraphic"/>
+        </feMerge>
+      </filter>
+    </defs>
+  `;
+
+  const hub = document.querySelector(".hub");
+  const nodes = document.querySelectorAll(".area-node");
+  if (!hub || nodes.length === 0) return;
+
+  const hubRect = hub.getBoundingClientRect();
+  const containerRect = svg.getBoundingClientRect();
+
+  const hubX = hubRect.left + hubRect.width/2 - containerRect.left;
+  const hubY = hubRect.top + hubRect.height/2 - containerRect.top;
+
+  nodes.forEach((node, index) => {
+    const nodeRect = node.getBoundingClientRect();
+
+    const nodeX = nodeRect.left + nodeRect.width/2 - containerRect.left;
+    const nodeY = nodeRect.top + nodeRect.height/2 - containerRect.top;
+
+    /* --- LINHA BASE --- */
+    const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    line.setAttribute("x1", nodeX);
+    line.setAttribute("y1", nodeY);
+    line.setAttribute("x2", hubX);
+    line.setAttribute("y2", hubY);
+    line.setAttribute("class", "connection-line");
+    line.dataset.node = index;
+    svg.appendChild(line);
+
+    /* --- LINHA DE FLUXO --- */
+    const flow = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    flow.setAttribute("x1", nodeX);
+    flow.setAttribute("y1", nodeY);
+    flow.setAttribute("x2", hubX);
+    flow.setAttribute("y2", hubY);
+    flow.setAttribute("class", "light-flow");
+    flow.dataset.node = index;
+    flow.style.animationDelay = `${index * 0.35}s`;
+    svg.appendChild(flow);
+
+    /* --- PATH PARA ANIMAÇÃO --- */
+    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.setAttribute("id", `path-${index}`);
+    path.setAttribute("d", `M ${nodeX} ${nodeY} L ${hubX} ${hubY}`);
+    svg.appendChild(path);
+
+    /* --- PARTÍCULAS --- */
+    for (let i = 0; i < 3; i++) {
+      const particle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      particle.setAttribute("r", "3");
+      particle.setAttribute("class", "light-particle");
+      particle.innerHTML = `
+        <animateMotion dur="2s" repeatCount="indefinite" begin="${i * 0.8 + index * 0.35}s">
+          <mpath href="#path-${index}"/>
+        </animateMotion>
+      `;
+      svg.appendChild(particle);
     }
+  });
+}
 
-    function mapToCapabilities(config) {
-      return {
-        recolorables: [
-          {
-            get: () => config.background_color || defaultConfig.background_color,
-            set: (value) => {
-              config.background_color = value;
-              window.elementSdk.setConfig({ background_color: value });
-            }
-          },
-          {
-            get: () => config.surface_color || defaultConfig.surface_color,
-            set: (value) => {
-              config.surface_color = value;
-              window.elementSdk.setConfig({ surface_color: value });
-            }
-          },
-          {
-            get: () => config.text_color || defaultConfig.text_color,
-            set: (value) => {
-              config.text_color = value;
-              window.elementSdk.setConfig({ text_color: value });
-            }
-          },
-          {
-            get: () => config.primary_action || defaultConfig.primary_action,
-            set: (value) => {
-              config.primary_action = value;
-              window.elementSdk.setConfig({ primary_action: value });
-            }
-          },
-          {
-            get: () => config.secondary_action || defaultConfig.secondary_action,
-            set: (value) => {
-              config.secondary_action = value;
-              window.elementSdk.setConfig({ secondary_action: value });
-            }
-          }
-        ],
-        borderables: [],
-        fontEditable: {
-          get: () => config.font_family || defaultConfig.font_family,
-          set: (value) => {
-            config.font_family = value;
-            window.elementSdk.setConfig({ font_family: value });
-          }
-        },
-        fontSizeable: {
-          get: () => config.font_size || defaultConfig.font_size,
-          set: (value) => {
-            config.font_size = value;
-            window.elementSdk.setConfig({ font_size: value });
-          }
-        }
-      };
-    }
+/* =====================================================
+   INTERATIVIDADE DO HUB (hover sobre os nós)
+===================================================== */
+function initNodeHover() {
+  const nodes = document.querySelectorAll(".area-node");
 
-    function mapToEditPanelValues(config) {
-      return new Map([
-        ["nav_logo", config.nav_logo || defaultConfig.nav_logo],
-        ["hero_title", config.hero_title || defaultConfig.hero_title],
-        ["hero_subtitle", config.hero_subtitle || defaultConfig.hero_subtitle],
-        ["proposta_title", config.proposta_title || defaultConfig.proposta_title],
-        ["proposta_subtitle", config.proposta_subtitle || defaultConfig.proposta_subtitle],
-        ["apresentacao_title", config.apresentacao_title || defaultConfig.apresentacao_title],
-        ["contato_title", config.contato_title || defaultConfig.contato_title],
-        ["footer_text", config.footer_text || defaultConfig.footer_text]
-      ]);
-    }
-
-    if (window.elementSdk) {
-      window.elementSdk.init({
-        defaultConfig,
-        onConfigChange,
-        mapToCapabilities,
-        mapToEditPanelValues
-      });
-    }
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          
-          const navLinks = document.getElementById('nav-links');
-          if (navLinks.classList.contains('active')) {
-            navLinks.classList.remove('active');
-          }
-          
-          document.querySelectorAll('.nav-links a').forEach(link => {
-            link.classList.remove('active');
-          });
-          this.classList.add('active');
-        }
-      });
+  nodes.forEach((node, index) => {
+    node.addEventListener("mouseenter", () => {
+      const svg = document.getElementById("connections-svg");
+      if (!svg) return;
+      node.classList.add("active");
+      svg.querySelectorAll(`.connection-line[data-node="${index}"], .light-flow[data-node="${index}"]`)
+        .forEach(l => l.classList.add("active-line"));
     });
 
-    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-    const navLinks = document.getElementById('nav-links');
-    
-    mobileMenuToggle.addEventListener('click', function() {
-      navLinks.classList.toggle('active');
+    node.addEventListener("mouseleave", () => {
+      const svg = document.getElementById("connections-svg");
+      if (!svg) return;
+      node.classList.remove("active");
+      svg.querySelectorAll(`.connection-line[data-node="${index}"], .light-flow[data-node="${index}"]`)
+        .forEach(l => l.classList.remove("active-line"));
     });
+  });
+}
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const id = entry.target.getAttribute('id');
-          document.querySelectorAll('.nav-links a').forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${id}`) {
-              link.classList.add('active');
-            }
-          });
-        }
-      });
-    }, { threshold: 0.5 });
+/* =====================================================
+   NAVEGAÇÃO DO SITE (scroll suave + menu mobile)
+===================================================== */
+function initNavigation() {
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener("click", e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute("href"));
+      if (target) target.scrollIntoView({ behavior:"smooth" });
 
-    document.querySelectorAll('section').forEach(section => {
-      observer.observe(section);
+      document.querySelectorAll(".nav-links a").forEach(n => n.classList.remove("active"));
+      a.classList.add("active");
     });
+  });
 
-    // Education card expansion functionality
-   const svg = document.getElementById('connections-svg'); // Garante que o SVG seja acessível globalmente
+  const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
+  const navLinks = document.getElementById("nav-links");
 
-    const defaultConfig = {
-      profile_name: 'Profissional de Excelência',
-      profile_title: 'Catalisadora da Conexão',
-      background_color: '#667eea',
-      secondary_color: '#764ba2',
-      accent_color: '#4299e1',
-      text_color: '#ffffff',
-      node_color: '#ffffff',
-      area_1: 'Processos',
-      area_2: 'Projetos',
-      area_3: 'Change Management',
-      area_4: 'Análise de Dados',
-      area_5: 'Transformação Digital',
-      area_6: 'Sustentação de Sistemas',
-      area_7: 'Desenvolvimento e Automação com IA',
-      font_family: 'Segoe UI',
-      font_size: 16
-    };
+  if (mobileMenuToggle) {
+    mobileMenuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+  }
+}
 
-    async function onConfigChange(config) {
-      const customFont = config.font_family || defaultConfig.font_family;
-      const baseFontStack = 'Tahoma, Geneva, Verdana, sans-serif';
-      const baseSize = config.font_size || defaultConfig.font_size;
-      
-      // O restante do código de configuração (onConfigChange)
-      document.body.style.fontFamily = `${customFont}, ${baseFontStack}`;
-      
-      const profileName = document.getElementById('profile-name');
-      const profileTitle = document.getElementById('profile-title');
-      
-      if (profileName) {
-        profileName.textContent = config.profile_name || defaultConfig.profile_name;
-        profileName.style.fontSize = `${baseSize * 2}px`;
-        profileName.style.fontFamily = `${customFont}, ${baseFontStack}`;
-        profileName.style.color = config.text_color || defaultConfig.text_color;
-      }
-      
-      if (profileTitle) {
-        profileTitle.textContent = config.profile_title || defaultConfig.profile_title;
-        profileTitle.style.fontSize = `${baseSize}px`;
-        profileTitle.style.fontFamily = `${customFont}, ${baseFontStack}`;
-        profileTitle.style.color = config.text_color || defaultConfig.text_color;
-      }
-      
-      const background = config.background_color || defaultConfig.background_color;
-      const secondary = config.secondary_color || defaultConfig.secondary_color;
-      // Nota: Esta linha abaixo altera o background de TODO o body, o que pode entrar em conflito com seus estilos de seção.
-      // Você pode querer comentar ou ajustar.
-      // document.body.style.background = `linear-gradient(135deg, ${background} 0%, ${secondary} 100%)`;
-      
-      const accent = config.accent_color || defaultConfig.accent_color;
-      const lines = document.querySelectorAll('.connection-line, .light-flow');
-      lines.forEach(line => {
-        // Ajuste de cor nas linhas. No CSS, usamos classes, então este setAttribute pode ser substituído por classList.add/remove se houver conflito.
-        // line.setAttribute('stroke', accent);
-      });
-      
-      // O restante das configurações do SDK...
-      const hubBefore = document.querySelector('.hub::before');
-      document.documentElement.style.setProperty('--accent-color', accent);
-      
-      const nodes = document.querySelectorAll('.area-node');
-      const nodeColor = config.node_color || defaultConfig.node_color;
-      nodes.forEach(node => {
-        node.style.background = nodeColor;
-      });
-      
-      for (let i = 1; i <= 7; i++) {
-        const areaText = document.getElementById(`area-text-${i}`);
-        if (areaText) {
-          areaText.textContent = config[`area_${i}`] || defaultConfig[`area_${i}`];
-          areaText.style.fontSize = `${baseSize * 0.75}px`;
-          areaText.style.fontFamily = `${customFont}, ${baseFontStack}`;
-        }
-      }
-    }
+/* =====================================================
+   START
+===================================================== */
+window.addEventListener("load", () => {
+  initNavigation();
+  createConnections();
+  initNodeHover();
 
-    function createConnections() {
-      const svg = document.getElementById('connections-svg');
-      if (!svg) return; // Proteção caso o HTML não tenha carregado
+  if (window.elementSdk && window.elementSdk.config) {
+    onConfigChange(window.elementSdk.config);
+  }
+});
 
-      // Limpar SVG para redraw (necessário para resize)
-      svg.innerHTML = `
-        <defs>
-          <lineargradient id="lightGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" style="stop-color:#4299e1;stop-opacity:0" />
-            <stop offset="30%" style="stop-color:#ffffff;stop-opacity:1" />
-            <stop offset="70%" style="stop-color:#ffffff;stop-opacity:1" />
-            <stop offset="100%" style="stop-color:#4299e1;stop-opacity:0" />
-          </lineargradient>
-          <filter id="glow">
-            <fegaussianblur stddeviation="4" result="coloredBlur" />
-            <femerge>
-                <femergenode in="coloredBlur" />
-                <femergenode in="SourceGraphic" />
-            </femerge>
-          </filter>
-        </defs>`;
+</script>
+
         
-      const hub = document.querySelector('.hub');
-      const nodes = document.querySelectorAll('.area-node');
-      
-      if (!hub || nodes.length === 0) return; // Proteção
 
-      const hubRect = hub.getBoundingClientRect();
-      const containerRect = svg.getBoundingClientRect();
-      
-      const hubCenterX = hubRect.left + hubRect.width / 2 - containerRect.left;
-      const hubCenterY = hubRect.top + hubRect.height / 2 - containerRect.top;
-      
-      nodes.forEach((node, index) => {
-        const nodeRect = node.getBoundingClientRect();
-        const nodeCenterX = nodeRect.left + nodeRect.width / 2 - containerRect.left;
-        const nodeCenterY = nodeRect.top + nodeRect.height / 2 - containerRect.top;
-        
-        // Linha base (connection-line)
-        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-        line.setAttribute('x1', nodeCenterX);
-        line.setAttribute('y1', nodeCenterY);
-        line.setAttribute('x2', hubCenterX);
-        line.setAttribute('y2', hubCenterY);
-        line.setAttribute('class', 'connection-line');
-        line.setAttribute('data-node', index);
-        svg.appendChild(line);
-        
-        // Linha de fluxo de luz (light-flow)
-       const flowLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-        flowLine.setAttribute('x1', nodeCenterX);
-        flowLine.setAttribute('y1', nodeCenterY);
-        flowLine.setAttribute('x2', hubCenterX);
-        flowLine.setAttribute('y2', hubCenterY);
-        flowLine.setAttribute('class', 'light-flow');
-        flowLine.setAttribute('data-node', index);
-        flowLine.style.animationDelay = `${index * 0.35}s`;
-        svg.appendChild(flowLine);
-
-        // Path invisível para animação de partículas
-        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-        path.setAttribute('id', `path-${index}`);
-        path.setAttribute('d', `M ${nodeCenterX} ${nodeCenterY} L ${hubCenterX} ${hubCenterY}`);
-        path.style.display = 'none';
-        svg.appendChild(path);
-      });
-    }
-           // Partículas de luz
-        for (let i = 0; i < 3; i++) {
-          const particle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-          particle.setAttribute('r', '3');
-          particle.setAttribute('class', 'light-particle');
-          particle.setAttribute('data-node', index);
-          particle.style.animationDelay = `${index * 0.35 + i * 0.8}s`;
-          
-          
-         const length = Math.sqrt(Math.pow(hubCenterX - nodeCenterX, 2) + Math.pow(hubCenterY - nodeCenterY, 2));
-          const steps = 100;
-          
-          particle.innerHTML = `
-            <animateMotion dur="2.5s" repeatCount="indefinite" begin="${index * 0.35 + i * 0.8}s">
-              <mpath href="#path-${index}"/>
-            </animateMotion>
-          `;
-          
-          svg.appendChild(particle);
-        }
-    // --- Lógica de Interatividade (Hover) ---
-    const nodes = document.querySelectorAll('.area-node');
-    // Adicionamos a lógica de interatividade no evento 'load' para garantir que o SVG esteja carregado
-    // Se a variável 'svg' não for global, precisamos redeclará-la aqui: 
-    // const svg = document.getElementById('connections-svg'); 
-    
-    nodes.forEach((node, index) => {
-      node.addEventListener('mouseenter', () => {
-        const currentSvg = document.getElementById('connections-svg');
-        if (!currentSvg) return;
-        node.classList.add('active');
-        const lines = currentSvg.querySelectorAll(`.connection-line[data-node="${index}"], .light-flow[data-node="${index}"]`);
-        lines.forEach(line => {
-          line.classList.add('active-line'); 
-        });
-      });
-      
-      node.addEventListener('mouseleave', () => {
-        const currentSvg = document.getElementById('connections-svg');
-        if (!currentSvg) return;
-        node.classList.remove('active');
-        const lines = currentSvg.querySelectorAll(`.connection-line[data-node="${index}"], .light-flow[data-node="${index}"]`);
-        lines.forEach(line => {
-          line.classList.remove('active-line');
-        });
-      });
-    });
-
-    window.addEventListener('resize', () => {
-      svg.innerHTML = '';
-      createConnections();
-    });
-
-    if (window.elementSdk) {
-      window.elementSdk.init({
-        defaultConfig,
-        onConfigChange,
-        mapToCapabilities: (config) => ({
-          recolorables: [
-            {
-              get: () => config.background_color || defaultConfig.background_color,
-              set: (value) => {
-                config.background_color = value;
-                window.elementSdk.setConfig({ background_color: value });
-              }
-            },
-            {
-              get: () => config.secondary_color || defaultConfig.secondary_color,
-              set: (value) => {
-                config.secondary_color = value;
-                window.elementSdk.setConfig({ secondary_color: value });
-              }
-            },
-            {
-              get: () => config.accent_color || defaultConfig.accent_color,
-              set: (value) => {
-                config.accent_color = value;
-                window.elementSdk.setConfig({ accent_color: value });
-              }
-            },
-            {
-              get: () => config.text_color || defaultConfig.text_color,
-              set: (value) => {
-                config.text_color = value;
-                window.elementSdk.setConfig({ text_color: value });
-              }
-            },
-            {
-              get: () => config.node_color || defaultConfig.node_color,
-              set: (value) => {
-                config.node_color = value;
-                window.elementSdk.setConfig({ node_color: value });
-              }
-            }
-          ],
-          borderables: [],
-          fontEditable: {
-            get: () => config.font_family || defaultConfig.font_family,
-            set: (value) => {
-              config.font_family = value;
-              window.elementSdk.setConfig({ font_family: value });
-            }
-          },
-          fontSizeable: {
-            get: () => config.font_size || defaultConfig.font_size,
-            set: (value) => {
-              config.font_size = value;
-              window.elementSdk.setConfig({ font_size: value });
-            }
-          }
-        }),
-        mapToEditPanelValues: (config) => new Map([
-          ['profile_name', config.profile_name || defaultConfig.profile_name],
-          ['profile_title', config.profile_title || defaultConfig.profile_title],
-          ['area_1', config.area_1 || defaultConfig.area_1],
-          ['area_2', config.area_2 || defaultConfig.area_2],
-          ['area_3', config.area_3 || defaultConfig.area_3],
-          ['area_4', config.area_4 || defaultConfig.area_4],
-          ['area_5', config.area_5 || defaultConfig.area_5],
-          ['area_6', config.area_6 || defaultConfig.area_6],
-          ['area_7', config.area_7 || defaultConfig.area_7]
-        ])
-      });
-    }
-
-    window.addEventListener('load', () => {
-      createConnections();
-      if (window.elementSdk && window.elementSdk.config) {
-        onConfigChange(window.elementSdk.config);
-      }
-    });
-  </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ab13931712c8aef',t:'MTc2NTI0ODkyNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
-</html>
-        
 
 
 
