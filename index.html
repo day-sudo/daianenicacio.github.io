@@ -2103,7 +2103,249 @@
     }
 
     /* Education Cards Grid */
- 
+/* Escopo: apenas dentro da seção de formação */
+.formacao-wrapper {
+  width: 100%;
+  max-width: 1100px;   /* limita a largura da seção */
+  margin: 0 auto;      /* centraliza a seção no site */
+  height: auto;        /* evita ocupar 100% da viewport */
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Cabeçalho do infográfico (mantém o seu estilo) */
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+  animation: fadeInDown 0.8s ease-out;
+}
+.header h1 {
+  color: #111827;      /* texto escuro para combinar com seção do site */
+  font-size: 2rem;
+  font-weight: 600;    /* um pouco mais forte para título de seção */
+  margin-bottom: 0.5rem;
+}
+.header p {
+  color: #4b5563;      /* cinza médio */
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+/* Container do infográfico: controla tamanho e centraliza */
+.infographic-container {
+  position: relative;
+  width: 100%;
+  max-width: 900px;    /* controla o tamanho do diagrama */
+  aspect-ratio: 1;     /* mantém quadrado */
+  margin: 0 auto;
+}
+
+/* SVG ocupa o container, sem bloquear interações de mouse nos nós */
+#connections-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Linhas e animações (mantidas do seu design) */
+.connection-line {
+  stroke: #4299e1;
+  stroke-width: 2;
+  opacity: 0.6;
+  filter: drop-shadow(0 0 8px #4299e1);
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawLine 1.5s ease-out forwards;
+  transition: all 0.3s ease;
+}
+@keyframes drawLine { to { stroke-dashoffset: 0; } }
+
+.light-flow {
+  stroke: url(#lightGradient);
+  stroke-width: 4;
+  opacity: 0;
+  filter: drop-shadow(0 0 12px #4299e1) drop-shadow(0 0 20px rgba(66,153,225,0.6));
+  stroke-dasharray: 30 150;
+  animation: flowLight 2.5s linear infinite;
+  stroke-linecap: round;
+}
+@keyframes flowLight {
+  0% { stroke-dashoffset: 180; opacity: 0; }
+  5%,95% { opacity: 0.9; }
+  100% { stroke-dashoffset: 0; opacity: 0; }
+}
+
+.light-particle {
+  fill: #ffffff;
+  filter: drop-shadow(0 0 8px #4299e1) drop-shadow(0 0 15px rgba(66,153,225,0.8));
+  opacity: 0;
+  animation: particleFlow 2.5s ease-in-out infinite;
+}
+@keyframes particleFlow {
+  0% { opacity: 0; }
+  10%,90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Hub central e avatar */
+.hub {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 140px;
+  height: 140px;
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+  animation: fadeIn 1s ease-out 0.3s both;
+  z-index: 10;
+}
+.hub::before {
+  content: '';
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(66,153,225,0.15) 0%, transparent 70%);
+  animation: pulse 3s ease-in-out infinite;
+}
+.avatar {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+.avatar::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 40px; height: 40px;
+  background: rgba(255,255,255,0.3);
+  border-radius: 50%;
+  transform: translate(-60%, -70%);
+}
+
+/* Nós */
+.area-node {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+  opacity: 0;
+  animation: fadeInBounce 0.6s ease-out forwards;
+}
+.area-node:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 30px rgba(66,153,225,0.25),
+              0 0 40px rgba(66,153,225,0.2),
+              inset 0 0 20px rgba(66,153,225,0.08);
+  z-index: 20;
+  background: linear-gradient(135deg, #ffffff 0%, rgba(66,153,225,0.08) 100%);
+}
+.icon { font-size: 2rem; margin-bottom: 0.5rem; transition: transform 0.3s ease; }
+.area-node:hover .icon { transform: scale(1.15) rotate(3deg); }
+.area-text { font-size: 0.8rem; text-align: center; color: #333; font-weight: 600; line-height: 1.2; }
+
+/* Tooltip */
+.tooltip {
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+  background: rgba(0,0,0,0.9);
+  color: #ffffff;
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  opacity: 0;
+  z-index: 100;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+}
+.tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%; left: 50%;
+  transform: translateX(-50%);
+  border: 8px solid transparent;
+  border-top-color: rgba(0,0,0,0.9);
+}
+.area-node:hover .tooltip { transform: translateX(-50%) scale(1); opacity: 1; }
+
+/* Estados ativos (hover) para linhas */
+.area-node.active .connection-line {
+  stroke-width: 4;
+  opacity: 1;
+  filter: drop-shadow(0 0 20px #4299e1) drop-shadow(0 0 35px rgba(66,153,225,0.8));
+  animation: pulseGlow 1.5s ease-in-out infinite;
+}
+@keyframes pulseGlow {
+  0%,100% { filter: drop-shadow(0 0 20px #4299e1) drop-shadow(0 0 35px rgba(66,153,225,0.8)); }
+  50% { filter: drop-shadow(0 0 30px #4299e1) drop-shadow(0 0 50px rgba(66,153,225,1)); }
+}
+.area-node.active .light-flow {
+  opacity: 1;
+  stroke-width: 6;
+  animation: flowLightActive 1.2s linear infinite;
+}
+@keyframes flowLightActive {
+  0% { stroke-dashoffset: 180; opacity: 0; }
+  5%,95% { opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 0; }
+}
+
+/* Animações de entrada */
+@keyframes fadeInBounce {
+  0% { opacity: 0; transform: scale(0.3) rotate(-10deg); }
+  60% { opacity: 1; transform: scale(1.05) rotate(2deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .header h1 { font-size: 1.5rem; }
+  .header p  { font-size: 0.95rem; }
+  .infographic-container { max-width: 520px; }
+  .hub { width: 100px; height: 100px; }
+  .avatar { width: 70px; height: 70px; font-size: 2rem; }
+  .area-node { width: 90px; height: 90px; padding: 0.5rem; }
+  .icon { font-size: 1.5rem; }
+  .area-text { font-size: 0.7rem; }
+  .tooltip { font-size: 0.75rem; white-space: normal; max-width: 200px; }
+}
     /* Contact Section */
     #contato {
       background: white;
@@ -3883,196 +4125,187 @@
        </div>
       </div>
       <p class="impact-conclusion"><strong>Conclusão:</strong> O IA Lab demonstra a viabilidade de combinar LLMs, ML e Automação para criar soluções que não apenas <em>analisam</em>, mas também <em>preveem</em> e <em>agem</em> de forma autônoma.</p>
-     </div>
-    </section>
-    <section id="formacao">
-     <h2 class="section-title">🎓 Formação e Desenvolvimento: A Didática como Vantagem Competitiva</h2>
-     <p class="section-subtitle">Minha base em Educação e Psicopedagogia acelera a adoção de tecnologia, a gestão da mudança e a transferência de conhecimento em ambientes ágeis.</p><!-- Bloco Central: Vantagem Docente -->
-     <div class="vantagem-docente-box">
-      <div class="vantagem-header">
-       <div class="vantagem-icon">
-        🎯
-       </div>
-       <h3 class="vantagem-title">Vantagem Docente</h3>
+     <section id="formacao">
+  <h2 class="section-title">🎓 Formação e Desenvolvimento: A Didática como Vantagem Competitiva</h2>
+  <p class="section-subtitle">
+    Minha base em Educação e Psicopedagogia acelera a adoção de tecnologia, a gestão da mudança e a transferência de conhecimento em ambientes ágeis.
+  </p>
+
+  <!-- Bloco Central: Vantagem Docente -->
+  <div class="vantagem-docente-box">
+    <div class="vantagem-header">
+      <div class="vantagem-icon">🎯</div>
+      <h3 class="vantagem-title">Vantagem Docente</h3>
+    </div>
+    <div class="vantagem-content">
+      <div class="vantagem-item">
+        <div class="vantagem-label">📚 Formação Base</div>
+        <div class="vantagem-value">Formação Docente &amp; Psicopedagogia</div>
       </div>
-      <div class="vantagem-content">
-       <div class="vantagem-item">
-        <div class="vantagem-label">
-         📚 Formação Base
-        </div>
-        <div class="vantagem-value">
-         Formação Docente &amp; Psicopedagogia
-        </div>
-       </div>
-       <div class="vantagem-divider"></div>
-       <div class="vantagem-item">
-        <div class="vantagem-label">
-         💡 Contribuição para TI/Análise
-        </div>
+      <div class="vantagem-divider"></div>
+      <div class="vantagem-item">
+        <div class="vantagem-label">💡 Contribuição para TI/Análise</div>
         <div class="vantagem-description">
-         Facilitação, mediação de conflitos, desenho de treinamentos eficazes e gestão da fase de <strong>Desire &amp; Knowledge (ADKAR)</strong> em projetos de mudança.
+          Facilitação, mediação de conflitos, desenho de treinamentos eficazes e gestão da fase de <strong>Desire &amp; Knowledge (ADKAR)</strong> em projetos de mudança.
         </div>
-       </div>
       </div>
-     </div><!-- Cartões Expansíveis - Nova cessão -->
-     <div class="main-wrapper">
-   <div class="header">
-    <h1 id="profile-name">Profissional de Excelência</h1>
-    <p id="profile-title">Catalisadora da Conexão</p>
-   </div>
-   <div class="infographic-container">
-    <svg id="connections-svg"><defs>
-      <lineargradient id="lightGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-       <stop offset="0%" style="stop-color:#4299e1;stop-opacity:0" />
-       <stop offset="30%" style="stop-color:#ffffff;stop-opacity:1" />
-       <stop offset="70%" style="stop-color:#ffffff;stop-opacity:1" />
-       <stop offset="100%" style="stop-color:#4299e1;stop-opacity:0" />
-      </lineargradient>
-      <filter id="glow">
-       <fegaussianblur stddeviation="4" result="coloredBlur" />
-       <femerge>
-        <femergenode in="coloredBlur" />
-        <femergenode in="SourceGraphic" />
-       </femerge>
-      </filter>
-     </defs>
-    </svg>
-    <div class="hub">
-     <div class="avatar">
-      👩‍💼
-     </div>
     </div>
-    <div class="area-node" data-area="1" style="top: 10%; left: 50%; transform: translate(-50%, 0);">
-     <div class="icon">
-      ⚙️
-     </div>
-     <div class="area-text" id="area-text-1">
-      Processos
-     </div>
-     <div class="tooltip">
-      Otimizando fluxos e garantindo eficiência
-     </div>
-    </div>
-    <div class="area-node" data-area="2" style="top: 25%; left: 85%; transform: translate(-50%, 0);">
-     <div class="icon">
-      🎯
-     </div>
-     <div class="area-text" id="area-text-2">
-      Projetos
-     </div>
-     <div class="tooltip">
-      Entregando resultados com excelência
-     </div>
-    </div>
-    <div class="area-node" data-area="3" style="top: 60%; left: 90%; transform: translate(-50%, 0);">
-     <div class="icon">
-      🔄
-     </div>
-     <div class="area-text" id="area-text-3">
-      Change Management
-     </div>
-     <div class="tooltip">
-      Garantindo adoção e reduzindo resistência
-     </div>
-    </div>
-    <div class="area-node" data-area="4" style="bottom: 10%; left: 70%; transform: translate(-50%, 0);">
-     <div class="icon">
-      📊
-     </div>
-     <div class="area-text" id="area-text-4">
-      Análise de Dados
-     </div>
-     <div class="tooltip">
-      Transformando dados em insights estratégicos
-     </div>
-    </div>
-    <div class="area-node" data-area="5" style="bottom: 10%; left: 30%; transform: translate(-50%, 0);">
-     <div class="icon">
-      🚀
-     </div>
-     <div class="area-text" id="area-text-5">
-      Transformação Digital
-     </div>
-     <div class="tooltip">
-      Impulsionando a inovação organizacional
-     </div>
-    </div>
-    <div class="area-node" data-area="6" style="top: 60%; left: 10%; transform: translate(-50%, 0);">
-     <div class="icon">
-      🛠️
-     </div>
-     <div class="area-text" id="area-text-6">
-      Sustentação de Sistemas
-     </div>
-     <div class="tooltip">
-      Mantendo a estabilidade e continuidade
-     </div>
-    </div>
-    <div class="area-node" data-area="7" style="top: 25%; left: 15%; transform: translate(-50%, 0);">
-     <div class="icon">
-      🤖
-     </div>
-     <div class="area-text" id="area-text-7">
-      Desenvolvimento e Automação com IA
-     </div>
-     <div class="tooltip">
-      Criando soluções inteligentes e automatizadas
-     </div>
-    </div>
-   </div>
   </div>
-    </section>
-    <section id="contato">
-     <h2 class="section-title" id="contato-title">💬 Vamos Transformar Juntos?</h2>
-     <p class="section-subtitle">Entre em contato para conversarmos sobre como posso ajudar na transformação e na aceleração dos resultados da sua organização.</p><!-- CTA Principal -->
-     <div class="cta-box">
-      <div class="cta-icon">
-       🚀
-      </div>
-      <h3 class="cta-title">Pronto para Transformar?</h3>
-      <p class="cta-text">Agende uma conversa e vamos explorar oportunidades de colaboração.</p><a href="https://wa.me/5521992275052?text=Olá%2C%20gostaria%20de%20conversar%20sobre%20transformação%20organizacional" target="_blank" rel="noopener noreferrer" class="cta-button"> <span class="cta-button-icon">💬</span> Iniciar Conversa </a>
-     </div><!-- Contact Info Grid -->
-     <div class="contact-info-grid">
-      <div class="contact-info-card">
-       <div class="contact-icon">
-        📍
-       </div>
-       <h4 class="contact-label">Localização</h4>
-       <p class="contact-value">Rio de Janeiro, Brasil</p>
-      </div>
-      <div class="contact-info-card">
-       <div class="contact-icon">
-        📧
-       </div>
-       <h4 class="contact-label">E-mail</h4><a href="mailto:daiane.nicacio_@outlook.com.br" class="contact-value contact-link"> daiane.nicacio_@outlook.com.br </a>
-      </div>
-      <div class="contact-info-card">
-       <div class="contact-icon">
-        <svg width="32" height="32" viewbox="0 0 24 24" fill="#0A66C2"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-        </svg>
-       </div>
-       <h4 class="contact-label">LinkedIn</h4><a href="https://www.linkedin.com/in/daiane-nicacio" target="_blank" rel="noopener noreferrer" class="contact-value contact-link"> /in/daiane-nicacio </a>
-      </div>
-      <div class="contact-info-card">
-       <div class="contact-icon">
-        <svg width="32" height="32" viewbox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-        </svg>
-       </div>
-       <h4 class="contact-label">WhatsApp</h4><a href="https://wa.me/5521992275052" target="_blank" rel="noopener noreferrer" class="contact-value contact-link"> (21) 99227-5052 </a>
-      </div>
-     </div>
-    </section>
-   </main>
-   <footer style="background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%); border-top: 3px solid #4299e1; padding: 3rem 2rem; text-align: center; color: white;">
-    <div style="max-width: 1200px; margin: 0 auto;"><!-- Keywords/Positioning -->
-     <div style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2rem;"><span style="background: rgba(255, 255, 255, 0.15); padding: 0.6rem 1.2rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600; backdrop-filter: blur(10px);"> Gestão da Mudança Organizacional </span> <span style="background: rgba(255, 255, 255, 0.15); padding: 0.6rem 1.2rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600; backdrop-filter: blur(10px);"> Projetos Ágeis </span> <span style="background: rgba(255, 255, 255, 0.15); padding: 0.6rem 1.2rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600; backdrop-filter: blur(10px);"> Transformação Digital </span>
-     </div><!-- Closing Message -->
-     <p style="font-size: 1.1rem; margin-bottom: 1.5rem; color: rgba(255, 255, 255, 0.95); font-weight: 500;">Desenvolvido com foco em resultados e transformações sustentáveis.</p><!-- Copyright -->
-     <p id="footer-text" style="font-size: 0.95rem; color: rgba(255, 255, 255, 0.8); margin: 0;">© 2025 Daiane Nicácio. Todos os direitos reservados.</p>
+  <!-- Infográfico como seção (não tela cheia) -->
+  <div class="main-wrapper formacao-wrapper">
+    <div class="header">
+      <h1 id="profile-name">Profissional de Excelência</h1>
+      <p id="profile-title">Catalisadora da Conexão</p>
     </div>
-   </footer>
+    <div class="infographic-container">
+      <svg id="connections-svg">
+        <defs>
+          <linearGradient id="lightGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#4299e1;stop-opacity:0" />
+            <stop offset="30%" style="stop-color:#ffffff;stop-opacity:1" />
+            <stop offset="70%" style="stop-color:#ffffff;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#4299e1;stop-opacity:0" />
+          </linearGradient>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="4" result="coloredBlur" />
+            <feMerge>
+              <feMergeNode in="coloredBlur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+      </svg>
+      <div class="hub">
+        <div class="avatar">👩‍💼</div>
+      </div>
+      <!-- Nós -->
+      <div class="area-node" data-area="1" style="top:10%; left:50%; transform:translate(-50%,0);">
+        <div class="icon">⚙️</div>
+        <div class="area-text" id="area-text-1">Processos</div>
+        <div class="tooltip">Otimizando fluxos e garantindo eficiência</div>
+      </div>
+      <div class="area-node" data-area="2" style="top:25%; left:85%; transform:translate(-50%,0);">
+        <div class="icon">🎯</div>
+        <div class="area-text" id="area-text-2">Projetos</div>
+        <div class="tooltip">Entregando resultados com excelência</div>
+      </div>
+      <div class="area-node" data-area="3" style="top:60%; left:90%; transform:translate(-50%,0);">
+        <div class="icon">🔄</div>
+        <div class="area-text" id="area-text-3">Change Management</div>
+        <div class="tooltip">Garantindo adoção e reduzindo resistência</div>
+      </div>
+      <div class="area-node" data-area="4" style="bottom:10%; left:70%; transform:translate(-50%,0);">
+        <div class="icon">📊</div>
+        <div class="area-text" id="area-text-4">Análise de Dados</div>
+        <div class="tooltip">Transformando dados em insights estratégicos</div>
+      </div>
+      <div class="area-node" data-area="5" style="bottom:10%; left:30%; transform:translate(-50%,0);">
+        <div class="icon">🚀</div>
+        <div class="area-text" id="area-text-5">Transformação Digital</div>
+        <div class="tooltip">Impulsionando a inovação organizacional</div>
+      </div>
+      <div class="area-node" data-area="6" style="top:60%; left:10%; transform:translate(-50%,0);">
+        <div class="icon">🛠️</div>
+        <div class="area-text" id="area-text-6">Sustentação de Sistemas</div>
+        <div class="tooltip">Mantendo a estabilidade e continuidade</div>
+      </div>
+      <div class="area-node" data-area="7" style="top:25%; left:15%; transform:translate(-50%,0);">
+        <div class="icon">🤖</div>
+        <div class="area-text" id="area-text-7">Desenvolvimento e Automação com IA</div>
+        <div class="tooltip">Criando soluções inteligentes e automatizadas</div>
+      </div>
+    </div>
   </div>
-  <script>
+<section id="contato">
+  <h2 class="section-title" id="contato-title">💬 Vamos Transformar Juntos?</h2>
+  <p class="section-subtitle">
+    Entre em contato para conversarmos sobre como posso ajudar na transformação e na aceleração dos resultados da sua organização.
+  </p>
+
+  <!-- CTA Principal -->
+  <div class="cta-box">
+    <div class="cta-icon">🚀</div>
+    <h3 class="cta-title">Pronto para Transformar?</h3>
+    <p class="cta-text">Agende uma conversa e vamos explorar oportunidades de colaboração.</p>
+    <a href="https://wa.me/5521992275052?text=Olá%2C%20gostaria%20de%20conversar%20sobre%20transformação%20organizacional"
+       target="_blank" rel="noopener noreferrer" class="cta-button">
+      <span class="cta-button-icon">💬</span> Iniciar Conversa
+    </a>
+  </div>
+
+  <!-- Contact Info Grid -->
+  <div class="contact-info-grid">
+    <div class="contact-info-card">
+      <div class="contact-icon">📍</div>
+      <h4 class="contact-label">Localização</h4>
+      <p class="contact-value">Rio de Janeiro, Brasil</p>
+    </div>
+
+    <div class="contact-info-card">
+      <div class="contact-icon">📧</div>
+      <h4 class="contact-label">E-mail</h4>
+      <a href="mailto:daiane.nicacio_@outlook.com.br" class="contact-value contact-link">
+        daiane.nicacio_@outlook.com.br
+      </a>
+    </div>
+
+    <div class="contact-info-card">
+      <div class="contact-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="#0A66C2">
+          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 ..."/>
+        </svg>
+      </div>
+      <h4 class="contact-label">LinkedIn</h4>
+      <a href="https://www.linkedin.com/in/daiane-nicacio" target="_blank" rel="noopener noreferrer"
+         class="contact-value contact-link">/in/daiane-nicacio</a>
+    </div>
+
+    <div class="contact-info-card">
+      <div class="contact-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="#25D366">
+          <path d="M17.472 14.382c-..."/>
+        </svg>
+      </div>
+      <h4 class="contact-label">WhatsApp</h4>
+      <a href="https://wa.me/5521992275052" target="_blank" rel="noopener noreferrer"
+         class="contact-value contact-link">(21) 99227-5052</a>
+    </div>
+  </div>
+</section>
+
+</main> <!-- fechamento do main, que deve ter sido aberto antes das seções -->
+
+<footer style="background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+               border-top: 3px solid #4299e1; padding: 3rem 2rem; text-align: center; color: white;">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    <!-- Keywords/Positioning -->
+    <div style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2rem;">
+      <span style="background: rgba(255, 255, 255, 0.15); padding: 0.6rem 1.2rem; border-radius: 20px;
+                   font-size: 0.9rem; font-weight: 600; backdrop-filter: blur(10px);">
+        Gestão da Mudança Organizacional
+      </span>
+      <span style="background: rgba(255, 255, 255, 0.15); padding: 0.6rem 1.2rem; border-radius: 20px;
+                   font-size: 0.9rem; font-weight: 600; backdrop-filter: blur(10px);">
+        Projetos Ágeis
+      </span>
+      <span style="background: rgba(255, 255, 255, 0.15); padding: 0.6rem 1.2rem; border-radius: 20px;
+                   font-size: 0.9rem; font-weight: 600; backdrop-filter: blur(10px);">
+        Transformação Digital
+      </span>
+    </div>
+
+    <!-- Closing Message -->
+    <p style="font-size: 1.1rem; margin-bottom: 1.5rem; color: rgba(255, 255, 255, 0.95); font-weight: 500;">
+      Desenvolvido com foco em resultados e transformações sustentáveis.
+    </p>
+
+    <!-- Copyright -->
+    <p id="footer-text" style="font-size: 0.95rem; color: rgba(255, 255, 255, 0.8); margin: 0;">
+      © 2025 Daiane Nicácio. Todos os direitos reservados.
+    </p>
+  </div>
+</footer>
+<script>
     const defaultConfig = {
       background_color: "#f8f9fa",
       surface_color: "#ffffff",
@@ -4515,6 +4748,7 @@
  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ab13931712c8aef',t:'MTc2NTI0ODkyNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
         
+
 
 
 
