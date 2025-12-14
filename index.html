@@ -142,91 +142,117 @@
       padding: 0.5rem;
     }
 
-    /* Hero Section */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 8rem 2rem 4rem;
-      background: linear-gradient(135deg, #e6f2ff 0%, #f0f7ff 50%, #e8f5e9 100%);
-      position: relative;
-      overflow: hidden;
-    }
+    /* =========================
+   HERO SECTION – FULL WIDTH
+   ========================= */
 
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: 
-        radial-gradient(circle at 20% 50%, rgba(66, 153, 225, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 50%, rgba(72, 187, 120, 0.1) 0%, transparent 50%);
-      animation: pulse 8s ease-in-out infinite;
-    }
+/* Corrige o problema de largura limitada */
+.hero {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  padding: 8rem 0 4rem; /* espaço para o menu fixo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 
-    @keyframes pulse {
-      0%, 100% { opacity: 0.5; }
-      50% { opacity: 1; }
-    }
+  background: linear-gradient(
+    135deg,
+    #e6f2ff 0%,
+    #f0f7ff 50%,
+    #e8f5e9 100%
+  );
 
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 800px;
-    }
+  position: relative;
+  overflow: hidden;
+}
 
-    .hero h1 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 3.5rem;
-      font-weight: 800;
-      margin-bottom: 1.5rem;
-      background: linear-gradient(135deg, #2c5282 0%, #4299e1 50%, #48bb78 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: fadeInUp 1s ease;
-    }
+/* Remove a limitação global de section */
+.hero {
+  max-width: 100% !important;
+}
 
-    .hero p {
-      font-size: 1.25rem;
-      color: #4a5568;
-      margin-bottom: 2.5rem;
-      animation: fadeInUp 1s ease 0.2s backwards;
-    }
+/* Efeito de luz animado */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 50%, rgba(66, 153, 225, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(72, 187, 120, 0.12) 0%, transparent 50%);
+  animation: pulse 8s ease-in-out infinite;
+  z-index: 0;
+}
 
-    .hero-button {
-      display: inline-block;
-      padding: 1rem 2.5rem;
-      background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
-      color: white;
-      font-weight: 600;
-      text-decoration: none;
-      border-radius: 50px;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(66, 153, 225, 0.3);
-      animation: fadeInUp 1s ease 0.4s backwards;
-    }
+/* Conteúdo centralizado */
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  padding: 0 2rem;
+  margin: 0 auto;
+}
 
-    .hero-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(66, 153, 225, 0.4);
-      background: linear-gradient(135deg, #3182ce 0%, #2c5282 100%);
-    }
+/* Título */
+.hero h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(
+    135deg,
+    #2c5282 0%,
+    #4299e1 50%,
+    #48bb78 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+/* Subtítulo */
+.hero p {
+  font-size: 1.25rem;
+  color: #4a5568;
+  margin-bottom: 2.5rem;
+}
+
+/* Botão */
+.hero-button {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(66, 153, 225, 0.3);
+}
+
+.hero-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(66, 153, 225, 0.4);
+  background: linear-gradient(135deg, #3182ce 0%, #2c5282 100%);
+}
+
+/* Animação do fundo */
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.4rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+}
+
 
     /* Section Base Styles */
     section {
@@ -2842,36 +2868,54 @@
       <li><a href="#ialab">IA Lab</a></li>
       <li><a href="#formacao">Formação</a></li>
       <li><a href="#contato">Contato</a></li>
-     </ul>
+  </ul>
     </div>
-   </nav>
-   <main>
-    <section class="hero" id="inicio">
-     <div class="hero-content">
+</nav>
+
+<main class="main-wrapper">
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="hero-content">
       <h1 id="hero-title">Eficiência em movimento</h1>
-      <p id="hero-subtitle">Conectando pessoas, processos e tecnologia para transformações sustentáveis e inovadoras.</p><a href="#proposta" class="hero-button">Conhecer Proposta</a>
-     </div>
-    </section>
-    <section id="proposta">
-     <h2 class="section-title" id="proposta-title">Minha Proposta de Valor</h2>
-     <p class="section-subtitle" id="proposta-subtitle">Integrando os pilares da transformação organizacional.</p>
-     <div class="venn-container">
+      <p id="hero-subtitle">
+        Conectando pessoas, processos e tecnologia para transformações sustentáveis e inovadoras.
+      </p>
+      <a href="#proposta" class="hero-button">Conhecer Proposta</a>
+    </div>
+  </section>
+
+  <!-- PROPOSTA -->
+  <section id="proposta">
+    <h2 class="section-title" id="proposta-title">Minha Proposta de Valor</h2>
+    <p class="section-subtitle" id="proposta-subtitle">
+      Integrando os pilares da transformação organizacional.
+    </p>
+
+    <div class="venn-container">
       <div class="venn-circle venn-pessoas">
-       <h3>PESSOAS</h3>
-       <p>Cultura, engajamento e desenvolvimento de competências.</p>
+        <h3>PESSOAS</h3>
+        <p>Cultura, engajamento e desenvolvimento de competências.</p>
       </div>
+
       <div class="venn-circle venn-processos">
-       <h3>PROCESSOS</h3>
-       <p>Metodologias ágeis e otimização operacional.</p>
+        <h3>PROCESSOS</h3>
+        <p>Metodologias ágeis e otimização operacional.</p>
       </div>
+
       <div class="venn-circle venn-tecnologia">
-       <h3>TECNOLOGIA</h3>
-       <p>IA, automação e inovação digital.</p>
+        <h3>TECNOLOGIA</h3>
+        <p>IA, automação e inovação digital.</p>
       </div>
+
       <div class="venn-center">
-       Integração
+        Integração
       </div>
-     </div>
+    </div>
+  </section>
+
+</main>
+
     </section>
     <section id="apresentacao">
      <h2 class="section-title" id="apresentacao-title">Apresentação</h2>
@@ -4558,6 +4602,7 @@ window.addEventListener("load", () => {
 </script>
 
         
+
 
 
 
