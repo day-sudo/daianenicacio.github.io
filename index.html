@@ -195,11 +195,13 @@
 }
 
 /* Título */
-.hero h1 {
+hero h1 {
   font-family: 'Poppins', sans-serif;
   font-size: 3.5rem;
   font-weight: 800;
   margin-bottom: 1.5rem;
+  white-space: nowrap;
+
   background: linear-gradient(
     135deg,
     #2c5282 0%,
@@ -209,6 +211,13 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+@media (max-width: 768px) {
+  .hero h1 {
+    white-space: normal;
+    font-size: 2.5rem;
+  }
+   }
 
 /* Subtítulo */
 .hero p {
@@ -4602,6 +4611,7 @@ window.addEventListener("load", () => {
 </script>
 
         
+
 
 
 
