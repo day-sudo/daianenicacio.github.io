@@ -357,133 +357,342 @@
     }
 
     /* Proposta Section - Venn Diagram */
-    #proposta {
-      background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
-      padding: 5rem 2rem;
-      margin: 0;
-      max-width: 100%;
-    }
+           /* Venn Diagram Section */
+        .venn-section {
+            position: relative;
+            min-height: 100%;
+            padding: 6rem 2rem;
+            background: var(--dark-bg);
+            overflow: hidden;
+        }
 
-    #proposta .section-title {
-      color: white;
-    }
+        .venn-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(0, 102, 204, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 102, 204, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+            opacity: 0.5;
+        }
 
-    #proposta .section-subtitle {
-      color: rgba(255, 255, 255, 0.8);
-    }
+        .venn-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
 
-    .venn-container {
-      max-width: 900px;
-      margin: 3rem auto;
-      position: relative;
-      min-height: 600px;
-    }
+        .venn-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 4rem;
+            background: linear-gradient(135deg, var(--primary-cyan), var(--primary-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-    .venn-circle {
-      position: absolute;
-      width: 350px;
-      height: 350px;
-      border-radius: 50%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-      text-align: center;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      backdrop-filter: blur(10px);
-    }
+        .venn-diagram {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            height: 500px;
+            margin: 0 auto;
+        }
 
-    .venn-circle:hover {
-      transform: scale(1.05);
-    }
+        .venn-circle {
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+        }
 
-    .venn-pessoas {
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: radial-gradient(circle, rgba(66, 153, 225, 0.4) 0%, rgba(66, 153, 225, 0.1) 100%);
-      border: 3px solid rgba(66, 153, 225, 0.6);
-      box-shadow: 0 0 40px rgba(66, 153, 225, 0.5), inset 0 0 30px rgba(66, 153, 225, 0.2);
-      animation: glow-blue 3s ease-in-out infinite;
-    }
+        .venn-circle h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 2;
+        }
 
-    .venn-processos {
-      bottom: 20px;
-      left: 10%;
-      background: radial-gradient(circle, rgba(72, 187, 120, 0.4) 0%, rgba(72, 187, 120, 0.1) 100%);
-      border: 3px solid rgba(72, 187, 120, 0.6);
-      box-shadow: 0 0 40px rgba(72, 187, 120, 0.5), inset 0 0 30px rgba(72, 187, 120, 0.2);
-      animation: glow-green 3s ease-in-out infinite 1s;
-    }
+        .venn-circle p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.4;
+            position: relative;
+            z-index: 2;
+        }
 
-    .venn-tecnologia {
-      bottom: 20px;
-      right: 10%;
-      background: radial-gradient(circle, rgba(159, 122, 234, 0.4) 0%, rgba(159, 122, 234, 0.1) 100%);
-      border: 3px solid rgba(159, 122, 234, 0.6);
-      box-shadow: 0 0 40px rgba(159, 122, 234, 0.5), inset 0 0 30px rgba(159, 122, 234, 0.2);
-      animation: glow-purple 3s ease-in-out infinite 2s;
-    }
+        .circle-people {
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background: radial-gradient(circle at 30% 30%, rgba(0, 102, 204, 0.3), rgba(0, 102, 204, 0.1));
+            border: 2px solid rgba(0, 102, 204, 0.5);
+            color: var(--primary-cyan);
+            animation: floatCircle 4s ease-in-out infinite, pulseGlow 2.5s ease-in-out infinite;
+        }
 
-    @keyframes glow-blue {
-      0%, 100% { box-shadow: 0 0 40px rgba(66, 153, 225, 0.5), inset 0 0 30px rgba(66, 153, 225, 0.2); }
-      50% { box-shadow: 0 0 60px rgba(66, 153, 225, 0.8), inset 0 0 40px rgba(66, 153, 225, 0.3); }
-    }
+        .circle-processes {
+            bottom: 0;
+            left: 10%;
+            background: radial-gradient(circle at 30% 30%, rgba(0, 184, 148, 0.3), rgba(0, 184, 148, 0.1));
+            border: 2px solid rgba(0, 184, 148, 0.5);
+            color: var(--primary-green);
+            animation: floatCircle 4s ease-in-out infinite 0.5s, pulseGlow 2.5s ease-in-out infinite 0.3s;
+        }
 
-    @keyframes glow-green {
-      0%, 100% { box-shadow: 0 0 40px rgba(72, 187, 120, 0.5), inset 0 0 30px rgba(72, 187, 120, 0.2); }
-      50% { box-shadow: 0 0 60px rgba(72, 187, 120, 0.8), inset 0 0 40px rgba(72, 187, 120, 0.3); }
-    }
+        .circle-technology {
+            bottom: 0;
+            right: 10%;
+            background: radial-gradient(circle at 30% 30%, rgba(108, 92, 231, 0.3), rgba(108, 92, 231, 0.1));
+            border: 2px solid rgba(108, 92, 231, 0.5);
+            color: var(--accent-purple);
+            animation: floatCircle 4s ease-in-out infinite 1s, pulseGlow 2.5s ease-in-out infinite 0.6s;
+        }
 
-    @keyframes glow-purple {
-      0%, 100% { box-shadow: 0 0 40px rgba(159, 122, 234, 0.5), inset 0 0 30px rgba(159, 122, 234, 0.2); }
-      50% { box-shadow: 0 0 60px rgba(159, 122, 234, 0.8), inset 0 0 40px rgba(159, 122, 234, 0.3); }
-    }
+        .venn-circle:hover {
+            transform: translateX(-50%) scale(1.05);
+            box-shadow: 
+                0 0 60px currentColor,
+                0 0 100px currentColor,
+                0 15px 50px rgba(0, 0, 0, 0.4);
+        }
 
-    .venn-center {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 120px;
-      height: 120px;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.3) 100%);
-      border-radius: 50%;
-      box-shadow: 0 0 60px rgba(255, 255, 255, 0.8), inset 0 0 30px rgba(255, 255, 255, 0.5);
-      animation: pulse-center 2s ease-in-out infinite;
-      z-index: 10;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      font-size: 0.9rem;
-      color: #1e3a5f;
-      text-align: center;
-      padding: 1rem;
-    }
+        .circle-processes:hover,
+        .circle-technology:hover {
+            transform: scale(1.05);
+        }
 
-    @keyframes pulse-center {
-      0%, 100% { transform: translate(-50%, -50%) scale(1); }
-      50% { transform: translate(-50%, -50%) scale(1.1); }
-    }
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-    .venn-circle h3 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: white;
-      margin-bottom: 1rem;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    }
+        @keyframes floatCircle {
+            0%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            50% {
+                transform: translateY(-15px) translateX(-50%);
+            }
+        }
 
-    .venn-circle p {
-      color: rgba(255, 255, 255, 0.95);
-      font-size: 0.95rem;
-      line-height: 1.6;
-      text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
-    }
+        .circle-processes {
+            animation-name: floatCircleNoTransform, pulseGlow;
+        }
+
+        .circle-technology {
+            animation-name: floatCircleNoTransform, pulseGlow;
+            animation-delay: 1s, 0.6s;
+        }
+
+        @keyframes floatCircleNoTransform {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% {
+                filter: brightness(1.2);
+                box-shadow: 
+                    0 0 40px currentColor,
+                    0 0 80px rgba(0, 0, 0, 0.3);
+            }
+            50% {
+                filter: brightness(1.5);
+                box-shadow: 
+                    0 0 80px currentColor,
+                    0 0 120px rgba(0, 0, 0, 0.4);
+            }
+        }
+
+        @keyframes gridMove {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(50px);
+            }
+        }
+
+        /* Contact Section */
+        .contact-section {
+            min-height: 50%;
+            padding: 6rem 2rem;
+            background: var(--darker-bg);
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary-cyan), var(--primary-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact-text {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .indicators-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .presentation-title, .tools-title, .section-title, .venn-title {
+                font-size: 2rem;
+            }
+
+            .presentation-subtitle, .tools-subtitle, .section-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .video-container {
+                border-radius: 12px;
+            }
+
+            .tools-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .indicators-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .venn-diagram {
+                height: 650px;
+            }
+
+            .venn-circle {
+                width: 220px;
+                height: 220px;
+                padding: 1.5rem;
+            }
+
+            .venn-circle h3 {
+                font-size: 1.1rem;
+            }
+
+            .venn-circle p {
+                font-size: 0.8rem;
+            }
+
+            .circle-people {
+                top: 0;
+            }
+
+            .circle-processes {
+                bottom: 180px;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .circle-technology {
+                bottom: 0;
+                left: 50%;
+                right: auto;
+                transform: translateX(-50%);
+            }
+
+            .contact-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+
+            .hero {
+                padding: 6rem 1.5rem 3rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .cta-button {
+                padding: 0.8rem 2rem;
+                font-size: 0.9rem;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+                gap: 1.25rem;
+            }
+
+            .tool-card {
+                padding: 1.5rem 1rem;
+            }
+
+            .venn-circle {
+                width: 200px;
+                height: 200px;
+            }
+        }
 
     /* Ferramentas Section */
     #ferramentas {
@@ -3063,145 +3272,22 @@
     </section>
     <section id="indicadores">
      <h2 class="section-title">Indicadores 360°</h2>
-     <p class="section-subtitle">Cada métrica representa uma transformação real, medida e sustentável. Minha abordagem data-driven garante resultados concretos.</p>
-     <div class="indicators-grid"><!-- 1. Velocity por Sprint -->
-      <div class="indicator-card">
-       <div class="indicator-icon">
-        ⚡
-       </div>
-       <h3 class="indicator-title">Métricas Ágeis - Velocity por Sprint</h3>
-       <div class="bar-chart">
-        <div class="bar-group">
-         <div class="bar" style="height: 67%;"><span class="bar-value">32</span>
-         </div><span class="bar-label">S1</span>
-        </div>
-        <div class="bar-group">
-         <div class="bar" style="height: 83%;"><span class="bar-value">40</span>
-         </div><span class="bar-label">S2</span>
-        </div>
-        <div class="bar-group">
-         <div class="bar" style="height: 100%;"><span class="bar-value">48</span>
-         </div><span class="bar-label">S3</span>
-        </div>
-        <div class="bar-group">
-         <div class="bar" style="height: 94%;"><span class="bar-value">45</span>
-         </div><span class="bar-label">S4</span>
-        </div>
-       </div>
-       <p class="indicator-conclusion">✓ Estabilização em 45 pontos/sprint</p>
-      </div><!-- 2. Bugs Críticos Pós-Produção -->
-      <div class="indicator-card">
-       <div class="indicator-icon">
-        🐛
-       </div>
-       <h3 class="indicator-title">Qualidade - Bugs Críticos Pós-Produção</h3>
-       <div class="comparison-chart">
-        <div class="comparison-item">
-         <div class="comparison-label">
-          Antes
-         </div>
-         <div class="comparison-bar red" style="width: 100%;"><span class="comparison-value">100%</span>
-         </div>
-        </div>
-        <div class="comparison-item">
-         <div class="comparison-label">
-          Depois
-         </div>
-         <div class="comparison-bar green" style="width: 75%;"><span class="comparison-value">75%</span>
-         </div>
-        </div>
-       </div>
-       <p class="indicator-conclusion">✓ Redução de 25% em bugs críticos</p>
-      </div><!-- 3. Adoção - Usuários Ativos -->
-      <div class="indicator-card">
-       <div class="indicator-icon">
-        👥
-       </div>
-       <h3 class="indicator-title">Adoção - Usuários Ativos em 30 Dias</h3>
-       <div class="donut-container">
-        <svg class="donut-chart" viewbox="0 0 200 200"><defs>
-          <lineargradient id="donutGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
-           <stop offset="0%" style="stop-color:#0066cc;stop-opacity:1" />
-           <stop offset="100%" style="stop-color:#00b894;stop-opacity:1" />
-          </lineargradient>
-         </defs> <circle cx="100" cy="100" r="70" fill="none" stroke="#e9ecef" stroke-width="25" /> <circle cx="100" cy="100" r="70" fill="none" stroke="url(#donutGradient1)" stroke-width="25" stroke-dasharray="374" stroke-dashoffset="56" transform="rotate(-90 100 100)" stroke-linecap="round" /> <text x="100" y="95" text-anchor="middle" fill="#1e3a5f" font-size="36" font-family="Poppins" font-weight="700">
-          85%
-         </text> <text x="100" y="115" text-anchor="middle" fill="#718096" font-size="12" font-family="Inter">
-          Meta: 75%
-         </text>
-        </svg>
-       </div>
-       <p class="indicator-conclusion">✓ Validação da estratégia ADKAR</p>
-      </div><!-- 4. Comunicação - Engajamento -->
-      <div class="indicator-card">
-       <div class="indicator-icon">
-        💬
-       </div>
-       <h3 class="indicator-title">Comunicação - Participação em Ações</h3>
-       <div class="donut-container">
-        <svg class="donut-chart" viewbox="0 0 200 200"><defs>
-          <lineargradient id="donutGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
-           <stop offset="0%" style="stop-color:#48bb78;stop-opacity:1" />
-           <stop offset="100%" style="stop-color:#38a169;stop-opacity:1" />
-          </lineargradient>
-         </defs> <circle cx="100" cy="100" r="70" fill="none" stroke="#e9ecef" stroke-width="25" /> <circle cx="100" cy="100" r="70" fill="none" stroke="url(#donutGradient2)" stroke-width="25" stroke-dasharray="374" stroke-dashoffset="30" transform="rotate(-90 100 100)" stroke-linecap="round" /> <text x="100" y="100" text-anchor="middle" fill="#1e3a5f" font-size="36" font-family="Poppins" font-weight="700">
-          92%
-         </text> <text x="100" y="120" text-anchor="middle" fill="#718096" font-size="12" font-family="Inter">
-          Engajados
-         </text>
-        </svg>
-       </div>
-       <p class="indicator-conclusion">✓ Awareness/Desire consolidados</p>
-      </div><!-- 5. Eficiência IA - Tempo de Documentação -->
-      <div class="indicator-card">
-       <div class="indicator-icon">
-        🤖
-       </div>
-       <h3 class="indicator-title">Eficiência IA - Tempo de Documentação</h3>
-       <div class="comparison-chart">
-        <div class="comparison-item">
-         <div class="comparison-label">
-          Manual
-         </div>
-         <div class="comparison-bar red" style="width: 100%;"><span class="comparison-value">8h</span>
-         </div>
-        </div>
-        <div class="comparison-item">
-         <div class="comparison-label">
-          Com IA
-         </div>
-         <div class="comparison-bar green" style="width: 60%;"><span class="comparison-value">4.8h</span>
-         </div>
-        </div>
-       </div>
-       <p class="indicator-conclusion">✓ Ganho de 40% em produtividade</p>
-      </div><!-- 6. Performance - Tempo de Ciclo -->
-      <div class="indicator-card">
-       <div class="indicator-icon">
-        ⚙️
-       </div>
-       <h3 class="indicator-title">Performance - Tempo de Ciclo (Bizagi)</h3>
-       <svg class="line-chart" viewbox="0 0 320 160"><defs>
-         <lineargradient id="lineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" style="stop-color:#4299e1;stop-opacity:0.3" />
-          <stop offset="100%" style="stop-color:#4299e1;stop-opacity:0" />
-         </lineargradient>
-        </defs> <!-- Grid lines --> <line x1="40" y1="30" x2="290" y2="30" stroke="#e9ecef" stroke-width="1" /> <line x1="40" y1="60" x2="290" y2="60" stroke="#e9ecef" stroke-width="1" /> <line x1="40" y1="90" x2="290" y2="90" stroke="#e9ecef" stroke-width="1" /> <line x1="40" y1="120" x2="290" y2="120" stroke="#e9ecef" stroke-width="1" /> <!-- Area fill --> <polygon points="60,70 122,62 184,55 246,50 290,45 290,120 60,120" fill="url(#lineGradient)" /> <!-- Line --> <polyline points="60,70 122,62 184,55 246,50 290,45" stroke="#0066cc" stroke-width="3" fill="none" /> <!-- Data points --> <circle cx="60" cy="70" r="5" fill="#0066cc" /> <circle cx="122" cy="62" r="5" fill="#0066cc" /> <circle cx="184" cy="55" r="5" fill="#0066cc" /> <circle cx="246" cy="50" r="5" fill="#0066cc" /> <circle cx="290" cy="45" r="5" fill="#0066cc" /> <!-- X-axis labels --> <text x="60" y="140" text-anchor="middle" fill="#718096" font-size="12">
-         M1
-        </text> <text x="122" y="140" text-anchor="middle" fill="#718096" font-size="12">
-         M2
-        </text> <text x="184" y="140" text-anchor="middle" fill="#718096" font-size="12">
-         M3
-        </text> <text x="246" y="140" text-anchor="middle" fill="#718096" font-size="12">
-         M4
-        </text> <text x="290" y="140" text-anchor="middle" fill="#718096" font-size="12">
-         M5
-        </text>
-       </svg>
-       <p class="indicator-conclusion">✓ Redução de 18% no tempo de ciclo</p>
-      </div>
-     </div>
-    </section>
+    <!-- DASHBOARD -->
+<section>
+  <h2>📊 Indicadores 360°</h2>
+  <p>Painel conceitual que representa minha forma de analisar impacto e decisão.</p>
+
+  <div class="dashboard">
+    <div id="grafico1"></div>
+    <div id="grafico2"></div>
+    <div id="grafico3"></div>
+  </div>
+
+  <p>
+    🔎 Os indicadores acima representam minha atuação: entender o problema,
+    estruturar dados, automatizar processos e apoiar decisões com clareza.
+  </p>
+</section>
 <section id="analises">
  <h2 class="section-title">🧠 O Meu Workflow de Transformação</h2>
  <p class="section-subtitle">Como Gero Resultados Acionáveis através de Análise Integrada</p>
@@ -4860,6 +4946,7 @@ window.addEventListener("load", () => {
 
 
         
+
 
 
 
