@@ -405,34 +405,30 @@
     }
 
     /* Proposta Section - Venn Diagram */
-           /* Venn Diagram Section */
- /* Proposta Section - Venn Diagram */
 
-#value-proposition {
-    background-color: #0f172a; /* fundo azul escuro */
-    position: relative;
-    padding: 6rem 2rem;
-    overflow: hidden;
-}
+   /* Venn Diagram Section */
+        .venn-section {
+            position: relative;
+            min-height: 100%;
+            padding: 6rem 2rem;
+            background: var(--dark-bg);
+            overflow: hidden;
+        }
 
-/* Camada decorativa (grade) */
-#value-proposition::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-        linear-gradient(rgba(0, 102, 204, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 102, 204, 0.03) 1px, transparent 1px);
-    opacity: 0.5;
-    pointer-events: none;
-    z-index: 0;
-}
-
-/* Conteúdo acima do fundo */
-#value-proposition > * {
-    position: relative;
-    z-index: 1;
-}
+        .venn-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(0, 102, 204, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 102, 204, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+            opacity: 0.5;
+        }
 
         .venn-container {
             max-width: 1200px;
@@ -596,6 +592,7 @@
                 transform: translateY(50px);
             }
         }
+
 
         /* Contact Section */
         .contact-section {
@@ -4987,6 +4984,7 @@ window.addEventListener("load", () => {
 
 
         
+
 
 
 
