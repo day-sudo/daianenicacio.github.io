@@ -406,8 +406,17 @@
 
     /* Proposta Section - Venn Diagram */
            /* Venn Diagram Section */
-   
-   #value-proposition::before {
+ /* Proposta Section - Venn Diagram */
+
+#value-proposition {
+    background-color: #0f172a; /* fundo azul escuro */
+    position: relative;
+    padding: 6rem 2rem;
+    overflow: hidden;
+}
+
+/* Camada decorativa (grade) */
+#value-proposition::before {
     content: '';
     position: absolute;
     inset: 0;
@@ -416,6 +425,13 @@
         linear-gradient(90deg, rgba(0, 102, 204, 0.03) 1px, transparent 1px);
     opacity: 0.5;
     pointer-events: none;
+    z-index: 0;
+}
+
+/* Conteúdo acima do fundo */
+#value-proposition > * {
+    position: relative;
+    z-index: 1;
 }
 
         .venn-container {
@@ -4971,6 +4987,7 @@ window.addEventListener("load", () => {
 
 
         
+
 
 
 
