@@ -3146,23 +3146,26 @@
   </section>
 
   <!-- PROPOSTA -->
-<section id="proposta">  
-  <section id="value-proposition" class="venn-section">        
-      <h2 class="venn-title" id="value-prop-title">Integração Estratégica</h2>   
-      <div class="venn-diagram">       
-        <div class="venn-circle circle-people">
-          <h3 id="circle-1-title">PESSOAS</h3>
-          <p>Cultura, engajamento e desenvolvimento de competências</p>
-        </div>   
-        <div class="venn-circle circle-processes">
-          <h3 id="circle-2-title">PROCESSOS</h3>
-          <p>AS IS / TO BE - BPMN - KPIs & Lean</p>
-        </div> 
-        <div class="venn-circle circle-technology">
-          <h3 id="circle-3-title">TECNOLOGIA</h3>
-          <p>IA, automação e inovação digital</p>
-        </div>   
-      </div>   
+  </div>
+    </div>
+   </section>
+   <section id="value-proposition" class="venn-section">
+    <div class="venn-container">
+     <h2 class="venn-title" id="value-prop-title">Integração Estratégica</h2>
+     <div class="venn-diagram">
+      <div class="venn-circle circle-people">
+       <h3 id="circle-1-title">PESSOAS</h3>
+       <p>Cultura, engajamento e desenvolvimento de competências</p>
+      </div>
+      <div class="venn-circle circle-processes">
+       <h3 id="circle-2-title">PROCESSOS</h3>
+       <p>Metodologias ágeis e otimização operacional</p>
+      </div>
+      <div class="venn-circle circle-technology">
+       <h3 id="circle-3-title">TECNOLOGIA</h3>
+       <p>IA, automação e inovação digital</p>
+      </div>
+     </div>
     </div>
   </section>
     <section id="apresentacao">
@@ -4706,34 +4709,34 @@ const defaultConfig = {
   secondary_action: "#48bb78",
   font_family: "Inter",
   font_size: 16,
-  nav_logo: "Daiane Nicácio",
-  hero_title: "Eficiência em movimento",
-  hero_subtitle: "Conectando pessoas, processos e tecnologia para transformações sustentáveis e inovadoras.",
-  proposta_title: "Minha Proposta de Valor",
-  proposta_subtitle: "Integrando os pilares da transformação organizacional.",
+  nav_logo: "Daiane Nicacio",
+  hero_title: "Híbrida de Alto Valor em Tecnologia",
+  hero_subtitle: "Conectando pessoas, processos e tecnologia por meio de automação, dados e desenvolvimento de soluções digitais.",
+  proposta_title: "Proposta de Valor",
+  proposta_subtitle: "Integração prática entre negócio e tecnologia para eficiência operacional e tomada de decisão.",
   apresentacao_title: "Apresentação",
   contato_title: "Contato",
-  footer_text: "© 2024 Daiane Nicácio. Todos os direitos reservados.",
+  footer_text: "© 2024 Daiane Nicacio • Tecnologia, Automação e Dados",
 
-  /* --- HUB ANIMADO --- */
-  profile_name: 'Profissional de Excelência',
-  profile_title: 'Catalisadora da Conexão',
+  /* --- HUB (NÚCLEO DE COMPETÊNCIAS) --- */
+  profile_name: "Profissional Tech-Híbrida",
+  profile_title: "Pessoas • Processos • Tecnologia",
   secondary_color: '#764ba2',
   accent_color: '#4299e1',
   node_color: '#ffffff',
-  area_1: 'Processos',
-  area_2: 'Projetos',
-  area_3: 'Change Management',
-  area_4: 'Análise de Dados',
-  area_5: 'Transformação Digital',
-  area_6: 'Sustentação de Sistemas',
-  area_7: 'Desenvolvimento e Automação com IA'
+  /* --- ÁREAS DO HUB (MUITO IMPORTANTES) --- */
+  area_1: "Pessoas & Comunicação",
+  area_2: "Processos (AS IS / TO BE • BPMN • Lean)",
+  area_3: "Gestão da Mudança",
+  area_4: "Dados & Indicadores",
+  area_5: "Automação de Processos",
+  area_6: "Desenvolvimento de Soluções",
+  area_7: "IA Aplicada a Negócios"
 };
-
 /* =====================================================
    onConfigChange – AGORA UNIFICADO (SITE + HUB)
 ===================================================== */
-async function onConfigChange(config) {
+  async function onConfigChange(config) {
   const baseSize = config.font_size || defaultConfig.font_size;
   const customFont = config.font_family || defaultConfig.font_family;
   const baseFontStack = "Arial, sans-serif";
@@ -4984,6 +4987,7 @@ window.addEventListener("load", () => {
 
 
         
+
 
 
 
