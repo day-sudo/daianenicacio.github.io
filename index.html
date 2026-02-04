@@ -405,13 +405,6 @@
 
     /* Proposta Section - Venn Diagram */
            /* Venn Diagram Section */
-        .venn-section {
-            position: relative;
-            min-height: 100%;
-            padding: 6rem 2rem;
-            background: var(--dark-bg);
-            overflow: hidden;
-        }
 
         .venn-section::before {
             content: '';
@@ -423,7 +416,8 @@
             background-image: 
                 linear-gradient(rgba(0, 102, 204, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(0, 102, 204, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
+            background: var(--section-dark-blue);
+}
             animation: gridMove 20s linear infinite;
             opacity: 0.5;
         }
@@ -4985,6 +4979,7 @@ window.addEventListener("load", () => {
 
 
         
+
 
 
 
