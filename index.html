@@ -406,23 +406,17 @@
 
     /* Proposta Section - Venn Diagram */
            /* Venn Diagram Section */
-   #value-proposition {
-    background: red !important;
+   
+   #value-proposition::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(0, 102, 204, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 102, 204, 0.03) 1px, transparent 1px);
+    opacity: 0.5;
+    pointer-events: none;
 }
-
-
-        .venn-section:{
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--section-dark-blue); /* MESMO FUNDO DO IA LAB */
-}
-            animation: gridMove 20s linear infinite;
-            opacity: 0.5;
-        }
 
         .venn-container {
             max-width: 1200px;
@@ -3140,8 +3134,7 @@
 
   <!-- PROPOSTA -->
 <section id="proposta">  
-  <section id="value-proposition" class="venn-section">  
-    <div class="venn-container">      
+  <section id="value-proposition" class="venn-section">        
       <h2 class="venn-title" id="value-prop-title">Integração Estratégica</h2>   
       <div class="venn-diagram">       
         <div class="venn-circle circle-people">
@@ -4978,6 +4971,7 @@ window.addEventListener("load", () => {
 
 
         
+
 
 
 
